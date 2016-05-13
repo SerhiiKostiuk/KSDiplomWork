@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		C55B197C1CE4F0E3007A1AB2 /* KSPieChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B197B1CE4F0E3007A1AB2 /* KSPieChartViewController.m */; };
-		C58C066D1CE4D8530050A980 /* KSPieChartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C58C066C1CE4D8530050A980 /* KSPieChartIcon.png */; };
 		C5CB91961CE6316000914722 /* MCNewCustomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CB918C1CE6316000914722 /* MCNewCustomLayer.m */; };
 		C5CB91971CE6316000914722 /* MCNewCustomLayeredView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CB918F1CE6316000914722 /* MCNewCustomLayeredView.m */; };
 		C5CB91981CE6316000914722 /* MCPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CB91911CE6316000914722 /* MCPieChartView.m */; };
 		C5CB91991CE6316000914722 /* MCSliceLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CB91931CE6316000914722 /* MCSliceLayer.m */; };
 		C5CB919A1CE6316000914722 /* MCUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CB91951CE6316000914722 /* MCUtil.m */; };
+		C5CB919E1CE6497400914722 /* KSPieChartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5CB919D1CE6497400914722 /* KSPieChartIcon.png */; };
 		C5EA968F1CE3264F0069F913 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EA968E1CE3264F0069F913 /* main.m */; };
 		C5EA96921CE3264F0069F913 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EA96911CE3264F0069F913 /* AppDelegate.m */; };
 		C5EA96951CE3264F0069F913 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EA96941CE3264F0069F913 /* ViewController.m */; };
@@ -44,7 +44,6 @@
 		C55B197A1CE4F0E3007A1AB2 /* KSPieChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSPieChartViewController.h; sourceTree = "<group>"; };
 		C55B197B1CE4F0E3007A1AB2 /* KSPieChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSPieChartViewController.m; sourceTree = "<group>"; };
 		C55B19811CE50C8B007A1AB2 /* KSPersonalFinance-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KSPersonalFinance-Swift.h"; sourceTree = "<group>"; };
-		C58C066C1CE4D8530050A980 /* KSPieChartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KSPieChartIcon.png; sourceTree = "<group>"; };
 		C5CB918A1CE6316000914722 /* MCCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCCore.h; sourceTree = "<group>"; };
 		C5CB918B1CE6316000914722 /* MCNewCustomLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCNewCustomLayer.h; sourceTree = "<group>"; };
 		C5CB918C1CE6316000914722 /* MCNewCustomLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCNewCustomLayer.m; sourceTree = "<group>"; };
@@ -57,6 +56,7 @@
 		C5CB91931CE6316000914722 /* MCSliceLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSliceLayer.m; sourceTree = "<group>"; };
 		C5CB91941CE6316000914722 /* MCUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCUtil.h; sourceTree = "<group>"; };
 		C5CB91951CE6316000914722 /* MCUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCUtil.m; sourceTree = "<group>"; };
+		C5CB919D1CE6497400914722 /* KSPieChartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KSPieChartIcon.png; sourceTree = "<group>"; };
 		C5EA968A1CE3264F0069F913 /* KSPersonalFinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSPersonalFinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5EA968E1CE3264F0069F913 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C5EA96901CE3264F0069F913 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -269,10 +269,10 @@
 		C5EA96BE1CE359C20069F913 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C5CB919D1CE6497400914722 /* KSPieChartIcon.png */,
 				C5EA96BF1CE35A160069F913 /* KSNumPadDeleteKey.png */,
 				C5EA96C01CE35A160069F913 /* KSNumPadDeleteKey@2x.png */,
 				C5EA96C11CE35A160069F913 /* KSNumPadDeleteKey@3x.png */,
-				C58C066C1CE4D8530050A980 /* KSPieChartIcon.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -345,7 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C58C066D1CE4D8530050A980 /* KSPieChartIcon.png in Resources */,
+				C5CB919E1CE6497400914722 /* KSPieChartIcon.png in Resources */,
 				C5EA96C21CE35A160069F913 /* KSNumPadDeleteKey.png in Resources */,
 				C5EA96AD1CE345D20069F913 /* Main.storyboard in Resources */,
 				C5EA96AB1CE345D20069F913 /* Assets.xcassets in Resources */,

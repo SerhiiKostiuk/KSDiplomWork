@@ -130,6 +130,13 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="et5-ez-cFd">
+                                <rect key="frame" x="274" y="314" width="30" height="30"/>
+                                <state key="normal" title="Button" image="KSPieChartIcon.png"/>
+                                <connections>
+                                    <segue destination="2MM-JK-oq3" kind="push" id="GGs-bW-4Gm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -143,18 +150,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="clv-pU-HYV">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="DRD-zp-puV">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gNw-um-pB3">
-                                <rect key="frame" x="274" y="7" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="KSPieChartIcon.png"/>
-                                <connections>
-                                    <segue destination="2MM-JK-oq3" kind="push" id="tI5-G5-4Rz"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="clv-pU-HYV"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="categoryScrollView" destination="1p9-vD-BIw" id="B2y-H1-a00"/>
