@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Y2i-jS-dSq">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Number View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="KSNumberViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0hg-fr-fhf"/>
+                        <viewControllerLayoutGuide type="bottom" id="RIX-OX-qdg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pwm-EE-N1K">
+                                <rect key="frame" x="0.0" y="78" width="320" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="aX2-K3-NNi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1p9-vD-BIw">
+                                <rect key="frame" x="-1" y="367" width="320" height="128"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="Jyg-OM-f7M">
+                                        <rect key="frame" x="140" y="91" width="41" height="37"/>
+                                        <color key="pageIndicatorTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="currentPageIndicatorTintColor" red="0.55550881409999997" green="0.55550881409999997" blue="0.55550881409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </pageControl>
+                                </subviews>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="TZJ-H3-aDl"/>
+                                </connections>
+                            </scrollView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bwe-yU-XVE">
+                                <rect key="frame" x="16" y="136" width="288" height="170"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Tl-fL-j64">
+                                        <rect key="frame" x="20" y="8" width="46" height="30"/>
+                                        <state key="normal" title="1"/>
+                                        <connections>
+                                            <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CPJ-hT-d2F"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgf-68-NMH">
+                                        <rect key="frame" x="113" y="8" width="46" height="30"/>
+                                        <state key="normal" title="2"/>
+                                        <connections>
+                                            <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4by-ca-gJz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAr-75-tfS">
+                                        <rect key="frame" x="201" y="8" width="46" height="30"/>
+                                        <state key="normal" title="3"/>
+                                        <connections>
+                                            <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ca6-Ol-aXM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIT-ac-MSt">
+                                        <rect key="frame" x="20" y="46" width="46" height="30"/>
+                                        <state key="normal" title="4"/>
+                                        <connections>
+                                            <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ya6-gH-V09"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJb-i7-UHg">
+                                        <rect key="frame" x="201" y="46" width="46" height="30"/>
+                                        <state key="normal" title="6"/>
+                                        <connections>
+                                            <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OiQ-eG-Tqq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WN7-Ck-iuI">
+                                        <rect key="frame" x="20" y="90" width="46" height="30"/>
+                                        <state key="normal" title="7"/>
+                                        <connections>
+                                            <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b4D-eW-z1y"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOM-G5-LV6">
+                                        <rect key="frame" x="113" y="90" width="46" height="30"/>
+                                        <state key="normal" title="8"/>
+                                        <connections>
+                                            <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cA4-pw-LZs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6c-5c-OvD">
+                                        <rect key="frame" x="201" y="90" width="46" height="30"/>
+                                        <state key="normal" title="9"/>
+                                        <connections>
+                                            <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oXU-tZ-DdJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="-10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUu-KJ-bb0">
+                                        <rect key="frame" x="20" y="128" width="46" height="30"/>
+                                        <state key="normal" title="-"/>
+                                        <connections>
+                                            <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="73c-NF-AgG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="-1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRJ-u7-FX7">
+                                        <rect key="frame" x="201" y="131" width="55" height="23"/>
+                                        <state key="normal" title="Button" image="KSNumPadDeleteKey.png"/>
+                                        <connections>
+                                            <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cCl-L1-O1A"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZ8-8R-qpP">
+                                        <rect key="frame" x="113" y="46" width="46" height="30"/>
+                                        <state key="normal" title="5"/>
+                                        <connections>
+                                            <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j9f-1b-zbA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOM-Jx-Rxv">
+                                        <rect key="frame" x="113" y="128" width="46" height="30"/>
+                                        <state key="normal" title="0"/>
+                                        <connections>
+                                            <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EOE-Ov-DoR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Pwm-EE-N1K" firstAttribute="top" secondItem="0hg-fr-fhf" secondAttribute="bottom" constant="16" id="2DM-3X-kuW"/>
+                            <constraint firstItem="bwe-yU-XVE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="BaM-WC-qd1"/>
+                            <constraint firstItem="Pwm-EE-N1K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Cdr-jJ-moB"/>
+                            <constraint firstItem="bwe-yU-XVE" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="D5T-ho-onH"/>
+                            <constraint firstAttribute="trailing" secondItem="bwe-yU-XVE" secondAttribute="trailing" constant="16" id="Lic-ii-YBj"/>
+                            <constraint firstAttribute="trailing" secondItem="Pwm-EE-N1K" secondAttribute="trailing" id="nw3-sc-jgz"/>
+                            <constraint firstItem="bwe-yU-XVE" firstAttribute="top" secondItem="Pwm-EE-N1K" secondAttribute="bottom" constant="18" id="qoF-02-szi"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="clv-pU-HYV">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="DRD-zp-puV">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gNw-um-pB3">
+                                <rect key="frame" x="274" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="KSPieChartIcon.png"/>
+                                <connections>
+                                    <segue destination="2MM-JK-oq3" kind="push" id="tI5-G5-4Rz"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="categoryScrollView" destination="1p9-vD-BIw" id="B2y-H1-a00"/>
+                        <outlet property="inputTextField" destination="Pwm-EE-N1K" id="MAf-OE-0j3"/>
+                        <outlet property="scrollViewPager" destination="Jyg-OM-f7M" id="FrI-L0-whm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="610" y="265"/>
+        </scene>
+        <!--Pie Chart View Controller-->
+        <scene sceneID="2mW-Uf-PzW">
+            <objects>
+                <viewController id="2MM-JK-oq3" customClass="KSPieChartViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fhY-Md-XNM"/>
+                        <viewControllerLayoutGuide type="bottom" id="hp9-s2-peh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gFJ-Dx-vkl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWX-3v-p9Y" customClass="MCPieChartView">
+                                <rect key="frame" x="26" y="104" width="268" height="318"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="R4e-AW-kdO"/>
+                    <connections>
+                        <outlet property="pieChartView" destination="eWX-3v-p9Y" id="BNU-pe-hY6"/>
+                        <outlet property="view" destination="eWX-3v-p9Y" id="PLr-yJ-iXM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D47-2s-uEz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1095" y="265"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vPE-ZX-LCA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y2i-jS-dSq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4L3-6V-oZb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gop-cS-EjG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yzf-J5-s65" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="169" y="265"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="KSNumPadDeleteKey.png" width="30" height="23"/>
+        <image name="KSPieChartIcon.png" width="128" height="128"/>
+    </resources>
+</document>
