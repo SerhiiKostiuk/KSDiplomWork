@@ -6,20 +6,14 @@
 //  Copyright © 2016 Serg Kostiuk. All rights reserved.
 //
 
-#import "KSExpenceViewController.h"
+#import "KSExpenseViewController.h"
 
-@interface KSExpenceViewController ()
-<
-UICollectionViewDataSource,
-UICollectionViewDelegate,
-UICollectionViewDelegateFlowLayout
->
+@interface KSExpenseViewController ()
 
 @property (nonatomic, strong) NSArray *categories;
-
 @end
 
-@implementation KSExpenceViewController
+@implementation KSExpenseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,7 +25,7 @@ UICollectionViewDelegateFlowLayout
 #pragma mark Private 
 
 - (void)presentExpenceType {
-    self.collectionView.backgroundColor=[UIColor darkGrayColor];
+//    self.collectionView.backgroundColor=[UIColor yellowColor];
 
 }
 

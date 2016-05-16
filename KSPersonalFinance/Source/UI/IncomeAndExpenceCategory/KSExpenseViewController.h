@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KSExpenceViewController : UICollectionViewController
+@interface KSExpenseViewController : UICollectionViewController
+<
+UICollectionViewDataSource,
+UICollectionViewDelegate,
+UICollectionViewDelegateFlowLayout
+>
 
 @end
