@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C50BE8FE1CE8B13100DA855D /* KSExpenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C50BE8FD1CE8B13100DA855D /* KSExpenceViewController.m */; };
 		C55B197C1CE4F0E3007A1AB2 /* KSPieChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B197B1CE4F0E3007A1AB2 /* KSPieChartViewController.m */; };
 		C5CB91961CE6316000914722 /* MCNewCustomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CB918C1CE6316000914722 /* MCNewCustomLayer.m */; };
 		C5CB91971CE6316000914722 /* MCNewCustomLayeredView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CB918F1CE6316000914722 /* MCNewCustomLayeredView.m */; };
@@ -41,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		8366D49C84E8718C6F38BA8A /* Pods-KSPersonalFinance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSPersonalFinance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KSPersonalFinance/Pods-KSPersonalFinance.debug.xcconfig"; sourceTree = "<group>"; };
+		C50BE8FC1CE8B13100DA855D /* KSExpenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSExpenceViewController.h; sourceTree = "<group>"; };
+		C50BE8FD1CE8B13100DA855D /* KSExpenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSExpenceViewController.m; sourceTree = "<group>"; };
 		C55B197A1CE4F0E3007A1AB2 /* KSPieChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSPieChartViewController.h; sourceTree = "<group>"; };
 		C55B197B1CE4F0E3007A1AB2 /* KSPieChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSPieChartViewController.m; sourceTree = "<group>"; };
 		C55B19811CE50C8B007A1AB2 /* KSPersonalFinance-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KSPersonalFinance-Swift.h"; sourceTree = "<group>"; };
@@ -91,6 +94,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C50BE8FB1CE8B0F100DA855D /* IncomeAndExpenceCategory */ = {
+			isa = PBXGroup;
+			children = (
+				C50BE8FC1CE8B13100DA855D /* KSExpenceViewController.h */,
+				C50BE8FD1CE8B13100DA855D /* KSExpenceViewController.m */,
+			);
+			path = IncomeAndExpenceCategory;
 			sourceTree = "<group>";
 		};
 		C55B19791CE4F07A007A1AB2 /* KSPieChart */ = {
@@ -243,6 +255,7 @@
 		C5EA96B61CE351560069F913 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C50BE8FB1CE8B0F100DA855D /* IncomeAndExpenceCategory */,
 				C55B19791CE4F07A007A1AB2 /* KSPieChart */,
 				C5EA96B71CE351560069F913 /* Balance */,
 				C5EA96B81CE351560069F913 /* Transaction */,
@@ -365,6 +378,7 @@
 				C5EA96951CE3264F0069F913 /* ViewController.m in Sources */,
 				C5CB91971CE6316000914722 /* MCNewCustomLayeredView.m in Sources */,
 				C5CB91991CE6316000914722 /* MCSliceLayer.m in Sources */,
+				C50BE8FE1CE8B13100DA855D /* KSExpenceViewController.m in Sources */,
 				C5EA96BC1CE353C20069F913 /* KSNumberViewController.m in Sources */,
 				C5CB919A1CE6316000914722 /* MCUtil.m in Sources */,
 				C5CB91981CE6316000914722 /* MCPieChartView.m in Sources */,
