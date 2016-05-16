@@ -11,5 +11,7 @@
 @interface KSNumberViewController : UIViewController
 @property (weak, nonatomic, readonly) IBOutlet UITextField   *inputTextField;
 
+@property (nonatomic, assign) NSUInteger amount;
+
 
 @end
