@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     self.pieChartView.dataSource = self;
     self.pieChartView.delegate = self;
     self.pieChartView.animationDuration = 0.5;
@@ -30,10 +31,12 @@
     self.pieChartView.borderPercentage = 0.01;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
+
 
 - (NSInteger)numberOfSlicesInPieChartView:(MCPieChartView*)pieChartView {
     return 3;
