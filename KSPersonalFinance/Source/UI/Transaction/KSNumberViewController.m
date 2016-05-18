@@ -8,19 +8,19 @@
 
 #import "KSNumberViewController.h"
 #import "KSTransaction.h"
-
+#import "KSExpenseViewController.h"
 
 static const NSInteger minusButtonTag  = -10;
 static const NSInteger deleteButtonTag = -1;
 
-@interface KSNumberViewController () <UIScrollViewDelegate>
+@interface KSNumberViewController () <UIScrollViewDelegate, CategorySelectionDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField   *inputTextField;
-@property (weak, nonatomic) IBOutlet UIScrollView  *categoryScrollView;
-@property (weak, nonatomic) IBOutlet UIPageControl *scrollViewPager;
-@property (weak, nonatomic) IBOutlet UICollectionView *categoryOfExpence;
 @property (nonatomic, strong) NSArray *categories;
-@property (nonatomic) NSIndexPath* selectedIndex;
+@property (strong, nonatomic) IBOutlet UILabel *balanceLabel;
+@property (nonatomic, strong) KSExpenseViewController *categorySelectionVC;
+
+-(void)handleSingleTapGesture:(UITapGestureRecognizer *)tapGestureRecognizer;
 
 @end
 
@@ -28,10 +28,37 @@ static const NSInteger deleteButtonTag = -1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+//    UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapGesture:)];
+//    
+//    [self.view addGestureRecognizer:singleTapGestureRecognizer];
+    
 //    self.categoryScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width * 2, 50);
 }
-- (IBAction)categorySelect:(id)sender {
-    [self presentAlertView];
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+    
+    [self.transactionTypeButton setImage:[UIImage imageNamed:@"minus-symbol"] forState:UIControlStateNormal];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self getBalance];
+}
+
+//- (IBAction)handleSingleTapGesture:(UITapGestureRecognizer *)tapGestureRecognizer {
+//    NSLog(@"tapGesture");
+//}
+
+-(void)selectedCategory:(id)category{
+    
+}
+
+- (IBAction)changeTransactionType:(id)sender {
+    
     
 }
 
@@ -47,58 +74,53 @@ static const NSInteger deleteButtonTag = -1;
     }
 }
 
-
-
 - (CGFloat)getInputValue{
     return [self.inputTextField.text floatValue];
 }
 
-
-//-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-//    NSInteger currentPage  = scrollView.contentOffset.x / scrollView.frame.size.width;
-//    self.scrollViewPager.currentPage = currentPage;
-//}
-
 #pragma mark -
 #pragma mark Private
 
-- (void)presentAlertView {
+- (NSInteger)getBalance {
+    NSManagedObjectContext *moc = [NSManagedObjectContext MR_context];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"KSTransaction"
+                                                         inManagedObjectContext:moc];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
     
-    UIAlertController * alert=   [UIAlertController
-                                  alertControllerWithTitle:@"Info"
-                                  message:@"You are using UIAlertController"
-                                  preferredStyle:UIAlertControllerStyleAlert];
+    request.entity = entityDescription;
     
-    UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Save"
-                                                         style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * _Nonnull action)
-                                 {
-                                     
-                                     NSManagedObjectContext *moc = [NSManagedObjectContext MR_context];
-                                     
-                                     KSTransaction *transaction = [NSEntityDescription insertNewObjectForEntityForName:@"KSTransaction"                                                     inManagedObjectContext:moc];
-                                     
-                                     
-                                     transaction.time = [NSDate date];
-                                     transaction.amount = [NSNumber numberWithInteger:self.amount];
-                                     transaction.category = self.categories[self.selectedIndex.item];
-                                 }];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:YES];
     
+    request.sortDescriptors = @[sortDescriptor];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
-                                                         style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * _Nonnull action)
-                                 {
-                                     
-                                     [self.navigationController popViewControllerAnimated:YES];
-                                 }];
-
-    [self presentViewController:alert animated:YES completion:nil];
-
-    [alert addAction:cancelAction];
-    [alert addAction:saveAction];
-   
+    NSError *error;
+    
+    NSArray *array = [moc executeFetchRequest:request error:&error];
+    
+    NSInteger theSum = [[array valueForKeyPath:@"@sum.amount"] integerValue];
+    return theSum;
 }
 
+-(void)changeTransationType{
+    TransactionType currentType = self.categorySelectionVC.categoryType;
+    if (currentType == TransactionTypeExpense)
+        currentType = TransactionTypeIncome;
+    
+    else
+        currentType = TransactionTypeExpense;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"ShowCharts"]) {
+        
+    }
+    
+    if ([segue.destinationViewController isKindOfClass:[KSExpenseViewController class]]) {
+        KSExpenseViewController *vc = segue.destinationViewController;
+        vc.delegate = self;
+        vc.categoryType = TransactionTypeIncome;
+        self.categorySelectionVC = vc;
+    }
+}
 
 @end
