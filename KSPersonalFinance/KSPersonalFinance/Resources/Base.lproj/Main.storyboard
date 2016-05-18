@@ -15,171 +15,157 @@
                         <viewControllerLayoutGuide type="bottom" id="RIX-OX-qdg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pwm-EE-N1K">
-                                <rect key="frame" x="0.0" y="78" width="320" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pwm-EE-N1K">
+                                <rect key="frame" x="0.0" y="72" width="320" height="40"/>
+                                <color key="backgroundColor" red="0.71429378899999996" green="0.98873307479999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="aX2-K3-NNi"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1p9-vD-BIw">
-                                <rect key="frame" x="-1" y="367" width="320" height="128"/>
-                                <subviews>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ryk-XL-hwx">
-                                        <rect key="frame" x="73" y="0.0" width="75" height="75"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                        <state key="normal" title="Cafe" image="Cafe.png"/>
-                                        <connections>
-                                            <action selector="categorySelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JgP-La-0PE"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grl-bm-qaU">
-                                        <rect key="frame" x="144" y="0.0" width="75" height="75"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                        <state key="normal" title="Car" image="Car.png"/>
-                                        <connections>
-                                            <action selector="categorySelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uPF-l3-YmD"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRA-s1-VRJ">
-                                        <rect key="frame" x="217" y="0.0" width="75" height="75"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                        <state key="normal" title="Shoping" image="Shoping.png"/>
-                                        <connections>
-                                            <action selector="categorySelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oyn-1a-O77"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8z-IU-Mx4">
-                                        <rect key="frame" x="0.0" y="60" width="75" height="75"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                        <state key="normal" title="Store" image="Store.png"/>
-                                        <connections>
-                                            <action selector="categorySelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X5x-a7-xkn"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QPH-I7-2Ra">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                        <state key="normal" title="Home" image="Home.png"/>
-                                        <connections>
-                                            <action selector="categorySelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hrU-96-hSP"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="et5-ez-cFd">
+                                <rect key="frame" x="278" y="34" width="30" height="30"/>
+                                <state key="normal" title="Button" image="KSPieChartIcon.png"/>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="TZJ-H3-aDl"/>
+                                    <segue destination="2MM-JK-oq3" kind="push" identifier="" id="L8b-te-jxz"/>
                                 </connections>
-                            </scrollView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bwe-yU-XVE">
-                                <rect key="frame" x="16" y="136" width="288" height="170"/>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGZ-qT-aS6">
+                                <rect key="frame" x="0.0" y="332" width="320" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="W1d-2I-dMq"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="BSY-GP-lhc" kind="embed" id="7A5-WO-sPc"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwe-yU-XVE">
+                                <rect key="frame" x="16" y="130" width="288" height="194"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Tl-fL-j64">
-                                        <rect key="frame" x="20" y="8" width="46" height="30"/>
+                                        <rect key="frame" x="20" y="13" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal" title="1"/>
                                         <connections>
                                             <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CPJ-hT-d2F"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgf-68-NMH">
-                                        <rect key="frame" x="113" y="8" width="46" height="30"/>
+                                        <rect key="frame" x="121" y="13" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal" title="2"/>
                                         <connections>
                                             <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4by-ca-gJz"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAr-75-tfS">
-                                        <rect key="frame" x="201" y="8" width="46" height="30"/>
+                                        <rect key="frame" x="225" y="13" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal" title="3"/>
                                         <connections>
                                             <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ca6-Ol-aXM"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIT-ac-MSt">
-                                        <rect key="frame" x="20" y="46" width="46" height="30"/>
+                                        <rect key="frame" x="20" y="66" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal" title="4"/>
                                         <connections>
                                             <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ya6-gH-V09"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJb-i7-UHg">
-                                        <rect key="frame" x="201" y="46" width="46" height="30"/>
+                                        <rect key="frame" x="225" y="66" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal" title="6"/>
                                         <connections>
                                             <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OiQ-eG-Tqq"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WN7-Ck-iuI">
-                                        <rect key="frame" x="20" y="90" width="46" height="30"/>
+                                        <rect key="frame" x="20" y="110" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal" title="7"/>
                                         <connections>
                                             <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b4D-eW-z1y"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOM-G5-LV6">
-                                        <rect key="frame" x="113" y="90" width="46" height="30"/>
+                                        <rect key="frame" x="121" y="110" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal" title="8"/>
                                         <connections>
                                             <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cA4-pw-LZs"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6c-5c-OvD">
-                                        <rect key="frame" x="201" y="90" width="46" height="30"/>
-                                        <state key="normal" title="9"/>
-                                        <connections>
-                                            <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oXU-tZ-DdJ"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" tag="-10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUu-KJ-bb0">
-                                        <rect key="frame" x="20" y="128" width="46" height="30"/>
-                                        <state key="normal" title="-"/>
+                                        <rect key="frame" x="20" y="156" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <state key="normal" title="."/>
                                         <connections>
                                             <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="73c-NF-AgG"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="-1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRJ-u7-FX7">
-                                        <rect key="frame" x="201" y="131" width="55" height="23"/>
-                                        <state key="normal" title="Button" image="KSNumPadDeleteKey.png"/>
+                                        <rect key="frame" x="233" y="156" width="30" height="30"/>
+                                        <state key="normal" title="Button" image="delete-text"/>
                                         <connections>
                                             <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cCl-L1-O1A"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZ8-8R-qpP">
-                                        <rect key="frame" x="113" y="46" width="46" height="30"/>
+                                        <rect key="frame" x="121" y="66" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal" title="5"/>
                                         <connections>
                                             <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j9f-1b-zbA"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOM-Jx-Rxv">
-                                        <rect key="frame" x="113" y="128" width="46" height="30"/>
+                                        <rect key="frame" x="121" y="156" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal" title="0"/>
                                         <connections>
                                             <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EOE-Ov-DoR"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6c-5c-OvD">
+                                        <rect key="frame" x="225" y="110" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <state key="normal" title="9"/>
+                                        <connections>
+                                            <action selector="numberTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oXU-tZ-DdJ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.84501098100000005" green="1" blue="0.88887939289999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="et5-ez-cFd">
-                                <rect key="frame" x="274" y="314" width="30" height="30"/>
-                                <state key="normal" title="Button" image="KSPieChartIcon.png"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBp-gG-RV0">
+                                <rect key="frame" x="16" y="34" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.84501098100000005" green="1" blue="0.88887939289999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="B">
+                                    <color key="titleColor" red="1" green="0.1921920771" blue="0.104562063" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
-                                    <segue destination="2MM-JK-oq3" kind="push" id="GGs-bW-4Gm"/>
+                                    <action selector="changeTransactionType:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aaw-Aj-DSo"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.84501098100000005" green="1" blue="0.88887939289999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Pwm-EE-N1K" firstAttribute="top" secondItem="0hg-fr-fhf" secondAttribute="bottom" constant="16" id="2DM-3X-kuW"/>
+                            <constraint firstItem="RIX-OX-qdg" firstAttribute="top" secondItem="hGZ-qT-aS6" secondAttribute="bottom" id="145-Us-TyE"/>
+                            <constraint firstItem="Pwm-EE-N1K" firstAttribute="top" secondItem="0hg-fr-fhf" secondAttribute="bottom" constant="72" id="2DM-3X-kuW"/>
                             <constraint firstItem="bwe-yU-XVE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="BaM-WC-qd1"/>
                             <constraint firstItem="Pwm-EE-N1K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Cdr-jJ-moB"/>
-                            <constraint firstItem="bwe-yU-XVE" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="D5T-ho-onH"/>
+                            <constraint firstItem="bwe-yU-XVE" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" constant="43" id="D5T-ho-onH"/>
                             <constraint firstAttribute="trailing" secondItem="bwe-yU-XVE" secondAttribute="trailing" constant="16" id="Lic-ii-YBj"/>
+                            <constraint firstItem="hGZ-qT-aS6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MUJ-Bx-wMN"/>
+                            <constraint firstAttribute="trailing" secondItem="hGZ-qT-aS6" secondAttribute="trailing" id="YNb-Mp-ye8"/>
                             <constraint firstAttribute="trailing" secondItem="Pwm-EE-N1K" secondAttribute="trailing" id="nw3-sc-jgz"/>
                             <constraint firstItem="bwe-yU-XVE" firstAttribute="top" secondItem="Pwm-EE-N1K" secondAttribute="bottom" constant="18" id="qoF-02-szi"/>
                         </constraints>
@@ -188,11 +174,14 @@
                     <navigationItem key="navigationItem" id="clv-pU-HYV"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="categoryScrollView" destination="1p9-vD-BIw" id="B2y-H1-a00"/>
-                        <outlet property="inputTextField" destination="Pwm-EE-N1K" id="MAf-OE-0j3"/>
+                        <outlet property="TransactionTypeButton" destination="cBp-gG-RV0" id="72G-wi-b6H"/>
+                        <outlet property="inputTextField" destination="Pwm-EE-N1K" id="2j6-r2-MfR"/>
+                        <outlet property="transactionTypeButton" destination="cBp-gG-RV0" id="mB2-P3-kCR"/>
+                        <outlet property="view" destination="8bC-Xf-vdC" id="AgO-ih-jug"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LRb-WF-b0u"/>
             </objects>
             <point key="canvasLocation" x="570" y="257"/>
         </scene>
@@ -205,7 +194,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hp9-s2-peh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gFJ-Dx-vkl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWX-3v-p9Y" customClass="MCPieChartView">
@@ -217,8 +206,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="R4e-AW-kdO"/>
                     <connections>
-                        <outlet property="pieChartView" destination="eWX-3v-p9Y" id="BNU-pe-hY6"/>
-                        <outlet property="view" destination="eWX-3v-p9Y" id="PLr-yJ-iXM"/>
+                        <outlet property="pieChartView" destination="eWX-3v-p9Y" id="iWe-J1-uBk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D47-2s-uEz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -230,7 +218,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y2i-jS-dSq" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4L3-6V-oZb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="4L3-6V-oZb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -243,14 +231,66 @@
             </objects>
             <point key="canvasLocation" x="169" y="265"/>
         </scene>
+        <!--Expense View Controller-->
+        <scene sceneID="kvW-EJ-F0Q">
+            <objects>
+                <viewController id="BSY-GP-lhc" customClass="KSExpenseViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tYo-7A-Yps"/>
+                        <viewControllerLayoutGuide type="bottom" id="5tv-aX-5rx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pp1-Fa-K1E">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fMd-rZ-w0X">
+                                <rect key="frame" x="0.0" y="0.0" width="314" height="128"/>
+                                <color key="backgroundColor" red="0.84501098100000005" green="1" blue="0.88887939289999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9Bb-ed-baL">
+                                    <size key="itemSize" width="55" height="55"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KSCategoryItemCollectionViewCell" id="AAx-rR-Fi2" customClass="KSCategoryItemCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58w-ir-z6Q">
+                                                    <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.84501098100000005" green="1" blue="0.88887939289999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="categoryItemImageView" destination="58w-ir-z6Q" id="oXj-pM-X6o"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BSY-GP-lhc" id="wkM-0A-bnV"/>
+                                    <outlet property="delegate" destination="BSY-GP-lhc" id="Tg1-uv-HTO"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="fMd-rZ-w0X" id="fyf-tO-dbV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TFG-Sk-h8G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="570" y="709"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="Cafe.png" width="283" height="283"/>
-        <image name="Car.png" width="283" height="283"/>
-        <image name="Home.png" width="283" height="283"/>
-        <image name="KSNumPadDeleteKey.png" width="30" height="23"/>
         <image name="KSPieChartIcon.png" width="128" height="128"/>
-        <image name="Shoping.png" width="283" height="283"/>
-        <image name="Store.png" width="283" height="283"/>
+        <image name="delete-text" width="256" height="256"/>
     </resources>
 </document>
