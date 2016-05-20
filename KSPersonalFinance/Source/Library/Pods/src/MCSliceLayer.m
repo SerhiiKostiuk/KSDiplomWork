@@ -169,9 +169,9 @@
     pathCenter = CGPointApplyAffineTransform(pathCenter, transform);
     
     CGFloat width = 2*(sqrtf(powf(self.externalRadius*pathCenterRadiusPercentage, 2)*0.3));
-    
+#warning change from fabsf to fabs in second 'if'
     if (self.showText) {
-        if (fabsf(self.startAngle-self.endAngle) > DEG2RAD(20)) {
+        if (fabs(self.startAngle-self.endAngle) > DEG2RAD(20)) {
             self.textLabel.bounds = CGRectMake(0, 0,
                                                width,
                                                self.externalRadius*0.5);
