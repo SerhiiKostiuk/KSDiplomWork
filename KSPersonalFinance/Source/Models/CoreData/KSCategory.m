@@ -1,18 +1,17 @@
 //
-//  KSTransaction.m
+//  KSCategory.m
 //  KSPersonalFinance
 //
 //  Created by Serg Bla on 20.05.16.
 //  Copyright © 2016 Serg Kostiuk. All rights reserved.
 //
 
-#import "KSTransaction.h"
 #import "KSCategory.h"
+#import "KSTransaction.h"
 
-@implementation KSTransaction
+@implementation KSCategory
 
-@dynamic amount;
-@dynamic time;
-@dynamic category;
+@dynamic categoryName;
+@dynamic transaction;
 
 @end
