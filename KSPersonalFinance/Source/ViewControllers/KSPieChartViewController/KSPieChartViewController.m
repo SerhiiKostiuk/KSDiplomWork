@@ -7,10 +7,10 @@
 //
 
 #import "KSPieChartViewController.h"
-#import "KSNumberViewController.h"
+#import "KSMainViewController.h"
 
 @interface KSPieChartViewController () <MCPieChartViewDelegate, MCPieChartViewDataSource>
-@property (nonatomic, weak) KSNumberViewController *numberViewController;
+@property (nonatomic, weak) KSMainViewController *numberViewController;
 
 @end
 
