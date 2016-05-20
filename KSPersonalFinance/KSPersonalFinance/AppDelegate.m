@@ -7,9 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "KSNumberViewController.h"
-
-//#import <MagicalRecord/MagicalRecord.h>
 
 @interface AppDelegate ()
 
@@ -19,7 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [MagicalRecord setupCoreDataStack];
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"KSPersonalFinance"];
     
     return YES;
 }
