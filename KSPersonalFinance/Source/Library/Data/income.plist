@@ -4,23 +4,23 @@
 <array>
 	<dict>
 		<key>itemImage</key>
-		<string>home</string>
+		<string>salary</string>
 	</dict>
 	<dict>
 		<key>itemImage</key>
-		<string>dress</string>
+		<string>business</string>
 	</dict>
 	<dict>
 		<key>itemImage</key>
-		<string>coffee-cup</string>
+		<string>safebox</string>
 	</dict>
 	<dict>
 		<key>itemImage</key>
-		<string>car-compact</string>
+		<string>dividends</string>
 	</dict>
 	<dict>
 		<key>itemImage</key>
-		<string>shopping-cart</string>
+		<string>present</string>
 	</dict>
 </array>
 </plist>
