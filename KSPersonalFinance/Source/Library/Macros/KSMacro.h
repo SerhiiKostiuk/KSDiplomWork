@@ -13,5 +13,13 @@
 
 #define KSConstNSInteger(name, value) static const NSInteger  name = value;
 
+#define KSBlockCall(block, ...)\
+do { \
+typeof(block) var = block; \
+if(var) { \
+var(__VA_ARGS__); \
+} \
+} while(0);
+
 
 #endif /* KSMacro_h */
