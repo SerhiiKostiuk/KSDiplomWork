@@ -14,6 +14,7 @@
 @interface KSCategory : NSManagedObject
 @property (nonatomic, strong) NSString      *categoryName;
 @property (nonatomic, strong) KSTransaction *transaction;
+@property (nonatomic, strong) NSString      *categoryImage;
 
 @end
 

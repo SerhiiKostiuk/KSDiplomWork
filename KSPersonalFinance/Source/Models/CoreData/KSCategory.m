@@ -13,5 +13,6 @@
 
 @dynamic categoryName;
 @dynamic transaction;
+@dynamic categoryImage;
 
 @end
