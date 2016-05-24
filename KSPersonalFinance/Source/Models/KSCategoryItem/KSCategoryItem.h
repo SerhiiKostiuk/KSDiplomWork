@@ -8,13 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface KSCategoryItem : NSObject
-
 typedef NS_ENUM(NSInteger, TransactionType) {
     TransactionTypeExpense,
     TransactionTypeIncome
 };
 
+@interface KSCategoryItem : NSObject
 @property (nonatomic, strong) NSString          *itemImage;
 @property (nonatomic, strong) NSString          *categoryName;
 @property (nonatomic, assign) TransactionType   categoryType;
