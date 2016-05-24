@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
     <entity name="KSCategory" representedClassName="KSCategory" syncable="YES">
+        <attribute name="categoryImage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="categoryName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KSTransaction" inverseName="category" inverseEntity="KSTransaction" syncable="YES"/>
     </entity>
@@ -10,7 +11,7 @@
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KSCategory" inverseName="transaction" inverseEntity="KSCategory" syncable="YES"/>
     </entity>
     <elements>
-        <element name="KSCategory" positionX="-54" positionY="18" width="128" height="73"/>
+        <element name="KSCategory" positionX="-54" positionY="18" width="128" height="90"/>
         <element name="KSTransaction" positionX="160" positionY="-90" width="128" height="88"/>
     </elements>
 </model>

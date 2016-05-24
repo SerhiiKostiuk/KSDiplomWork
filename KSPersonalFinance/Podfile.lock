@@ -1,14 +1,17 @@
 PODS:
+  - DGActivityIndicatorView (2.0)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
 
 DEPENDENCIES:
+  - DGActivityIndicatorView
   - MagicalRecord
 
 SPEC CHECKSUMS:
+  DGActivityIndicatorView: 52875b025a6ccf6a431a905285c12e2bb95eb559
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
 
-PODFILE CHECKSUM: 930225a9e8354d9bbd2e2575d376d339c59843b6
+PODFILE CHECKSUM: 88813d648b70f1f5f3dbc021a50f601a4ffd38da
 
 COCOAPODS: 1.0.0
