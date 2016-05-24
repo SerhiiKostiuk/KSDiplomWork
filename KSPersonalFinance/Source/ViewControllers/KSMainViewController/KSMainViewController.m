@@ -7,12 +7,16 @@
 //
 
 #import "KSMainViewController.h"
+
+#import <DGActivityIndicatorView.h>
+
 #import "KSTransaction.h"
 #import "KSCategoryViewController.h"
 #import "KSCategoryItem.h"
 #import "KSCategory.h"
 
 #import "KSMacro.h"
+#import "KSPreloadData.h"
 
 KSConstNSInteger(kKSDotButtonTag, -10);
 KSConstNSInteger(kKSDeleteButtonTag, -1);
@@ -37,6 +41,11 @@ KSConstString(kKSNoAlertTitle,  @"No");
     [super viewDidLoad];
     
     self.inputTextField.delegate = self;
+    BOOL isPreloaded = [[NSUserDefaults standardUserDefaults]boolForKey:@"KSpreloadCompleted"];
+//    if (!isPreloaded) {
+        [self presentActivityIndicator];
+//    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -48,6 +57,7 @@ KSConstString(kKSNoAlertTitle,  @"No");
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+
     [self getBalance];
 }
 
@@ -83,6 +93,41 @@ KSConstString(kKSNoAlertTitle,  @"No");
 
 #pragma mark -
 #pragma mark Private
+
+- (void)presentActivityIndicator {
+    CGSize viewSize = [UIScreen mainScreen].bounds.size;
+    UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewSize.width, viewSize.height)];
+    
+    DGActivityIndicatorView *activityIndicatorView = [[DGActivityIndicatorView alloc]
+                                                      initWithType:DGActivityIndicatorAnimationTypeBallTrianglePath
+                                                      tintColor:[UIColor redColor]
+                                                      size:20.0f];
+    
+    activityIndicatorView.frame = CGRectMake(viewSize.width/2 - 25.0f, viewSize.height/2 - 25.0f, 50.0f, 50.0f);
+    
+     activityView.backgroundColor = [UIColor blackColor];
+    activityView.alpha = 0.6;
+    
+    [activityView addSubview:activityIndicatorView];
+    [self.view addSubview:activityView];
+    [activityIndicatorView startAnimating];
+    [self preloadCategorieswithCompletion:^(BOOL success) {
+        if (success) {
+            sleep(3);
+            [activityView removeFromSuperview];
+        } else {
+#warning add assert
+//            NSAssert(<#condition#>, <#desc, ...#>)
+        }
+    }];
+    
+}
+
+- (void)preloadCategorieswithCompletion:(void(^)(BOOL success))completion {
+    [KSPreloadData preloadTransactionsCategoriesWithType:TransactionTypeExpense completion:^(BOOL success) {
+        completion(success);
+    }];
+}
 
 - (void)appendInputWithString:(NSString *)stringToAppend {
     self.inputTextField.text = [self.inputTextField.text stringByAppendingString:stringToAppend];
