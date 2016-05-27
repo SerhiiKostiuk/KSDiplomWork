@@ -82,9 +82,3 @@ strip_invalid_archs() {
   fi
 }
 
-
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/DGActivityIndicatorView/DGActivityIndicatorView.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/FSCalendar/FSCalendar.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MagicalRecord/MagicalRecord.framework"
-fi

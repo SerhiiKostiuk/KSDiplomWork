@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		841C365E64F897D8585D329D /* Pods_KSPersonalFinance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5006784EE6BD687F155C67C5 /* Pods_KSPersonalFinance.framework */; };
 		C5286F311CED092700B12E7D /* expense.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5286F301CED092700B12E7D /* expense.plist */; };
 		C5286F4C1CED0B4C00B12E7D /* income.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5286F4B1CED0B4C00B12E7D /* income.plist */; };
 		C5286F521CED0CBC00B12E7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5286F4E1CED0CBC00B12E7D /* LaunchScreen.storyboard */; };
 		C5286F531CED0CBC00B12E7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5286F501CED0CBC00B12E7D /* Main.storyboard */; };
 		C5286F551CED0CE000B12E7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5286F541CED0CE000B12E7D /* Images.xcassets */; };
+		C59A77E91CEF99FA0070E3B1 /* KSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C59A77E31CEF99FA0070E3B1 /* KSCategory.m */; };
+		C59A77EB1CEF99FA0070E3B1 /* KSTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = C59A77E71CEF99FA0070E3B1 /* KSTransaction.m */; };
 		C59A77EF1CEFAD9E0070E3B1 /* KSCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59A77EE1CEFAD9E0070E3B1 /* KSCategoryViewController.m */; };
 		C59A77F31CEFAE4E0070E3B1 /* KSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59A77F21CEFAE4E0070E3B1 /* KSMainViewController.m */; };
 		C59A77F71CEFAEC80070E3B1 /* KSPieChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59A77F61CEFAEC80070E3B1 /* KSPieChartViewController.m */; };
@@ -25,14 +26,9 @@
 		C5EA968F1CE3264F0069F913 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EA968E1CE3264F0069F913 /* main.m */; };
 		C5EA96921CE3264F0069F913 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EA96911CE3264F0069F913 /* AppDelegate.m */; };
 		C5EC7A4B1CF38DCC001DD258 /* KSPreloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EC7A4A1CF38DCC001DD258 /* KSPreloadData.m */; };
-		C5EC7A4F1CF4E0E7001DD258 /* KSDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EC7A4E1CF4E0E7001DD258 /* KSDispatch.m */; };
-		C5EC7A541CF63950001DD258 /* KSAddExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EC7A531CF63950001DD258 /* KSAddExpenseViewController.m */; };
 		C5F17B631CEC9BE50049AA86 /* KSCategoryItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F17B621CEC9BE50049AA86 /* KSCategoryItemCollectionViewCell.m */; };
 		C5F17B671CECA0040049AA86 /* KSCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F17B661CECA0040049AA86 /* KSCategoryItem.m */; };
-		CDC8F1AF1CF76D4300860A25 /* KSCategory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC8F1A81CF76D4300860A25 /* KSCategory+CoreDataProperties.m */; };
-		CDC8F1B01CF76D4300860A25 /* KSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC8F1AA1CF76D4300860A25 /* KSCategory.m */; };
-		CDC8F1B11CF76D4300860A25 /* KSTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC8F1AC1CF76D4300860A25 /* KSTransaction+CoreDataProperties.m */; };
-		CDC8F1B21CF76D4300860A25 /* KSTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC8F1AE1CF76D4300860A25 /* KSTransaction.m */; };
+		E0C9292B682EC6F61A868E73 /* libPods-KSPersonalFinance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3ECC17FF41D0583C04499E /* libPods-KSPersonalFinance.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,13 +45,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5006784EE6BD687F155C67C5 /* Pods_KSPersonalFinance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KSPersonalFinance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8366D49C84E8718C6F38BA8A /* Pods-KSPersonalFinance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSPersonalFinance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KSPersonalFinance/Pods-KSPersonalFinance.debug.xcconfig"; sourceTree = "<group>"; };
 		C5286F301CED092700B12E7D /* expense.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = expense.plist; sourceTree = "<group>"; };
 		C5286F4B1CED0B4C00B12E7D /* income.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = income.plist; sourceTree = "<group>"; };
 		C5286F4F1CED0CBC00B12E7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5286F511CED0CBC00B12E7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C5286F541CED0CE000B12E7D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C59A77E21CEF99FA0070E3B1 /* KSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCategory.h; sourceTree = "<group>"; };
+		C59A77E31CEF99FA0070E3B1 /* KSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCategory.m; sourceTree = "<group>"; };
+		C59A77E61CEF99FA0070E3B1 /* KSTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSTransaction.h; sourceTree = "<group>"; };
+		C59A77E71CEF99FA0070E3B1 /* KSTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSTransaction.m; sourceTree = "<group>"; };
 		C59A77ED1CEFAD9E0070E3B1 /* KSCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCategoryViewController.h; sourceTree = "<group>"; };
 		C59A77EE1CEFAD9E0070E3B1 /* KSCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCategoryViewController.m; sourceTree = "<group>"; };
 		C59A77F11CEFAE4E0070E3B1 /* KSMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSMainViewController.h; sourceTree = "<group>"; };
@@ -84,23 +83,11 @@
 		C5EA969E1CE3264F0069F913 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5EC7A491CF38DCC001DD258 /* KSPreloadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSPreloadData.h; sourceTree = "<group>"; };
 		C5EC7A4A1CF38DCC001DD258 /* KSPreloadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSPreloadData.m; sourceTree = "<group>"; };
-		C5EC7A4D1CF4E0E7001DD258 /* KSDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSDispatch.h; sourceTree = "<group>"; };
-		C5EC7A4E1CF4E0E7001DD258 /* KSDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSDispatch.m; sourceTree = "<group>"; };
-		C5EC7A501CF4EC94001DD258 /* KSWeakifyMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSWeakifyMacro.h; sourceTree = "<group>"; };
-		C5EC7A521CF63950001DD258 /* KSAddExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSAddExpenseViewController.h; path = KSAddExpenseViewController/KSAddExpenseViewController.h; sourceTree = "<group>"; };
-		C5EC7A531CF63950001DD258 /* KSAddExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSAddExpenseViewController.m; path = KSAddExpenseViewController/KSAddExpenseViewController.m; sourceTree = "<group>"; };
 		C5F17B611CEC9BE50049AA86 /* KSCategoryItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KSCategoryItemCollectionViewCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C5F17B621CEC9BE50049AA86 /* KSCategoryItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KSCategoryItemCollectionViewCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C5F17B651CECA0040049AA86 /* KSCategoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCategoryItem.h; sourceTree = "<group>"; };
 		C5F17B661CECA0040049AA86 /* KSCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCategoryItem.m; sourceTree = "<group>"; };
-		CDC8F1A71CF76D4300860A25 /* KSCategory+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSCategory+CoreDataProperties.h"; sourceTree = "<group>"; };
-		CDC8F1A81CF76D4300860A25 /* KSCategory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSCategory+CoreDataProperties.m"; sourceTree = "<group>"; };
-		CDC8F1A91CF76D4300860A25 /* KSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCategory.h; sourceTree = "<group>"; };
-		CDC8F1AA1CF76D4300860A25 /* KSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCategory.m; sourceTree = "<group>"; };
-		CDC8F1AB1CF76D4300860A25 /* KSTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
-		CDC8F1AC1CF76D4300860A25 /* KSTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
-		CDC8F1AD1CF76D4300860A25 /* KSTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSTransaction.h; sourceTree = "<group>"; };
-		CDC8F1AE1CF76D4300860A25 /* KSTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSTransaction.m; sourceTree = "<group>"; };
+		ED3ECC17FF41D0583C04499E /* libPods-KSPersonalFinance.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KSPersonalFinance.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F718635A9AE65DDD223DCC38 /* Pods-KSPersonalFinance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSPersonalFinance.release.xcconfig"; path = "Pods/Target Support Files/Pods-KSPersonalFinance/Pods-KSPersonalFinance.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				841C365E64F897D8585D329D /* Pods_KSPersonalFinance.framework in Frameworks */,
+				E0C9292B682EC6F61A868E73 /* libPods-KSPersonalFinance.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,7 +106,7 @@
 		7AE6A695FDC7E146F06882CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5006784EE6BD687F155C67C5 /* Pods_KSPersonalFinance.framework */,
+				ED3ECC17FF41D0583C04499E /* libPods-KSPersonalFinance.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -137,7 +124,6 @@
 		C5286F361CED098400B12E7D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C5EC7A511CF63925001DD258 /* KSAddExpenseViewController */,
 				C59A77F01CEFAE4E0070E3B1 /* KSMainViewController */,
 				C59A77EC1CEFAD9E0070E3B1 /* KSCategoryViewController */,
 				C59A77F41CEFAEC80070E3B1 /* KSPieChartViewController */,
@@ -192,15 +178,11 @@
 		C5BF84271CEA6A6600DEA823 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				CDC8F1A71CF76D4300860A25 /* KSCategory+CoreDataProperties.h */,
-				CDC8F1A81CF76D4300860A25 /* KSCategory+CoreDataProperties.m */,
-				CDC8F1A91CF76D4300860A25 /* KSCategory.h */,
-				CDC8F1AA1CF76D4300860A25 /* KSCategory.m */,
-				CDC8F1AB1CF76D4300860A25 /* KSTransaction+CoreDataProperties.h */,
-				CDC8F1AC1CF76D4300860A25 /* KSTransaction+CoreDataProperties.m */,
-				CDC8F1AD1CF76D4300860A25 /* KSTransaction.h */,
-				CDC8F1AE1CF76D4300860A25 /* KSTransaction.m */,
 				C5BF843D1CEA70C800DEA823 /* KSPersonalFinance.xcdatamodeld */,
+				C59A77E21CEF99FA0070E3B1 /* KSCategory.h */,
+				C59A77E31CEF99FA0070E3B1 /* KSCategory.m */,
+				C59A77E61CEF99FA0070E3B1 /* KSTransaction.h */,
+				C59A77E71CEF99FA0070E3B1 /* KSTransaction.m */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -316,7 +298,6 @@
 		C5EA96B11CE3470D0069F913 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C5EC7A4C1CF4E0E7001DD258 /* KSDispatch */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -325,7 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				C59A77F81CEFB5530070E3B1 /* KSMacro.h */,
-				C5EC7A501CF4EC94001DD258 /* KSWeakifyMacro.h */,
 			);
 			path = Macros;
 			sourceTree = "<group>";
@@ -346,24 +326,6 @@
 				C5BF84271CEA6A6600DEA823 /* CoreData */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		C5EC7A4C1CF4E0E7001DD258 /* KSDispatch */ = {
-			isa = PBXGroup;
-			children = (
-				C5EC7A4D1CF4E0E7001DD258 /* KSDispatch.h */,
-				C5EC7A4E1CF4E0E7001DD258 /* KSDispatch.m */,
-			);
-			path = KSDispatch;
-			sourceTree = "<group>";
-		};
-		C5EC7A511CF63925001DD258 /* KSAddExpenseViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C5EC7A521CF63950001DD258 /* KSAddExpenseViewController.h */,
-				C5EC7A531CF63950001DD258 /* KSAddExpenseViewController.m */,
-			);
-			name = KSAddExpenseViewController;
 			sourceTree = "<group>";
 		};
 		C5F17B5C1CEC9B7C0049AA86 /* Views */ = {
@@ -526,18 +488,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDC8F1AF1CF76D4300860A25 /* KSCategory+CoreDataProperties.m in Sources */,
 				C59A77EF1CEFAD9E0070E3B1 /* KSCategoryViewController.m in Sources */,
-				CDC8F1B21CF76D4300860A25 /* KSTransaction.m in Sources */,
-				CDC8F1B11CF76D4300860A25 /* KSTransaction+CoreDataProperties.m in Sources */,
 				C5CB91971CE6316000914722 /* MCNewCustomLayeredView.m in Sources */,
 				C59A77F71CEFAEC80070E3B1 /* KSPieChartViewController.m in Sources */,
+				C59A77EB1CEF99FA0070E3B1 /* KSTransaction.m in Sources */,
 				C59A77F31CEFAE4E0070E3B1 /* KSMainViewController.m in Sources */,
 				C5EC7A4B1CF38DCC001DD258 /* KSPreloadData.m in Sources */,
-				C5EC7A4F1CF4E0E7001DD258 /* KSDispatch.m in Sources */,
-				C5EC7A541CF63950001DD258 /* KSAddExpenseViewController.m in Sources */,
 				C5CB91991CE6316000914722 /* MCSliceLayer.m in Sources */,
-				CDC8F1B01CF76D4300860A25 /* KSCategory.m in Sources */,
+				C59A77E91CEF99FA0070E3B1 /* KSCategory.m in Sources */,
 				C5CB919A1CE6316000914722 /* MCUtil.m in Sources */,
 				C5CB91981CE6316000914722 /* MCPieChartView.m in Sources */,
 				C5F17B631CEC9BE50049AA86 /* KSCategoryItemCollectionViewCell.m in Sources */,
@@ -600,7 +558,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "${SRCROOT}/KSPersonalFinance/KSPrefixHeader.pch";
+				GCC_PREFIX_HEADER = /Users/Serhii/KSDiplomWork/KSPersonalFinance/KSPersonalFinance/KSPrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",

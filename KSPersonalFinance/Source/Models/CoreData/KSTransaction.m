@@ -2,7 +2,7 @@
 //  KSTransaction.m
 //  KSPersonalFinance
 //
-//  Created by Сергій Костюк on 26.05.16.
+//  Created by Serg Bla on 20.05.16.
 //  Copyright © 2016 Serg Kostiuk. All rights reserved.
 //
 
@@ -11,6 +11,8 @@
 
 @implementation KSTransaction
 
-// Insert code here to add functionality to your managed object subclass
+@dynamic amount;
+@dynamic time;
+@dynamic category;
 
 @end

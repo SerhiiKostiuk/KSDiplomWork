@@ -2,7 +2,7 @@
 //  KSCategory.h
 //  KSPersonalFinance
 //
-//  Created by Сергій Костюк on 26.05.16.
+//  Created by Serg Bla on 20.05.16.
 //  Copyright © 2016 Serg Kostiuk. All rights reserved.
 //
 
@@ -11,14 +11,10 @@
 
 @class KSTransaction;
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface KSCategory : NSManagedObject
-
-// Insert code here to declare functionality of your managed object subclass
+@property (nonatomic, strong) NSString      *categoryName;
+@property (nonatomic, strong) KSTransaction *transaction;
+@property (nonatomic, strong) NSString      *categoryImage;
 
 @end
 
-NS_ASSUME_NONNULL_END
-
-#import "KSCategory+CoreDataProperties.h"

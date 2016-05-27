@@ -3,16 +3,15 @@
     <entity name="KSCategory" representedClassName="KSCategory" syncable="YES">
         <attribute name="categoryImage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="categoryName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="categoryType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KSTransaction" inverseName="category" inverseEntity="KSTransaction" syncable="YES"/>
+        <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KSTransaction" inverseName="category" inverseEntity="KSTransaction" syncable="YES"/>
     </entity>
     <entity name="KSTransaction" representedClassName="KSTransaction" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KSCategory" inverseName="transactions" inverseEntity="KSCategory" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KSCategory" inverseName="transaction" inverseEntity="KSCategory" syncable="YES"/>
     </entity>
     <elements>
-        <element name="KSCategory" positionX="-54" positionY="18" width="128" height="105"/>
+        <element name="KSCategory" positionX="-54" positionY="18" width="128" height="90"/>
         <element name="KSTransaction" positionX="160" positionY="-90" width="128" height="88"/>
     </elements>
 </model>

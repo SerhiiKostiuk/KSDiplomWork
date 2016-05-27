@@ -2,7 +2,7 @@
 //  KSTransaction.h
 //  KSPersonalFinance
 //
-//  Created by Сергій Костюк on 26.05.16.
+//  Created by Serg Bla on 20.05.16.
 //  Copyright © 2016 Serg Kostiuk. All rights reserved.
 //
 
@@ -11,14 +11,10 @@
 
 @class KSCategory;
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface KSTransaction : NSManagedObject
-
-// Insert code here to declare functionality of your managed object subclass
+@property (nonatomic, strong) NSNumber   *amount;
+@property (nonatomic, strong) NSDate     *time;
+@property (nonatomic, strong) KSCategory *category;
 
 @end
 
-NS_ASSUME_NONNULL_END
-
-#import "KSTransaction+CoreDataProperties.h"

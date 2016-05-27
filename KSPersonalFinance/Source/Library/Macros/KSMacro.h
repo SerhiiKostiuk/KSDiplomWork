@@ -21,17 +21,5 @@ var(__VA_ARGS__); \
 } \
 } while(0);
 
-#define KSReturnValueIfNil(obj, value) \
-if(!(obj)) { \
-return value; \
-}
-
-#define KSEmpty
-
-#define KSRerurnIfNil(obj)\
-KSReturnValueIfNil(obj, KSEmpty)
-
-#define KSRerurnNilIfNil(obj)\
-KSReturnValueIfNil(obj, 0)
 
 #endif /* KSMacro_h */

@@ -9,9 +9,6 @@
 #import "KSCategoryViewController.h"
 #import "KSCategoryItemCollectionViewCell.h"
 #import "KSMacro.h"
-#import "KSCategory.h"
-#import "KSWeakifyMacro.h"
-#import "KSAddExpenseViewController.h"
 
 KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 
@@ -20,19 +17,10 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 
 @property (nonatomic, strong)    NSArray              *categoryItems;
 @property (nonatomic, readwrite) TransactionType      categoryType;
-@property (nonatomic, strong) KSAddExpenseViewController *addExpenseVC;
 
 @end
 
 @implementation KSCategoryViewController
-
-#pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (void)dealloc {
-    [self endObservingNotification];
-}
-
 
 #pragma mark -
 #pragma mark Life Cycle
@@ -41,42 +29,22 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
     [super viewDidLoad];
     
     self.categoryType = TransactionTypeExpense;
-
-    [self startObservingNotification];
-
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-
 }
 
 #pragma mark -
 #pragma mark Private
 
 - (void)initCategoryItemsPathForResource:(NSString *)name {
-    NSNumber *categoryType = [NSNumber numberWithInteger:TransactionTypeExpense];
+    NSMutableArray *items = [NSMutableArray array];
     
-    NSArray *categories = [KSCategory MR_findByAttribute:@"categoryType" withValue:categoryType];
-
-    _categoryItems = categories;
-}
-
-- (void)startObservingNotification {
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    NSString *inputFile  = [[NSBundle mainBundle] pathForResource:name ofType:@"plist"];
+    NSArray *inputDataArray = [NSArray arrayWithContentsOfFile:inputFile];
     
-    KSWeakify(self);
-    id block = ^(NSNotification *note){
-        KSStrongifyAndReturnIfNil(self);
-        self.categoryType = TransactionTypeExpense;
-    };
+    for (NSDictionary *inputItem in inputDataArray) {
+        [items addObject:[KSCategoryItem KSCategoryItemWithDictionary:inputItem]];
+    }
     
-    [center addObserverForName:@"KSPreloadCompleted" object:nil queue:nil usingBlock:block];
-}
-
-- (void)endObservingNotification {
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center removeObserver:self name:nil object:nil];
+    _categoryItems = items;
 }
 
 - (void)setCategoryType:(TransactionType)categoryType {
@@ -110,31 +78,30 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 #pragma mark -
 #pragma mark UICollectionViewDataSource
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     KSCategoryItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kKSReusableCellName
                                                                                        forIndexPath:indexPath];
-//   set cell with image and title 
+    
     [cell setKSCategoryItem:self.categoryItems[indexPath.row]];
     return cell;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.categoryItems.count;
 }
 
 #pragma mark -
-#pragma mark UICollectionViewDelegate
+#pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *selectedCategory = self.categoryItems[indexPath.item];
-    [self selectedCategory:selectedCategory];
-    
+    NSString *selectedCategoty = self.categoryItems[indexPath.item];
+    [self selectedCategory:selectedCategoty];
 }
 
 @end
