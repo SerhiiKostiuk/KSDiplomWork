@@ -2,7 +2,7 @@
 //  KSCategory.m
 //  KSPersonalFinance
 //
-//  Created by Serg Bla on 20.05.16.
+//  Created by Сергій Костюк on 26.05.16.
 //  Copyright © 2016 Serg Kostiuk. All rights reserved.
 //
 
@@ -11,8 +11,6 @@
 
 @implementation KSCategory
 
-@dynamic categoryName;
-@dynamic transaction;
-@dynamic categoryImage;
+// Insert code here to add functionality to your managed object subclass
 
 @end

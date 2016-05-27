@@ -1,0 +1,6 @@
+framework module Pods_KSPersonalFinance {
+  umbrella header "Pods-KSPersonalFinance-umbrella.h"
+
+  export *
+  module * { export * }
+}

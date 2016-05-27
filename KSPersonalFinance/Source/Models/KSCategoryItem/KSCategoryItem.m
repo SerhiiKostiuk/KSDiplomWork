@@ -11,14 +11,14 @@
 
 KSConstString(kKSExpenseTypeName, @"Expense");
 KSConstString(kKSIncomeTypeName, @"Income");
-KSConstString(kKSImageNameKey, @"itemImage");
+KSConstString(kKSImageNameKey, @"categoryImage");
 
 @implementation KSCategoryItem
 
 + (instancetype)KSCategoryItemWithDictionary:(NSDictionary *)dictionary {
     KSCategoryItem *item = [[KSCategoryItem alloc] init];
     
-    item.itemImage = dictionary[kKSImageNameKey];
+    item.categoryImage = dictionary[kKSImageNameKey];
     item.categoryName = dictionary[@"categoryName"];
     
     return item;

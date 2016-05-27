@@ -3,24 +3,44 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>itemImage</key>
+		<key>categoryImage</key>
 		<string>salary</string>
+		<key>categoryName</key>
+		<string>salary</string>
+		<key>categoryType</key>
+		<integer>2</integer>
 	</dict>
 	<dict>
-		<key>itemImage</key>
+		<key>categoryImage</key>
 		<string>business</string>
+		<key>categoryName</key>
+		<string>business</string>
+		<key>categoryType</key>
+		<integer>2</integer>
 	</dict>
 	<dict>
-		<key>itemImage</key>
+		<key>categoryImage</key>
 		<string>safebox</string>
+		<key>categoryName</key>
+		<string>safebox</string>
+		<key>categoryType</key>
+		<integer>2</integer>
 	</dict>
 	<dict>
-		<key>itemImage</key>
+		<key>categoryImage</key>
 		<string>dividends</string>
+		<key>categoryName</key>
+		<string>dividends</string>
+		<key>categoryType</key>
+		<integer>2</integer>
 	</dict>
 	<dict>
-		<key>itemImage</key>
+		<key>categoryImage</key>
 		<string>present</string>
+		<key>categoryName</key>
+		<string>present</string>
+		<key>categoryType</key>
+		<integer>2</integer>
 	</dict>
 </array>
 </plist>
