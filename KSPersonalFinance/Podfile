@@ -1,8 +1,11 @@
 platform :ios, '8.0'
 
+use_frameworks!
+
 target ‘KSPersonalFinance’ do
-pod "MagicalRecord"
+pod ‘MagicalRecord’
 pod 'DGActivityIndicatorView'
+pod 'FSCalendar'
 
 end
 

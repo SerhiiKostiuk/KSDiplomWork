@@ -21,22 +21,25 @@ KSConstString(kKSIncomeCategoriesFileName, @"income");
     
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
         for (NSDictionary *inputItem in categories) {
+            
             KSCategory *category = [KSCategory MR_createEntityInContext:localContext];
             category.categoryName = inputItem[@"categoryName"];
-            category.categoryImage = inputItem[@"itemImage"];
+            category.categoryImage = inputItem[@"categoryImage"];
+            category.categoryType = inputItem[@"categoryType"];
         }
         
     } completion:^(BOOL contextDidSave, NSError * _Nullable error) {
         if (contextDidSave) {
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"KSPreloadCompleted"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"KSPreloadCompleted" object:self];
         }
         
         completion(contextDidSave);
         
-    }];
+    }]; 
 }
 
-+(NSArray *)categoriesWithType:(TransactionType)type{
++ (NSArray *)categoriesWithType:(TransactionType)type {
     NSString *fileName = type == TransactionTypeExpense ? kKSExpenseCategoriesFileName : kKSIncomeCategoriesFileName;
     NSString *inputFile  = [[NSBundle mainBundle] pathForResource:fileName
                                                            ofType:@"plist"];

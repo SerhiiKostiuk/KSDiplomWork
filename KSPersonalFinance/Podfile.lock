@@ -1,17 +1,20 @@
 PODS:
   - DGActivityIndicatorView (2.0)
+  - FSCalendar (2.1.1)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
 
 DEPENDENCIES:
   - DGActivityIndicatorView
+  - FSCalendar
   - MagicalRecord
 
 SPEC CHECKSUMS:
   DGActivityIndicatorView: 52875b025a6ccf6a431a905285c12e2bb95eb559
+  FSCalendar: 04dc531f06fbde8a8e5b7394e9d4edebd45a591f
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
 
-PODFILE CHECKSUM: 88813d648b70f1f5f3dbc021a50f601a4ffd38da
+PODFILE CHECKSUM: 52fdd797b143346ce5c205a3026e4c2ca0a7bdc0
 
 COCOAPODS: 1.0.0

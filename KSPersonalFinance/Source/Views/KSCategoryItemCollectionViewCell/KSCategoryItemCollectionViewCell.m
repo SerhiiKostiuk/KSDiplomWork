@@ -15,7 +15,7 @@
 #pragma mark Accessors
 
 - (void)setKSCategoryItem:(KSCategoryItem *)item {
-    _categoryItemImageView.image = [UIImage imageNamed:item.itemImage];
+    _categoryItemImageView.image = [UIImage imageNamed:item.categoryImage];
 }
 
 @end
