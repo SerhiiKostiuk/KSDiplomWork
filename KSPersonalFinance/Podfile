@@ -6,6 +6,8 @@ target ‘KSPersonalFinance’ do
 pod ‘MagicalRecord’
 pod 'DGActivityIndicatorView'
 pod 'FSCalendar'
+pod 'VBPieChart', '~> 1.2'
+pod 'NSDate+Calendar'
 
 end
 
