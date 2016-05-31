@@ -110,7 +110,8 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 {
     KSCategoryItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kKSReusableCellName
                                                                                        forIndexPath:indexPath];
-//   set cell with image and title 
+//   set cell with image and title
+#warning thange the method 
     [cell setKSCategoryItem:self.categoryItems[indexPath.row]];
     return cell;
 }
