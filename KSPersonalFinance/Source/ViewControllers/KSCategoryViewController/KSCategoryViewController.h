@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "KSCategoryItem.h"
 
-
 @protocol CategorySelectionDelegate <NSObject>
 
 -(void)selectedCategory:(id)category;
@@ -17,10 +16,9 @@
 @end
 
 @interface KSCategoryViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
-
 @property (nonatomic, weak)   id <CategorySelectionDelegate> delegate;
-@property (nonatomic, readonly) TransactionType           categoryType;
 
+@property (nonatomic, readonly) TransactionType           categoryType;
 
 -(void)changeTransationType;
 

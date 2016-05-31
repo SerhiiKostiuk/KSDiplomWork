@@ -11,16 +11,14 @@
 #import "KSMacro.h"
 #import "KSCategory.h"
 #import "KSWeakifyMacro.h"
-#import "KSAddExpenseViewController.h"
 
 KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 
 @interface KSCategoryViewController ()
 @property (nonatomic, weak)   IBOutlet UICollectionView *collectionView;
 
-@property (nonatomic, strong)    NSArray              *categoryItems;
-@property (nonatomic, readwrite) TransactionType      categoryType;
-@property (nonatomic, strong) KSAddExpenseViewController *addExpenseVC;
+@property (nonatomic, strong)    NSArray            *categoryItems;
+@property (nonatomic, readwrite) TransactionType    categoryType;
 
 @end
 
@@ -33,9 +31,8 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
     [self endObservingNotification];
 }
 
-
 #pragma mark -
-#pragma mark Life Cycle
+#pragma mark ViewCotroller Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,16 +43,19 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+#pragma mark -
+#pragma mark Accessors
 
+- (void)setCategoryType:(TransactionType)categoryType {
+    _categoryType = categoryType;
+    [self updateCategory];
 }
 
 #pragma mark -
 #pragma mark Private
 
-- (void)initCategoryItemsPathForResource:(NSString *)name {
-    NSNumber *categoryType = [NSNumber numberWithInteger:TransactionTypeExpense];
+- (void)fetchCategoriesWithType:(TransactionType)type {
+    NSNumber *categoryType = [NSNumber numberWithInteger:type];
     
     NSArray *categories = [KSCategory MR_findByAttribute:@"categoryType" withValue:categoryType];
 
@@ -79,23 +79,14 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
     [center removeObserver:self name:nil object:nil];
 }
 
-- (void)setCategoryType:(TransactionType)categoryType {
-    _categoryType = categoryType;
-    [self updateCategory];
-}
 
 - (void)updateCategory {
-    NSString *nameOfFile = [self nameOfFileForTransactionType:self.categoryType];
-    [self initCategoryItemsPathForResource:nameOfFile];
+    [self fetchCategoriesWithType:self.categoryType];
     [self.collectionView reloadData];
 }
 
 - (void)changeTransationType {
     self.categoryType = self.categoryType == TransactionTypeExpense ? TransactionTypeIncome : TransactionTypeExpense;
-}
-
-- (NSString *)nameOfFileForTransactionType:(TransactionType)type {
-    return type == TransactionTypeIncome ? @"income" : @"expense";
 }
 
 #pragma mark -
