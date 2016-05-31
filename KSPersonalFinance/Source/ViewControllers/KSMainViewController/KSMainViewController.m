@@ -15,82 +15,58 @@
 #import "KSCategoryItem.h"
 #import "KSCategory.h"
 
-
 #import "KSMacro.h"
-#import "KSPreloadData.h"
+#import "KSCoreDataManager.h"
 #import "FSCalendar.h"
 
 KSConstNSInteger(kKSDotButtonTag, -10);
 KSConstNSInteger(kKSDeleteButtonTag, -1);
+KSConstNSInteger(kKSZeroSign, 0);
 
 KSConstString(kKSYesAlertTitle, @"Yes");
 KSConstString(kKSNoAlertTitle,  @"No");
 
 @interface KSMainViewController () <UIScrollViewDelegate, UITextFieldDelegate, CategorySelectionDelegate>
-@property (weak, nonatomic) IBOutlet UITextField   *inputTextField;
-@property (weak, nonatomic) IBOutlet UIButton *saveAmountButton;
-@property (weak, nonatomic) IBOutlet FSCalendar *calendarView;
+@property (nonatomic, weak) IBOutlet UITextField  *inputTextField;
+@property (weak, nonatomic) IBOutlet UIButton     *saveAmountButton;
+@property (weak, nonatomic) IBOutlet FSCalendar   *calendarView;
+@property (weak, nonatomic) IBOutlet UIButton     *changeTransactiontype;
+@property (weak, nonatomic) IBOutlet UIView *numpadView;
 
 @property (nonatomic, assign) NSUInteger               amount;
 @property (nonatomic, strong) KSCategoryViewController *categorySelectionVC;
 @property (nonatomic, strong) KSCategory    *currentCategory;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomPosition;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *numpadLeading;
 
 @end
 
 @implementation KSMainViewController
 
 #pragma mark -
-#pragma mark Life Cycle
+#pragma mark ViewContoller Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.inputTextField.delegate = self;
+    
     BOOL isPreloaded = [[NSUserDefaults standardUserDefaults]boolForKey:@"KSPreloadCompleted"];
     if (!isPreloaded) {
         [self presentActivityIndicator];
     }
-    self.bottomPosition.constant = -261;
+    
+    [self hideNumpadView:YES animated:NO];
     
     self.calendarView.firstWeekday = 2;
     self.calendarView.allowsMultipleSelection = YES;
-    
-//    NSArray *transations = [KSTransaction MR_findAll];
-//    CGFloat sum = 0.f;
-//    for (KSTransaction *aTransaction in transations) {
-//        sum += [aTransaction.amount floatValue];
-//    }
-//    NSLog(@"%f", sum);
-}
-
--(void)hideNumpadView:(BOOL)hide {
-    self.bottomPosition.constant = hide ? -261 : 0;
-    [UIView animateWithDuration:0.5 animations:^{
-        [self.view layoutIfNeeded];
-    }];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-//    self.navigationController.navigationBarHidden = YES;
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
 
-    [self getBalance];
-}
-
-- (void)selectedCategory:(id)category {
-    self.bottomPosition.constant = 0;
-    [UIView animateWithDuration:1.f animations:^{
-        [self.view layoutIfNeeded];
-    }];
-    self.currentCategory = category;
+//    [self getBalance];
 }
 
 #pragma mark -
@@ -107,7 +83,7 @@ KSConstString(kKSNoAlertTitle,  @"No");
     NSString *currentText = self.inputTextField.text;
 
     if (sender.tag == kKSDeleteButtonTag) {
-        if (currentText.length != 0) {
+        if (currentText.length != kKSZeroSign) {
             NSString *updatedTextFieldString = [currentText substringToIndex:currentText.length - 1];
             
             self.inputTextField.text = updatedTextFieldString;
@@ -120,7 +96,7 @@ KSConstString(kKSNoAlertTitle,  @"No");
 }
 
 - (IBAction)saveAmount:(id)sender {
-    if (self.inputTextField.text.length > 0 ) {
+    if (self.inputTextField.text.length > kKSZeroSign) {
         [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
             KSTransaction *transaction = [KSTransaction MR_createEntityInContext:localContext];
             
@@ -132,7 +108,8 @@ KSConstString(kKSNoAlertTitle,  @"No");
         
         [self.calendarView selectDate:[NSDate date]];
         
-        [self hideNumpadView:YES];
+        [self hideNumpadView:YES animated:YES];
+        
     } else {
         [self presentAlertView];
     }
@@ -140,16 +117,29 @@ KSConstString(kKSNoAlertTitle,  @"No");
 }
 
 - (IBAction)cancelSavingAmount:(id)sender {
-    [self hideNumpadView:YES];
+    [self hideNumpadView:YES animated:YES];
 }
 
+- (IBAction)changeTransactionType:(id)sender {
+    [self.categorySelectionVC changeTransationType];
+}
 
 #pragma mark -
 #pragma mark Private
 
+- (void)hideNumpadView:(BOOL)hide animated:(BOOL)animated{
+    CGFloat screenWigth = [UIScreen mainScreen].bounds.size.width;
+    self.numpadLeading.constant = hide ? screenWigth : kKSZeroSign;
+    if (animated) {
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
+}
+
 - (void)presentActivityIndicator {
     CGSize viewSize = [UIScreen mainScreen].bounds.size;
-    UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewSize.width, viewSize.height)];
+    UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(kKSZeroSign, kKSZeroSign, viewSize.width, viewSize.height)];
     
     DGActivityIndicatorView *activityIndicatorView = [[DGActivityIndicatorView alloc]
                                                       initWithType:DGActivityIndicatorAnimationTypeBallTrianglePath
@@ -158,7 +148,7 @@ KSConstString(kKSNoAlertTitle,  @"No");
     
     activityIndicatorView.frame = CGRectMake(viewSize.width/2 - 25.0f, viewSize.height/2 - 25.0f, 50.0f, 50.0f);
     
-     activityView.backgroundColor = [UIColor blackColor];
+    activityView.backgroundColor = [UIColor blackColor];
     activityView.alpha = 0.6;
     
     [activityView addSubview:activityIndicatorView];
@@ -170,13 +160,13 @@ KSConstString(kKSNoAlertTitle,  @"No");
             [activityView removeFromSuperview];
         } else {
 #warning add assert
-//            NSAssert(<#condition#>, <#desc, ...#>)
+            //            NSAssert(<#condition#>, <#desc, ...#>)
         }
     }];
 }
 
 - (void)preloadCategoriesWithCompletion:(void(^)(BOOL success))completion {
-    [KSPreloadData preloadTransactionsCategoriesWithType:TransactionTypeExpense completion:^(BOOL success) {
+    [KSCoreDataManager preloadTransactionsCategoriesWithType:TransactionTypeExpense completion:^(BOOL success) {
         completion(success);
     }];
 }
@@ -192,7 +182,7 @@ KSConstString(kKSNoAlertTitle,  @"No");
 - (CGFloat)getInputValue {
     return [self.inputTextField.text floatValue];
 }
-
+#warning окремий клас для запросів бази 
 - (void)presentAlertView {
     UIAlertController * alert= [UIAlertController alertControllerWithTitle:nil
                                                                    message:@"Enter Expense!"
@@ -235,6 +225,19 @@ KSConstString(kKSNoAlertTitle,  @"No");
         vc.delegate = self;
         self.categorySelectionVC = vc;
     }
+}
+
+#pragma mark -
+#pragma mark CategorySelectionDelegate
+
+- (void)selectedCategory:(id)category {
+    [self hideNumpadView:NO animated:YES];
+    
+    [UIView animateWithDuration:0.6f animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
+    self.currentCategory = category;
 }
 
 #pragma mark -
