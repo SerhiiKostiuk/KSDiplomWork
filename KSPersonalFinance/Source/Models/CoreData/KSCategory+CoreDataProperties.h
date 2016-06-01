@@ -15,9 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KSCategory (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *categoryImage;
-@property (nullable, nonatomic, retain) NSString *categoryName;
-@property (nullable, nonatomic, retain) NSNumber *categoryType;
+@property (nullable, nonatomic, retain) NSString *imageName;
+@property (nullable, nonatomic, retain) NSString *title;
+@property (nullable, nonatomic, retain) NSNumber *transactionType;
 @property (nullable, nonatomic, retain) NSSet<KSTransaction *> *transactions;
 
 @end

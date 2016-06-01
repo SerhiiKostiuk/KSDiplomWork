@@ -13,9 +13,9 @@
 
 @implementation KSCategory (CoreDataProperties)
 
-@dynamic categoryImage;
-@dynamic categoryName;
-@dynamic categoryType;
+@dynamic imageName;
+@dynamic title;
+@dynamic transactionType;
 @dynamic transactions;
 
 @end
