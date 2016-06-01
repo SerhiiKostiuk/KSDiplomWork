@@ -8,19 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, TransactionType) {
-    TransactionTypeExpense = 1,
-    TransactionTypeIncome
+typedef NS_ENUM(NSInteger, transactionType) {
+    transactionTypeExpense = 1,
+    transactionTypeIncome
 };
 
 @interface KSCategoryItem : NSObject
-@property (nonatomic, strong) NSString          *categoryImage;
-@property (nonatomic, strong) NSString          *categoryName;
-@property (nonatomic, assign) TransactionType   categoryType;
+@property (nonatomic, strong) NSString *imageName;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSNumber *amount;
+@property (nonatomic, assign) NSNumber *transactionType;
 
 + (instancetype)KSCategoryItemWithDictionary:(NSDictionary *)dictionary;
 
-+ (NSString *)stringFromType:(TransactionType)type;
-
+- (instancetype)initWithTitle:(NSString *)title iconName:(NSString *)iconName type:(NSNumber *)type andAmount:(NSNumber *)amount;
 
 @end

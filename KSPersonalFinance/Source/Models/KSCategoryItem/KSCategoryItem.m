@@ -9,23 +9,30 @@
 #import "KSCategoryItem.h"
 #import "KSMacro.h"
 
-KSConstString(kKSExpenseTypeName, @"Expense");
-KSConstString(kKSIncomeTypeName, @"Income");
-KSConstString(kKSImageNameKey, @"categoryImage");
+KSConstString(kKSImageNameKey, @"imageName");
 
 @implementation KSCategoryItem
 
 + (instancetype)KSCategoryItemWithDictionary:(NSDictionary *)dictionary {
     KSCategoryItem *item = [[KSCategoryItem alloc] init];
     
-    item.categoryImage = dictionary[kKSImageNameKey];
-    item.categoryName = dictionary[@"categoryName"];
+    item.imageName = dictionary[kKSImageNameKey];
+    item.title = dictionary[@"title"];
     
     return item;
 }
 
-+ (NSString *)stringFromType:(TransactionType)type {
-    return type == TransactionTypeExpense ? kKSExpenseTypeName : kKSIncomeTypeName;
+- (instancetype)initWithTitle:(NSString *)title iconName:(NSString *)iconName type:(NSNumber *)type andAmount:(NSNumber *)amount {
+    if (self = [super init]) {
+        _title = title;
+        _transactionType = type;
+        _amount = amount;
+        _imageName = iconName;
+    }
+    
+    return self;
 }
+
+
 
 @end
