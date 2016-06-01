@@ -9,8 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "KSCategoryItem.h"
 
+typedef void(^fetchCompletionHandler)(NSArray *categoriesItems, NSNumber *totalAmount);
+
 @interface KSCoreDataManager : NSObject
 
-+ (void)preloadTransactionsCategoriesWithType:(TransactionType)type completion:(void(^)(BOOL success))completion;
++ (void)preloadTransactionsCategoriesWithType:(transactionType)type completion:(void(^)(BOOL success))completion;
 
++ (void)loadCategoriesTransactionSumWithType:(transactionType)type
+                       withCompletionHandler:(fetchCompletionHandler)completionHandler;
 @end
