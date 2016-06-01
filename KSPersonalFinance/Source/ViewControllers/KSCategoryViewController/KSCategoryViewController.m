@@ -11,6 +11,7 @@
 #import "KSMacro.h"
 #import "KSCategory.h"
 #import "KSWeakifyMacro.h"
+#import "KSConstants.h"
 
 KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 
@@ -18,7 +19,7 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 @property (nonatomic, weak)   IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic, strong)    NSArray            *categoryItems;
-@property (nonatomic, readwrite) TransactionType    categoryType;
+@property (nonatomic, readwrite) transactionType    categoryType;
 
 @end
 
@@ -32,12 +33,12 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 }
 
 #pragma mark -
-#pragma mark ViewCotroller Life Cycle
+#pragma mark ViewController Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.categoryType = TransactionTypeExpense;
+    self.categoryType = transactionTypeExpense;
 
     [self startObservingNotification];
 
@@ -46,7 +47,7 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setCategoryType:(TransactionType)categoryType {
+- (void)setCategoryType:(transactionType)categoryType {
     _categoryType = categoryType;
     [self updateCategory];
 }
@@ -54,10 +55,10 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 #pragma mark -
 #pragma mark Private
 
-- (void)fetchCategoriesWithType:(TransactionType)type {
+- (void)fetchCategoriesWithType:(transactionType)type {
     NSNumber *categoryType = [NSNumber numberWithInteger:type];
     
-    NSArray *categories = [KSCategory MR_findByAttribute:@"categoryType" withValue:categoryType];
+    NSArray *categories = [KSCategory MR_findByAttribute:kKSTransactionTypeKey withValue:categoryType];
 
     _categoryItems = categories;
 }
@@ -68,10 +69,10 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
     KSWeakify(self);
     id block = ^(NSNotification *note){
         KSStrongifyAndReturnIfNil(self);
-        self.categoryType = TransactionTypeExpense;
+        self.categoryType = transactionTypeExpense;
     };
     
-    [center addObserverForName:@"KSPreloadCompleted" object:nil queue:nil usingBlock:block];
+    [center addObserverForName:kKSCompleteCategoriesPreload object:nil queue:nil usingBlock:block];
 }
 
 - (void)endObservingNotification {
@@ -85,8 +86,8 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
     [self.collectionView reloadData];
 }
 
-- (void)changeTransationType {
-    self.categoryType = self.categoryType == TransactionTypeExpense ? TransactionTypeIncome : TransactionTypeExpense;
+- (void)changeTransactionType {
+    self.categoryType = self.categoryType == transactionTypeExpense ? transactionTypeIncome : transactionTypeExpense;
 }
 
 #pragma mark -
@@ -112,7 +113,8 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
                                                                                        forIndexPath:indexPath];
 //   set cell with image and title
 #warning thange the method 
-    [cell setKSCategoryItem:self.categoryItems[indexPath.row]];
+    [cell setImageFromCategory:self.categoryItems[indexPath.row]];
+    
     return cell;
 }
 
