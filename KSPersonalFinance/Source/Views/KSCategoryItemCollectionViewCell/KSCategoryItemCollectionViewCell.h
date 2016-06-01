@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class KSCategoryItem;
+@class KSCategory;
 
 @interface KSCategoryItemCollectionViewCell : UICollectionViewCell
-@property (nonatomic, strong) IBOutlet UIImageView *categoryItemImageView;
+@property (nonatomic, strong) IBOutlet UIImageView *categoryImageView;
 
-- (void)setKSCategoryItem:(KSCategoryItem *)item;
+- (void)setImageFromCategory:(KSCategory *)category;
 
 @end

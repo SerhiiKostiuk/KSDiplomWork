@@ -7,15 +7,17 @@
 //
 
 #import "KSCategoryItemCollectionViewCell.h"
-#import "KSCategoryItem.h"
+#import "KSCategory.h"
 
 @implementation KSCategoryItemCollectionViewCell
 
 #pragma mark - 
 #pragma mark Accessors
 
-- (void)setKSCategoryItem:(KSCategoryItem *)item {
-    _categoryItemImageView.image = [UIImage imageNamed:item.categoryImage];
+- (void)setImageFromCategory:(KSCategory *)category {
+    _categoryImageView.image = [UIImage imageNamed:category.imageName];
 }
+
+
 
 @end
