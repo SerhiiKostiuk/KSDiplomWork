@@ -254,7 +254,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="changeTransactionType:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XbN-vG-mMK"/>
+                                    <action selector="changeTransactionType:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kxq-Yb-RW5"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -271,7 +271,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="calendarView" destination="AB3-c9-oT6" id="mbZ-j0-v25"/>
-                        <outlet property="changeTransactiontype" destination="ccj-XV-ewi" id="IU0-92-YZN"/>
+                        <outlet property="changeTransactionType" destination="ccj-XV-ewi" id="tei-Aa-boS"/>
                         <outlet property="inputTextField" destination="Pwm-EE-N1K" id="2j6-r2-MfR"/>
                         <outlet property="numpadLeading" destination="BaM-WC-qd1" id="wBl-dU-IkY"/>
                         <outlet property="numpadView" destination="bwe-yU-XVE" id="h5x-GN-vOT"/>
@@ -296,15 +296,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWX-3v-p9Y" customClass="VBPieChart">
-                                <rect key="frame" x="26" y="8" width="268" height="318"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="302"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6zc-y4-0xh">
+                                <rect key="frame" x="0.0" y="302" width="320" height="188"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KSPieChartTableViewCell" id="5O0-aX-sRg" customClass="KSPieChartTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5O0-aX-sRg" id="T2e-EP-Td9">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="awD-iu-WCJ">
+                                                    <rect key="frame" x="8" y="0.0" width="35.5" height="35.5"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35u-UQ-ZIC">
+                                                    <rect key="frame" x="233" y="11" width="69" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Percent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OzP-gm-aU6">
+                                                    <rect key="frame" x="137" y="11" width="67" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynt-XL-gf5">
+                                                    <rect key="frame" x="51" y="11" width="73" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="amountLabel" destination="35u-UQ-ZIC" id="OPI-yO-fIO"/>
+                                            <outlet property="categoryIcon" destination="awD-iu-WCJ" id="KuW-K4-2RI"/>
+                                            <outlet property="categoryTitleLabel" destination="ynt-XL-gf5" id="EhW-PR-Uc0"/>
+                                            <outlet property="percentLabel" destination="OzP-gm-aU6" id="iKb-Ya-9AM"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2MM-JK-oq3" id="i8H-L6-epu"/>
+                                    <outlet property="delegate" destination="2MM-JK-oq3" id="XrP-6L-b0c"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="R4e-AW-kdO"/>
                     <connections>
                         <outlet property="pieChartView" destination="eWX-3v-p9Y" id="iWe-J1-uBk"/>
+                        <outlet property="tableView" destination="6zc-y4-0xh" id="cfu-aF-c0h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D47-2s-uEz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -379,7 +427,7 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="categoryItemImageView" destination="58w-ir-z6Q" id="oXj-pM-X6o"/>
+                                            <outlet property="categoryImageView" destination="58w-ir-z6Q" id="k9o-Eh-Px9"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

@@ -14,24 +14,24 @@
 #import "KSCategoryViewController.h"
 #import "KSCategoryItem.h"
 #import "KSCategory.h"
+#import "KSConstants.h"
+#import "KSActivityIndicator.h"
 
 #import "KSMacro.h"
 #import "KSCoreDataManager.h"
 #import "FSCalendar.h"
 
-KSConstNSInteger(kKSDotButtonTag, -10);
-KSConstNSInteger(kKSDeleteButtonTag, -1);
-KSConstNSInteger(kKSZeroSign, 0);
-
-KSConstString(kKSYesAlertTitle, @"Yes");
-KSConstString(kKSNoAlertTitle,  @"No");
+#import "UIViewController+KSExtensions.h"
+#import "UIColor+KSExtensions.h"
+#import "NSString+KSExtensions.h"
 
 @interface KSMainViewController () <UIScrollViewDelegate, UITextFieldDelegate, CategorySelectionDelegate>
 @property (nonatomic, weak) IBOutlet UITextField  *inputTextField;
 @property (weak, nonatomic) IBOutlet UIButton     *saveAmountButton;
 @property (weak, nonatomic) IBOutlet FSCalendar   *calendarView;
-@property (weak, nonatomic) IBOutlet UIButton     *changeTransactiontype;
+@property (weak, nonatomic) IBOutlet UIButton     *changeTransactionType;
 @property (weak, nonatomic) IBOutlet UIView *numpadView;
+@property (nonatomic, strong) KSActivityIndicator *activityIndicator;
 
 @property (nonatomic, assign) NSUInteger               amount;
 @property (nonatomic, strong) KSCategoryViewController *categorySelectionVC;
@@ -51,7 +51,7 @@ KSConstString(kKSNoAlertTitle,  @"No");
     
     self.inputTextField.delegate = self;
     
-    BOOL isPreloaded = [[NSUserDefaults standardUserDefaults]boolForKey:@"KSPreloadCompleted"];
+    BOOL isPreloaded = [[NSUserDefaults standardUserDefaults]boolForKey:kKSCompleteCategoriesPreload];
     if (!isPreloaded) {
         [self presentActivityIndicator];
     }
@@ -60,13 +60,6 @@ KSConstString(kKSNoAlertTitle,  @"No");
     
     self.calendarView.firstWeekday = 2;
     self.calendarView.allowsMultipleSelection = YES;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-
-//    [self getBalance];
 }
 
 #pragma mark -
@@ -113,7 +106,6 @@ KSConstString(kKSNoAlertTitle,  @"No");
     } else {
         [self presentAlertView];
     }
-   
 }
 
 - (IBAction)cancelSavingAmount:(id)sender {
@@ -121,21 +113,11 @@ KSConstString(kKSNoAlertTitle,  @"No");
 }
 
 - (IBAction)changeTransactionType:(id)sender {
-    [self.categorySelectionVC changeTransationType];
+    [self.categorySelectionVC changeTransactionType];
 }
 
 #pragma mark -
 #pragma mark Private
-
-- (void)hideNumpadView:(BOOL)hide animated:(BOOL)animated{
-    CGFloat screenWigth = [UIScreen mainScreen].bounds.size.width;
-    self.numpadLeading.constant = hide ? screenWigth : kKSZeroSign;
-    if (animated) {
-        [UIView animateWithDuration:0.5 animations:^{
-            [self.view layoutIfNeeded];
-        }];
-    }
-}
 
 - (void)presentActivityIndicator {
     CGSize viewSize = [UIScreen mainScreen].bounds.size;
@@ -155,18 +137,29 @@ KSConstString(kKSNoAlertTitle,  @"No");
     [self.view addSubview:activityView];
     [activityIndicatorView startAnimating];
     [self preloadCategoriesWithCompletion:^(BOOL success) {
+        
         if (success) {
             sleep(3);
             [activityView removeFromSuperview];
+            
         } else {
-#warning add assert
-            //            NSAssert(<#condition#>, <#desc, ...#>)
+            NSAssert(success = NO, @"preload failed");
         }
     }];
 }
 
+- (void)hideNumpadView:(BOOL)hide animated:(BOOL)animated{
+    CGFloat screenWigth = [UIScreen mainScreen].bounds.size.width;
+    self.numpadLeading.constant = hide ? screenWigth : kKSZeroSign;
+    if (animated) {
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
+}
+
 - (void)preloadCategoriesWithCompletion:(void(^)(BOOL success))completion {
-    [KSCoreDataManager preloadTransactionsCategoriesWithType:TransactionTypeExpense completion:^(BOOL success) {
+    [KSCoreDataManager preloadTransactionsCategoriesWithType:transactionTypeExpense completion:^(BOOL success) {
         completion(success);
     }];
 }
@@ -181,42 +174,6 @@ KSConstString(kKSNoAlertTitle,  @"No");
 
 - (CGFloat)getInputValue {
     return [self.inputTextField.text floatValue];
-}
-#warning окремий клас для запросів бази 
-- (void)presentAlertView {
-    UIAlertController * alert= [UIAlertController alertControllerWithTitle:nil
-                                                                   message:@"Enter Expense!"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
-    
-    [self presentViewController:alert animated:YES completion:nil];
-    
-    [alert addAction:okAction];
-}
-
-- (UIColor *)colorFromType:(TransactionType)type {
-    return type == TransactionTypeExpense ? [UIColor redColor ] : [UIColor  greenColor];
-}
-
-- (NSInteger)getBalance {
-    NSManagedObjectContext *moc = [NSManagedObjectContext MR_context];
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"KSTransaction"
-                                                         inManagedObjectContext:moc];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    
-    request.entity = entityDescription;
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:YES];
-    
-    request.sortDescriptors = @[sortDescriptor];
-    
-    NSError *error;
-    
-    NSArray *array = [moc executeFetchRequest:request error:&error];
-    
-    NSInteger theSum = [[array valueForKeyPath:@"@sum.amount"] integerValue];
-    return theSum;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -244,9 +201,9 @@ KSConstString(kKSNoAlertTitle,  @"No");
 #pragma mark UITextFieldDelegate
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    [self.categorySelectionVC changeTransationType];
-    UIColor *color = [self colorFromType:self.categorySelectionVC.categoryType];
-    NSString *categoryName = [KSCategoryItem stringFromType:self.categorySelectionVC.categoryType];
+    [self.categorySelectionVC changeTransactionType];
+    UIColor *color = [UIColor colorFromType:self.categorySelectionVC.categoryType];
+    NSString *categoryName = [NSString stringFromType:self.categorySelectionVC.categoryType];
     textField.textColor = color;
     textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:categoryName
                                                                       attributes:@{NSForegroundColorAttributeName: color}];

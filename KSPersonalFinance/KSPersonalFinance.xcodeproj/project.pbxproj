@@ -23,6 +23,11 @@
 		C5F17B631CEC9BE50049AA86 /* KSCategoryItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F17B621CEC9BE50049AA86 /* KSCategoryItemCollectionViewCell.m */; };
 		C5F17B671CECA0040049AA86 /* KSCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F17B661CECA0040049AA86 /* KSCategoryItem.m */; };
 		CDB593741CFD5E2C00B3A6C3 /* KSCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB593731CFD5E2C00B3A6C3 /* KSCoreDataManager.m */; };
+		CDB5937E1CFE09A600B3A6C3 /* UIColor+KSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB5937D1CFE09A600B3A6C3 /* UIColor+KSExtensions.m */; };
+		CDB593811CFE185F00B3A6C3 /* KSPieChartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB593801CFE185F00B3A6C3 /* KSPieChartTableViewCell.m */; };
+		CDB5938E1CFE36BA00B3A6C3 /* UIViewController+KSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB5938D1CFE36BA00B3A6C3 /* UIViewController+KSExtensions.m */; };
+		CDB593921CFE395400B3A6C3 /* NSString+KSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB593911CFE395400B3A6C3 /* NSString+KSExtensions.m */; };
+		CDB593961CFE3ACD00B3A6C3 /* KSActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB593951CFE3ACD00B3A6C3 /* KSActivityIndicator.m */; };
 		CDC8F1AF1CF76D4300860A25 /* KSCategory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC8F1A81CF76D4300860A25 /* KSCategory+CoreDataProperties.m */; };
 		CDC8F1B01CF76D4300860A25 /* KSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC8F1AA1CF76D4300860A25 /* KSCategory.m */; };
 		CDC8F1B11CF76D4300860A25 /* KSTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC8F1AC1CF76D4300860A25 /* KSTransaction+CoreDataProperties.m */; };
@@ -50,12 +55,12 @@
 		C5286F4F1CED0CBC00B12E7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5286F511CED0CBC00B12E7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C5286F541CED0CE000B12E7D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C59A77ED1CEFAD9E0070E3B1 /* KSCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCategoryViewController.h; sourceTree = "<group>"; };
-		C59A77EE1CEFAD9E0070E3B1 /* KSCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCategoryViewController.m; sourceTree = "<group>"; };
+		C59A77ED1CEFAD9E0070E3B1 /* KSCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KSCategoryViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C59A77EE1CEFAD9E0070E3B1 /* KSCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KSCategoryViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C59A77F11CEFAE4E0070E3B1 /* KSMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSMainViewController.h; sourceTree = "<group>"; };
-		C59A77F21CEFAE4E0070E3B1 /* KSMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSMainViewController.m; sourceTree = "<group>"; };
+		C59A77F21CEFAE4E0070E3B1 /* KSMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KSMainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C59A77F51CEFAEC80070E3B1 /* KSPieChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSPieChartViewController.h; sourceTree = "<group>"; };
-		C59A77F61CEFAEC80070E3B1 /* KSPieChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSPieChartViewController.m; sourceTree = "<group>"; };
+		C59A77F61CEFAEC80070E3B1 /* KSPieChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KSPieChartViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C59A77F81CEFB5530070E3B1 /* KSMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSMacro.h; sourceTree = "<group>"; };
 		C5BF84261CEA659E00DEA823 /* KSPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSPrefixHeader.pch; sourceTree = "<group>"; };
 		C5BF843E1CEA70C800DEA823 /* KSPersonalFinance.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KSPersonalFinance.xcdatamodel; sourceTree = "<group>"; };
@@ -69,11 +74,21 @@
 		C5EC7A501CF4EC94001DD258 /* KSWeakifyMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSWeakifyMacro.h; sourceTree = "<group>"; };
 		C5F17B611CEC9BE50049AA86 /* KSCategoryItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KSCategoryItemCollectionViewCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C5F17B621CEC9BE50049AA86 /* KSCategoryItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KSCategoryItemCollectionViewCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		C5F17B651CECA0040049AA86 /* KSCategoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCategoryItem.h; sourceTree = "<group>"; };
-		C5F17B661CECA0040049AA86 /* KSCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCategoryItem.m; sourceTree = "<group>"; };
+		C5F17B651CECA0040049AA86 /* KSCategoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KSCategoryItem.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C5F17B661CECA0040049AA86 /* KSCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KSCategoryItem.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CDB593721CFD5E2C00B3A6C3 /* KSCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCoreDataManager.h; sourceTree = "<group>"; };
-		CDB593731CFD5E2C00B3A6C3 /* KSCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCoreDataManager.m; sourceTree = "<group>"; };
+		CDB593731CFD5E2C00B3A6C3 /* KSCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KSCoreDataManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CDB593761CFD7B0800B3A6C3 /* KSConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSConstants.h; sourceTree = "<group>"; };
+		CDB5937C1CFE09A600B3A6C3 /* UIColor+KSExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+KSExtensions.h"; sourceTree = "<group>"; };
+		CDB5937D1CFE09A600B3A6C3 /* UIColor+KSExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+KSExtensions.m"; sourceTree = "<group>"; };
+		CDB5937F1CFE185F00B3A6C3 /* KSPieChartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSPieChartTableViewCell.h; path = KSPieChartTableViewCell/KSPieChartTableViewCell.h; sourceTree = "<group>"; };
+		CDB593801CFE185F00B3A6C3 /* KSPieChartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSPieChartTableViewCell.m; path = KSPieChartTableViewCell/KSPieChartTableViewCell.m; sourceTree = "<group>"; };
+		CDB5938C1CFE36BA00B3A6C3 /* UIViewController+KSExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KSExtensions.h"; sourceTree = "<group>"; };
+		CDB5938D1CFE36BA00B3A6C3 /* UIViewController+KSExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KSExtensions.m"; sourceTree = "<group>"; };
+		CDB593901CFE395400B3A6C3 /* NSString+KSExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+KSExtensions.h"; sourceTree = "<group>"; };
+		CDB593911CFE395400B3A6C3 /* NSString+KSExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+KSExtensions.m"; sourceTree = "<group>"; };
+		CDB593941CFE3ACD00B3A6C3 /* KSActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSActivityIndicator.h; sourceTree = "<group>"; };
+		CDB593951CFE3ACD00B3A6C3 /* KSActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSActivityIndicator.m; sourceTree = "<group>"; };
 		CDC8F1A71CF76D4300860A25 /* KSCategory+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSCategory+CoreDataProperties.h"; sourceTree = "<group>"; };
 		CDC8F1A81CF76D4300860A25 /* KSCategory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSCategory+CoreDataProperties.m"; sourceTree = "<group>"; };
 		CDC8F1A91CF76D4300860A25 /* KSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCategory.h; sourceTree = "<group>"; };
@@ -253,6 +268,9 @@
 		C5EA96B01CE3470D0069F913 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CDB5938F1CFE393C00B3A6C3 /* NSString */,
+				CDB5938B1CFE36BA00B3A6C3 /* UIViewContoller */,
+				CDB593781CFE087E00B3A6C3 /* UIColor */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -304,7 +322,9 @@
 		C5F17B5C1CEC9B7C0049AA86 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CDB593931CFE3A7900B3A6C3 /* KSActivityIndicator */,
 				C5F17B601CEC9BE50049AA86 /* KSCategoryItemCollectionViewCell */,
+				CDB593821CFE186900B3A6C3 /* KSPieChartTableViewCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -342,6 +362,51 @@
 				CDB593761CFD7B0800B3A6C3 /* KSConstants.h */,
 			);
 			path = KSConstants;
+			sourceTree = "<group>";
+		};
+		CDB593781CFE087E00B3A6C3 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				CDB5937C1CFE09A600B3A6C3 /* UIColor+KSExtensions.h */,
+				CDB5937D1CFE09A600B3A6C3 /* UIColor+KSExtensions.m */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		CDB593821CFE186900B3A6C3 /* KSPieChartTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CDB5937F1CFE185F00B3A6C3 /* KSPieChartTableViewCell.h */,
+				CDB593801CFE185F00B3A6C3 /* KSPieChartTableViewCell.m */,
+			);
+			name = KSPieChartTableViewCell;
+			sourceTree = "<group>";
+		};
+		CDB5938B1CFE36BA00B3A6C3 /* UIViewContoller */ = {
+			isa = PBXGroup;
+			children = (
+				CDB5938C1CFE36BA00B3A6C3 /* UIViewController+KSExtensions.h */,
+				CDB5938D1CFE36BA00B3A6C3 /* UIViewController+KSExtensions.m */,
+			);
+			path = UIViewContoller;
+			sourceTree = "<group>";
+		};
+		CDB5938F1CFE393C00B3A6C3 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				CDB593901CFE395400B3A6C3 /* NSString+KSExtensions.h */,
+				CDB593911CFE395400B3A6C3 /* NSString+KSExtensions.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		CDB593931CFE3A7900B3A6C3 /* KSActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				CDB593941CFE3ACD00B3A6C3 /* KSActivityIndicator.h */,
+				CDB593951CFE3ACD00B3A6C3 /* KSActivityIndicator.m */,
+			);
+			path = KSActivityIndicator;
 			sourceTree = "<group>";
 		};
 		E84F281BC22EBF308E5E7C3E /* Pods */ = {
@@ -479,9 +544,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDC8F1AF1CF76D4300860A25 /* KSCategory+CoreDataProperties.m in Sources */,
+				CDB593921CFE395400B3A6C3 /* NSString+KSExtensions.m in Sources */,
 				C59A77EF1CEFAD9E0070E3B1 /* KSCategoryViewController.m in Sources */,
+				CDB5937E1CFE09A600B3A6C3 /* UIColor+KSExtensions.m in Sources */,
+				CDB5938E1CFE36BA00B3A6C3 /* UIViewController+KSExtensions.m in Sources */,
 				CDC8F1B21CF76D4300860A25 /* KSTransaction.m in Sources */,
 				CDC8F1B11CF76D4300860A25 /* KSTransaction+CoreDataProperties.m in Sources */,
+				CDB593961CFE3ACD00B3A6C3 /* KSActivityIndicator.m in Sources */,
+				CDB593811CFE185F00B3A6C3 /* KSPieChartTableViewCell.m in Sources */,
 				C59A77F71CEFAEC80070E3B1 /* KSPieChartViewController.m in Sources */,
 				CDB593741CFD5E2C00B3A6C3 /* KSCoreDataManager.m in Sources */,
 				C59A77F31CEFAE4E0070E3B1 /* KSMainViewController.m in Sources */,
