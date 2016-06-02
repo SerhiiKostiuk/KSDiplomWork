@@ -15,9 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KSTransaction (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSNumber   *amount;
-@property (nullable, nonatomic, retain) NSDate     *time;
-@property (nullable, nonatomic, retain) KSCategory *category;
+@property (nonatomic, strong) NSNumber   *amount;
+@property (nonatomic, strong) NSDate     *time;
+@property (nonatomic, strong) KSCategory *category;
 
 @end
 

@@ -15,6 +15,7 @@
 
 @dynamic imageName;
 @dynamic title;
+@dynamic color;
 @dynamic transactionType;
 @dynamic transactions;
 
