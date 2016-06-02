@@ -16,6 +16,8 @@
 #import "KSConstants.h"
 
 #import "UIColor+KSExtensions.h"
+#import "NSString+KSExtensions.h"
+
 
 typedef void(^FetchCompletionHandler)(NSArray *fetchedCategories, NSNumber *totalAmount);
 
@@ -33,7 +35,7 @@ typedef void(^FetchCompletionHandler)(NSArray *fetchedCategories, NSNumber *tota
     [super viewDidLoad];
     
     self.categoryViewController = [[KSCategoryViewController alloc]initWithNibName:@"KSCategoryViewController" bundle:nil];
-    
+#warning knew to initialize viewContoller
     [self updateTransactionsData];
     
     [self presentChartView];
@@ -72,6 +74,7 @@ typedef void(^FetchCompletionHandler)(NSArray *fetchedCategories, NSNumber *tota
     for (KSCategoryItem *category in self.categories) {
          NSDictionary *chartValue = @{@"name":[category valueForKey:@"title"],
                                       @"value":[category valueForKey:@"amount"],
+                                      @"color":[UIColor colorWithHexString:[category valueForKey:@"color"]]
                                       };
         
         [chartValues addObject:chartValue];
@@ -85,6 +88,7 @@ typedef void(^FetchCompletionHandler)(NSArray *fetchedCategories, NSNumber *tota
     cell.categoryTitleLabel.text = category.title;
     cell.amountLabel.text = [category.amount stringValue];
     cell.categoryIcon.image = [UIImage imageNamed:category.imageName];
+    cell.backgroundColor = [UIColor colorWithHexString:category.color];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
