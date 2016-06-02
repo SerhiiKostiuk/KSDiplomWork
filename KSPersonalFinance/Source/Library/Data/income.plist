@@ -9,6 +9,8 @@
 		<string>salary</string>
 		<key>transactionType</key>
 		<integer>2</integer>
+		<key>color</key>
+		<string>FF6600</string>
 	</dict>
 	<dict>
 		<key>imageName</key>
@@ -17,6 +19,8 @@
 		<string>business</string>
 		<key>transactionType</key>
 		<integer>2</integer>
+		<key>color</key>
+		<string>CC9999</string>
 	</dict>
 	<dict>
 		<key>imageName</key>
@@ -25,6 +29,8 @@
 		<string>safebox</string>
 		<key>transactionType</key>
 		<integer>2</integer>
+		<key>color</key>
+		<string>FFCC33</string>
 	</dict>
 	<dict>
 		<key>imageName</key>
@@ -33,6 +39,8 @@
 		<string>dividends</string>
 		<key>transactionType</key>
 		<integer>2</integer>
+		<key>color</key>
+		<string>336633</string>
 	</dict>
 	<dict>
 		<key>imageName</key>
@@ -41,6 +49,8 @@
 		<string>present</string>
 		<key>transactionType</key>
 		<integer>2</integer>
+		<key>color</key>
+		<string>33FFCC</string>
 	</dict>
 </array>
 </plist>

@@ -9,6 +9,8 @@
 		<string>home</string>
 		<key>transactionType</key>
 		<integer>1</integer>
+		<key>color</key>
+		<string>FF0000</string>
 	</dict>
 	<dict>
 		<key>imageName</key>
@@ -17,6 +19,8 @@
 		<string>shoping</string>
 		<key>transactionType</key>
 		<integer>1</integer>
+		<key>color</key>
+		<string>00FF00</string>
 	</dict>
 	<dict>
 		<key>imageName</key>
@@ -25,6 +29,8 @@
 		<string>cafe</string>
 		<key>transactionType</key>
 		<integer>1</integer>
+		<key>color</key>
+		<string>FF7F00</string>
 	</dict>
 	<dict>
 		<key>imageName</key>
@@ -33,6 +39,8 @@
 		<string>car</string>
 		<key>transactionType</key>
 		<integer>1</integer>
+		<key>color</key>
+		<string>7F007F</string>
 	</dict>
 	<dict>
 		<key>imageName</key>
@@ -41,6 +49,8 @@
 		<string>grocery</string>
 		<key>transactionType</key>
 		<integer>1</integer>
+		<key>color</key>
+		<string>0000FF</string>
 	</dict>
 </array>
 </plist>

@@ -29,6 +29,7 @@
             category.title = inputItem[@"title"];
             category.imageName = inputItem[@"imageName"];
             category.transactionType = inputItem[@"transactionType"];
+            category.color = inputItem[@"color"];
         }
         
     } completion:^(BOOL contextDidSave, NSError * _Nullable error) {
@@ -64,6 +65,7 @@
             KSCategoryItem *item = [[KSCategoryItem alloc]initWithTitle:category.title
                                                                iconName:category.imageName
                                                                    type:category.transactionType
+                                                                  color:category.color
                                                               andAmount:@0];
             item.amount = transactionSum;
             
