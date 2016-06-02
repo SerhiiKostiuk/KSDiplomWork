@@ -18,6 +18,8 @@
 @interface KSCategoryViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, weak)   id <CategorySelectionDelegate> delegate;
 
+@property (weak, nonatomic) IBOutlet UILabel *categorySumLabel;
+
 @property (nonatomic, readonly) transactionType           categoryType;
 
 -(void)changeTransactionType;
