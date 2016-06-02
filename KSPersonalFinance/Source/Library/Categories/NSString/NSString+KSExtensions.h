@@ -13,4 +13,6 @@
 
 + (NSString *)stringFromType:(transactionType)type;
 
++ (NSString *)hexStringForColor:(UIColor *)color;
+
 @end
