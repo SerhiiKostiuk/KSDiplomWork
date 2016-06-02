@@ -22,12 +22,19 @@ KSConstString(kKSImageNameKey, @"imageName");
     return item;
 }
 
-- (instancetype)initWithTitle:(NSString *)title iconName:(NSString *)iconName type:(NSNumber *)type andAmount:(NSNumber *)amount {
+- (instancetype)initWithTitle:(NSString *)title
+                     iconName:(NSString *)iconName
+                         type:(NSNumber *)type
+                        color:(NSString *)color
+                    andAmount:(NSNumber *)amount
+{
     if (self = [super init]) {
+        
         _title = title;
         _transactionType = type;
         _amount = amount;
         _imageName = iconName;
+        _color = color;
     }
     
     return self;

@@ -17,10 +17,16 @@ typedef NS_ENUM(NSInteger, transactionType) {
 @property (nonatomic, strong) NSString *imageName;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSNumber *amount;
-@property (nonatomic, assign) NSNumber *transactionType;
+@property (nonatomic, strong) NSNumber *transactionType;
+@property (nonatomic, strong) NSString *color;
 
+#warning may be need to delete this method --\/
 + (instancetype)KSCategoryItemWithDictionary:(NSDictionary *)dictionary;
 
-- (instancetype)initWithTitle:(NSString *)title iconName:(NSString *)iconName type:(NSNumber *)type andAmount:(NSNumber *)amount;
+- (instancetype)initWithTitle:(NSString *)title
+                     iconName:(NSString *)iconName
+                         type:(NSNumber *)type
+                        color:(NSString *)color
+                    andAmount:(NSNumber *)amount;
 
 @end
