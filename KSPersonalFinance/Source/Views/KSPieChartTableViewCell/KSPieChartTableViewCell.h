@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface KSPieChartTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *categoryIcon;
-@property (weak, nonatomic) IBOutlet UILabel *categoryTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *percentLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *categoryIcon;
+@property (nonatomic, weak) IBOutlet UILabel     *categoryTitleLabel;
+@property (nonatomic, weak) IBOutlet UILabel     *amountLabel;
+@property (nonatomic, weak) IBOutlet UILabel     *percentLabel;
 
 @end

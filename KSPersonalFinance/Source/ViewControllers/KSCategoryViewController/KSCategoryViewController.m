@@ -16,10 +16,16 @@
 KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 
 @interface KSCategoryViewController ()
-@property (nonatomic, weak)   IBOutlet UICollectionView *collectionView;
+@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, weak) IBOutlet UILabel          *categorySumLabel;
 
 @property (nonatomic, strong)    NSArray            *categoryItems;
 @property (nonatomic, readwrite) transactionType    categoryType;
+
+- (void)fetchCategoriesWithType:(transactionType)type;
+- (void)startObservingNotification;
+- (void)endObservingNotification;
+- (void)updateCategory;
 
 @end
 
@@ -53,6 +59,13 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 }
 
 #pragma mark -
+#pragma mark Public
+
+- (void)changeTransactionType {
+    self.categoryType = self.categoryType == transactionTypeExpense ? transactionTypeIncome : transactionTypeExpense;
+}
+
+#pragma mark -
 #pragma mark Private
 
 - (void)fetchCategoriesWithType:(transactionType)type {
@@ -62,6 +75,14 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 
     _categoryItems = categories;
 }
+
+- (void)updateCategory {
+    [self fetchCategoriesWithType:self.categoryType];
+    [self.collectionView reloadData];
+}
+
+#pragma mark -
+#pragma mark Notification
 
 - (void)startObservingNotification {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -78,16 +99,6 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 - (void)endObservingNotification {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center removeObserver:self name:nil object:nil];
-}
-
-
-- (void)updateCategory {
-    [self fetchCategoriesWithType:self.categoryType];
-    [self.collectionView reloadData];
-}
-
-- (void)changeTransactionType {
-    self.categoryType = self.categoryType == transactionTypeExpense ? transactionTypeIncome : transactionTypeExpense;
 }
 
 #pragma mark -
@@ -128,7 +139,6 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *selectedCategory = self.categoryItems[indexPath.item];
     [self selectedCategory:selectedCategory];
-    
 }
 
 @end

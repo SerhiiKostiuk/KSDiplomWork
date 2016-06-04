@@ -27,17 +27,29 @@
 
 @interface KSMainViewController () <UIScrollViewDelegate, UITextFieldDelegate, CategorySelectionDelegate>
 @property (nonatomic, weak) IBOutlet UITextField  *inputTextField;
-@property (weak, nonatomic) IBOutlet UIButton     *saveAmountButton;
-@property (weak, nonatomic) IBOutlet FSCalendar   *calendarView;
-@property (weak, nonatomic) IBOutlet UIButton     *changeTransactionType;
-@property (weak, nonatomic) IBOutlet UIView *numpadView;
-@property (nonatomic, strong) KSActivityIndicator *activityIndicator;
-
-@property (nonatomic, assign) NSUInteger               amount;
-@property (nonatomic, strong) KSCategoryViewController *categorySelectionVC;
-@property (nonatomic, strong) KSCategory    *currentCategory;
+@property (nonatomic, weak) IBOutlet UIButton     *saveAmountButton;
+@property (nonatomic, weak) IBOutlet FSCalendar   *calendarView;
+@property (nonatomic, weak) IBOutlet UIButton     *changeTransactionType;
+@property (nonatomic, weak) IBOutlet UIView       *numpadView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *numpadLeading;
+
+@property (nonatomic, strong) KSActivityIndicator      *activityIndicator;
+@property (nonatomic, strong) KSCategoryViewController *categorySelectionVC;
+@property (nonatomic, strong) KSCategory               *currentCategory;
+
+@property (nonatomic, assign) NSUInteger               amount;
+
+- (void)presentActivityIndicator;
+- (void)hideNumpadView:(BOOL)hide animated:(BOOL)animated;
+- (void)preloadCategoriesWithCompletion:(void(^)(BOOL success))completion;
+- (void)appendInputWithString:(NSString *)stringToAppend;
+- (BOOL)isDotExist;
+- (CGFloat)getInputValue;
+
+
+
+
 
 @end
 
@@ -59,7 +71,7 @@
     [self hideNumpadView:YES animated:NO];
     
     self.calendarView.firstWeekday = 2;
-    self.calendarView.allowsMultipleSelection = YES;
+    self.calendarView.allowsMultipleSelection = YES;    
 }
 
 #pragma mark -
@@ -99,9 +111,13 @@
             transaction.amount = @([self getInputValue]);
         }];
         
+#warning how to save selection of trancaction 
         [self.calendarView selectDate:[NSDate date]];
+        self.inputTextField.text = @"";
         
         [self hideNumpadView:YES animated:YES];
+        
+//        self.categorySelectionVC.categorySumLabel.text = [KSCategoryItem.amount];
         
     } else {
         [self presentAlertView];
@@ -148,7 +164,7 @@
     }];
 }
 
-- (void)hideNumpadView:(BOOL)hide animated:(BOOL)animated{
+- (void)hideNumpadView:(BOOL)hide animated:(BOOL)animated {
     CGFloat screenWigth = [UIScreen mainScreen].bounds.size.width;
     self.numpadLeading.constant = hide ? screenWigth : kKSZeroSign;
     if (animated) {
