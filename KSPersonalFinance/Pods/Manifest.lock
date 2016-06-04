@@ -4,20 +4,23 @@ PODS:
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
+  - NSDate+Calendar (0.0.8)
   - VBPieChart (1.2.0)
 
 DEPENDENCIES:
   - DGActivityIndicatorView
   - FSCalendar
   - MagicalRecord
+  - NSDate+Calendar
   - VBPieChart (~> 1.2)
 
 SPEC CHECKSUMS:
   DGActivityIndicatorView: 52875b025a6ccf6a431a905285c12e2bb95eb559
   FSCalendar: 04dc531f06fbde8a8e5b7394e9d4edebd45a591f
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+  NSDate+Calendar: 4aa9f6eb520bdbe7cfd82fbf6c7d35b9725c8188
   VBPieChart: 7d46553bcb9de13afee366acb84d3afcda536929
 
-PODFILE CHECKSUM: 3c9ea85e77b0a73615647e9d6be5657d81129530
+PODFILE CHECKSUM: 29c235fdbb79aced9d3438a4d8d1e7fabab6b8fe
 
 COCOAPODS: 1.0.0

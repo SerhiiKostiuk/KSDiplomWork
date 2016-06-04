@@ -8,6 +8,7 @@ pod 'DGActivityIndicatorView'
 pod 'FSCalendar'
 pod 'VBPieChart', '~> 1.2'
 pod 'NSDate+Calendar'
+pod 'HMSegmentedControl'
 
 end
 
