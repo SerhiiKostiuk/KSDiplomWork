@@ -15,4 +15,6 @@
 
 + (UIColor *)colorFromType:(transactionType)type;
 
++ (UIColor *)colorWithHexString:(NSString *)hexString;
+
 @end
