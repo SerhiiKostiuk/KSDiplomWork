@@ -11,6 +11,9 @@
 
 @implementation UIViewController (KSExtensions)
 
+#pragma mark - 
+#pragma mark Public
+
 - (void)presentAlertView {
     UIAlertController * alert= [UIAlertController alertControllerWithTitle:nil
                                                                    message:kKSAlertMessage

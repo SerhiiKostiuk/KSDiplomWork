@@ -13,6 +13,9 @@ KSConstString(kKSImageNameKey, @"imageName");
 
 @implementation KSCategoryItem
 
+#pragma mark - 
+#pragma mark Public
+
 + (instancetype)KSCategoryItemWithDictionary:(NSDictionary *)dictionary {
     KSCategoryItem *item = [[KSCategoryItem alloc] init];
     

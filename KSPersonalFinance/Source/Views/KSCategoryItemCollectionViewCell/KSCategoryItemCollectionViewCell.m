@@ -12,7 +12,7 @@
 @implementation KSCategoryItemCollectionViewCell
 
 #pragma mark - 
-#pragma mark Accessors
+#pragma mark Public
 
 - (void)setImageFromCategory:(KSCategory *)category {
     _categoryImageView.image = [UIImage imageNamed:category.imageName];

@@ -12,6 +12,9 @@
 
 @implementation NSString (KSExtensions)
 
+#pragma mark -
+#pragma mark Public Class Methods
+
 + (NSString *)stringFromType:(transactionType)type {
     return type == transactionTypeExpense ? kKSExpenseTypeName : kKSIncomeTypeName;
 }

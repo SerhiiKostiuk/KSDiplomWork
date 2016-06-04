@@ -16,7 +16,7 @@
 @implementation KSCoreDataManager
 
 #pragma mark - 
-#pragma Public Class Methods
+#pragma mark Public Class Methods
 
 + (void)preloadTransactionsCategoriesWithType:(transactionType)type completion:(void(^)(BOOL success))completion {
     NSMutableArray *categories = [NSMutableArray arrayWithArray:[self categoriesWithType:transactionTypeExpense]];
@@ -79,7 +79,7 @@
 }
 
 #pragma mark -
-#pragma Private Class Methods
+#pragma mark Private Class Methods
 
 + (NSArray *)categoriesWithType:(transactionType)type {
     NSString *fileName = type == transactionTypeExpense ? kKSExpenseCategoriesFileName : kKSIncomeCategoriesFileName;
