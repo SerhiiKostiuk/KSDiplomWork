@@ -16,15 +16,6 @@ KSConstString(kKSImageNameKey, @"imageName");
 #pragma mark - 
 #pragma mark Public
 
-+ (instancetype)KSCategoryItemWithDictionary:(NSDictionary *)dictionary {
-    KSCategoryItem *item = [[KSCategoryItem alloc] init];
-    
-    item.imageName = dictionary[kKSImageNameKey];
-    item.title = dictionary[@"title"];
-    
-    return item;
-}
-
 - (instancetype)initWithTitle:(NSString *)title
                      iconName:(NSString *)iconName
                          type:(NSNumber *)type
