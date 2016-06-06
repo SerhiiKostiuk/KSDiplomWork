@@ -44,6 +44,7 @@
 }
 
 + (void)loadCategoriesTransactionSumWithType:(transactionType)type
+                                betweenDates:(NSArray *)dates
                        withCompletionHandler:(fetchCompletionHandler)completionHandler
 {
     float totalAmount = 0.f;
@@ -51,25 +52,38 @@
     NSNumber *typeOfTransaction = [NSNumber numberWithInteger:type];
     NSArray *fetchedCategories = [KSCategory MR_findByAttribute:kKSTransactionTypeKey withValue:typeOfTransaction];
     
-    NSMutableArray *categoriesItems = [NSMutableArray array];
+    NSNumber *transactionSum = [NSNumber new];
     
-    for (KSCategory *category in fetchedCategories) {
+    NSMutableArray *categoriesItems = [NSMutableArray array];
+//    NSArray *filteredArray = [NSArray array];
+    
+    NSPredicate *datePredicate = [NSPredicate predicateWithFormat:@"(SUBQUERY(transactions, $x, ($x.time >= %@) AND ($x.time <= %@)).@count > 0)", [dates firstObject], [dates lastObject]];
+    
+    NSFetchRequest *fetchRequest = [KSCategory MR_requestAllWithPredicate:datePredicate];
+    [fetchRequest setRelationshipKeyPathsForPrefetching:@[NSStringFromSelector(@selector(transactions))]];
+    
+    NSArray *categories = [fetchedCategories filteredArrayUsingPredicate:datePredicate];
+    
+    for (KSCategory *category in categories) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category.title = %@",category.title];
         
-        NSNumber *transactionSum = [KSTransaction MR_aggregateOperation:@"sum:"
-                                                            onAttribute:@"amount"
-                                                          withPredicate:predicate];
+        transactionSum = [KSTransaction MR_aggregateOperation:@"sum:"
+                                                  onAttribute:@"amount"
+                                                withPredicate:predicate];
+   
         totalAmount +=[transactionSum floatValue];
         
-        if (transactionSum.floatValue > kKSZeroSign) {
-            KSCategoryItem *item = [[KSCategoryItem alloc]initWithTitle:category.title
-                                                               iconName:category.imageName
-                                                                   type:category.transactionType
-                                                                  color:category.color
-                                                              andAmount:@0];
-            item.amount = transactionSum;
-            
-            [categoriesItems addObject:item];
+                    if (transactionSum.floatValue > kKSZeroSign) {
+                KSCategoryItem *item = [[KSCategoryItem alloc]initWithTitle:category.title
+                                                                   iconName:category.imageName
+                                                                       type:category.transactionType
+                                                                      color:category.color
+                                                                  andAmount:@0];
+                item.amount = transactionSum;
+                
+                
+                [categoriesItems addObject:item];
+ 
         }
     }
     

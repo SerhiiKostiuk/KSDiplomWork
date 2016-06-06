@@ -16,5 +16,6 @@ typedef void(^fetchCompletionHandler)(NSArray *categoriesItems, NSNumber *totalA
 + (void)preloadTransactionsCategoriesWithType:(transactionType)type completion:(void(^)(BOOL success))completion;
 
 + (void)loadCategoriesTransactionSumWithType:(transactionType)type
+                                betweenDates:(NSArray *)dates
                        withCompletionHandler:(fetchCompletionHandler)completionHandler;
 @end
