@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "VBPieChart.h"
 
 @interface KSPieChartViewController : UIViewController
-@property (weak, nonatomic) IBOutlet VBPieChart *pieChartView;
 
 @end
