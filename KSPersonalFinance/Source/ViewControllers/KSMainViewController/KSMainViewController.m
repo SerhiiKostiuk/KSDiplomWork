@@ -15,7 +15,6 @@
 #import "KSCategoryItem.h"
 #import "KSCategory.h"
 #import "KSConstants.h"
-#import "KSActivityIndicator.h"
 
 #import "KSMacro.h"
 #import "KSCoreDataManager.h"
@@ -34,7 +33,6 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *numpadLeading;
 
-@property (nonatomic, strong) KSActivityIndicator      *activityIndicator;
 @property (nonatomic, strong) KSCategoryViewController *categorySelectionVC;
 @property (nonatomic, strong) KSCategory               *currentCategory;
 
@@ -46,10 +44,6 @@
 - (void)appendInputWithString:(NSString *)stringToAppend;
 - (BOOL)isDotExist;
 - (CGFloat)getInputValue;
-
-
-
-
 
 @end
 
@@ -71,7 +65,8 @@
     [self hideNumpadView:YES animated:NO];
     
     self.calendarView.firstWeekday = 2;
-    self.calendarView.allowsMultipleSelection = YES;    
+    self.calendarView.allowsMultipleSelection = YES;
+
 }
 
 #pragma mark -
@@ -129,6 +124,7 @@
 }
 
 - (IBAction)changeTransactionType:(id)sender {
+//    self.button.selected = !self.button.selected;
     [self.categorySelectionVC changeTransactionType];
 }
 
