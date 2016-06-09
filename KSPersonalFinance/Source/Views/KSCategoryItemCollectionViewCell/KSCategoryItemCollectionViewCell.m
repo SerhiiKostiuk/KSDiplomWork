@@ -14,10 +14,15 @@
 #pragma mark - 
 #pragma mark Public
 
-- (void)setImageFromCategory:(KSCategory *)category {
+- (void)setTitleAndImageFromCategory:(KSCategory *)category {
     _categoryImageView.image = [UIImage imageNamed:category.imageName];
+    _collectionViewCellTitle.text = category.title;
 }
 
+-(void)prepareForReuse{
+    self.categorySumImageView.hidden = YES;
 
+    _categorySumLabel.text = @"";
+}
 
 @end

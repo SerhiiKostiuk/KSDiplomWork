@@ -12,7 +12,10 @@
 
 @interface KSCategoryItemCollectionViewCell : UICollectionViewCell
 @property (nonatomic, strong) IBOutlet UIImageView *categoryImageView;
+@property (weak, nonatomic) IBOutlet UILabel *categorySumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *collectionViewCellTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *categorySumImageView;
 
-- (void)setImageFromCategory:(KSCategory *)category;
+- (void)setTitleAndImageFromCategory:(KSCategory *)category;
 
 @end
