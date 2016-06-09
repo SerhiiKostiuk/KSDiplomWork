@@ -14,9 +14,9 @@
 #pragma mark - 
 #pragma mark Public
 
-- (void)presentAlertView {
+- (void)presentAlertViewWithMessage:(NSString *)message {
     UIAlertController * alert= [UIAlertController alertControllerWithTitle:nil
-                                                                   message:kKSAlertMessage
+                                                                   message:message
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:kKSAlertOkTitle

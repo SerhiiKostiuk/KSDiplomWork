@@ -10,6 +10,6 @@
 
 @interface UIViewController (KSExtensions)
 
-- (void)presentAlertView;
+- (void)presentAlertViewWithMessage:(NSString *)message;
 
 @end
