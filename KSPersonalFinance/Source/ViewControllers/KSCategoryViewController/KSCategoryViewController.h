@@ -18,9 +18,9 @@
 @interface KSCategoryViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, weak)   id <CategorySelectionDelegate> delegate;
 
-
-@property (nonatomic, readonly) transactionType           categoryType;
+@property (nonatomic, readonly) TransactionType           categoryType;
 
 -(void)changeTransactionType;
+- (void)showTodayTransaction;
 
 @end

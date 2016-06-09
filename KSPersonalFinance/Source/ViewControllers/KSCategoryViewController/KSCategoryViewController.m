@@ -12,17 +12,22 @@
 #import "KSCategory.h"
 #import "KSWeakifyMacro.h"
 #import "KSConstants.h"
+#import "KSCoreDataManager.h"
+#import "NSDate+Calendar.h"
+
 
 KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 
 @interface KSCategoryViewController ()
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, weak) IBOutlet UILabel          *categorySumLabel;
+@property (nonatomic, strong) KSCategoryItemCollectionViewCell *collectionViewCell;
 
 @property (nonatomic, strong)    NSArray            *categoryItems;
-@property (nonatomic, readwrite) transactionType    categoryType;
+@property (nonatomic, readwrite) TransactionType    categoryType;
+@property (nonatomic, strong) NSArray * todayCategoriesTransactions;
 
-- (void)fetchCategoriesWithType:(transactionType)type;
+
+- (void)fetchCategoriesWithType:(TransactionType)type;
 - (void)startObservingNotification;
 - (void)endObservingNotification;
 - (void)updateCategory;
@@ -47,13 +52,14 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
     self.categoryType = transactionTypeExpense;
 
     [self startObservingNotification];
-
+    
+    [self showTodayTransaction];
 }
 
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setCategoryType:(transactionType)categoryType {
+- (void)setCategoryType:(TransactionType)categoryType {
     _categoryType = categoryType;
     [self updateCategory];
 }
@@ -63,12 +69,26 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 
 - (void)changeTransactionType {
     self.categoryType = self.categoryType == transactionTypeExpense ? transactionTypeIncome : transactionTypeExpense;
+    [self showTodayTransaction];
+}
+
+- (void)showTodayTransaction {
+    NSDate *date = [NSDate date];
+    
+    NSDate *startDate = [NSDate dateWithYear:date.year month:date.month  day:date.day+1 hour:-21 minute:0 second:0];
+    NSDate *endDate = [NSDate dateWithYear:date.year month:date.month day:date.day+1 hour:+3 minute:0 second:0];
+    
+    NSArray *dates = @[startDate, endDate];
+    
+    [KSCoreDataManager loadCategoriesTransactionSumWithType:self.categoryType betweenDates:dates withCompletionHandler:^(NSArray *categoriesItems, NSNumber *totalAmount) {
+        self.todayCategoriesTransactions = categoriesItems;
+    }];
 }
 
 #pragma mark -
 #pragma mark Private
 
-- (void)fetchCategoriesWithType:(transactionType)type {
+- (void)fetchCategoriesWithType:(TransactionType)type {
     NSNumber *categoryType = [NSNumber numberWithInteger:type];
     
     NSArray *categories = [KSCategory MR_findByAttribute:kKSTransactionTypeKey withValue:categoryType];
@@ -118,13 +138,17 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
-                 cellForItemAtIndexPath:(NSIndexPath *)indexPath
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     KSCategoryItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kKSReusableCellName
                                                                                        forIndexPath:indexPath];
-//   set cell with image and title
-#warning thange the method 
-    [cell setImageFromCategory:self.categoryItems[indexPath.row]];
+    [cell setTitleAndImageFromCategory:self.categoryItems[indexPath.row]];
+    for (KSCategoryItem *item in self.todayCategoriesTransactions) {
+        if (cell.collectionViewCellTitle.text == item.title) {
+            cell.categorySumImageView.hidden = NO;
+            cell.categorySumLabel.text = [item.amount stringValue];
+        }
+    }
     
     return cell;
 }
