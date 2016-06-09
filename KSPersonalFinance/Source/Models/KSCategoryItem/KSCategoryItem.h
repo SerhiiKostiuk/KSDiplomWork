@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, transactionType) {
+typedef NS_ENUM(NSInteger, TransactionType) {
     transactionTypeExpense = 1,
     transactionTypeIncome
 };

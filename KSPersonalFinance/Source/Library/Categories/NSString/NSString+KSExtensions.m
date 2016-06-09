@@ -15,7 +15,7 @@
 #pragma mark -
 #pragma mark Public Class Methods
 
-+ (NSString *)stringFromType:(transactionType)type {
++ (NSString *)stringFromType:(TransactionType)type {
     return type == transactionTypeExpense ? kKSExpenseTypeName : kKSIncomeTypeName;
 }
 

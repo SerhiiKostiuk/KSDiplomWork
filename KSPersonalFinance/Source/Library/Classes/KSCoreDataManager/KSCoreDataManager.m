@@ -18,7 +18,7 @@
 #pragma mark - 
 #pragma mark Public Class Methods
 
-+ (void)preloadTransactionsCategoriesWithType:(transactionType)type completion:(void(^)(BOOL success))completion {
++ (void)preloadTransactionsCategoriesWithType:(TransactionType)type completion:(void(^)(BOOL success))completion {
     NSMutableArray *categories = [NSMutableArray arrayWithArray:[self categoriesWithType:transactionTypeExpense]];
     [categories addObjectsFromArray:[self categoriesWithType:transactionTypeIncome]];
     
@@ -43,7 +43,7 @@
     }];
 }
 
-+ (void)loadCategoriesTransactionSumWithType:(transactionType)type
++ (void)loadCategoriesTransactionSumWithType:(TransactionType)type
                                 betweenDates:(NSArray *)dates
                        withCompletionHandler:(fetchCompletionHandler)completionHandler
 {
@@ -55,7 +55,6 @@
     NSNumber *transactionSum = [NSNumber new];
     
     NSMutableArray *categoriesItems = [NSMutableArray array];
-//    NSArray *filteredArray = [NSArray array];
     
     NSPredicate *datePredicate = [NSPredicate predicateWithFormat:@"(SUBQUERY(transactions, $x, ($x.time >= %@) AND ($x.time <= %@)).@count > 0)", [dates firstObject], [dates lastObject]];
     
@@ -70,20 +69,20 @@
         transactionSum = [KSTransaction MR_aggregateOperation:@"sum:"
                                                   onAttribute:@"amount"
                                                 withPredicate:predicate];
-   
+        
         totalAmount +=[transactionSum floatValue];
         
-                    if (transactionSum.floatValue > kKSZeroSign) {
-                KSCategoryItem *item = [[KSCategoryItem alloc]initWithTitle:category.title
-                                                                   iconName:category.imageName
-                                                                       type:category.transactionType
-                                                                      color:category.color
-                                                                  andAmount:@0];
-                item.amount = transactionSum;
-                
-                
-                [categoriesItems addObject:item];
- 
+        if (transactionSum.floatValue > kKSZeroSign) {
+            KSCategoryItem *item = [[KSCategoryItem alloc]initWithTitle:category.title
+                                                               iconName:category.imageName
+                                                                   type:category.transactionType
+                                                                  color:category.color
+                                                              andAmount:@0];
+            item.amount = transactionSum;
+            
+            
+            [categoriesItems addObject:item];
+            
         }
     }
     
@@ -95,7 +94,7 @@
 #pragma mark -
 #pragma mark Private Class Methods
 
-+ (NSArray *)categoriesWithType:(transactionType)type {
++ (NSArray *)categoriesWithType:(TransactionType)type {
     NSString *fileName = type == transactionTypeExpense ? kKSExpenseCategoriesFileName : kKSIncomeCategoriesFileName;
     
     NSString *inputFile  = [[NSBundle mainBundle] pathForResource:fileName ofType:kKSFileType];

@@ -11,7 +11,7 @@
 
 @interface NSString (KSExtensions)
 
-+ (NSString *)stringFromType:(transactionType)type;
++ (NSString *)stringFromType:(TransactionType)type;
 
 + (NSString *)hexStringForColor:(UIColor *)color;
 

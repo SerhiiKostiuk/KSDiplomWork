@@ -13,7 +13,7 @@
 
 + (UIColor *)randomColor;
 
-+ (UIColor *)colorFromType:(transactionType)type;
++ (UIColor *)colorFromType:(TransactionType)type;
 
 + (UIColor *)colorWithHexString:(NSString *)hexString;
 

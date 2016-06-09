@@ -20,7 +20,7 @@
     return [colors objectAtIndex:randomColorIndex];
 }
 
-+ (UIColor *)colorFromType:(transactionType)type {
++ (UIColor *)colorFromType:(TransactionType)type {
     return type == transactionTypeExpense ? [UIColor redColor] : [UIColor  greenColor];
 }
 

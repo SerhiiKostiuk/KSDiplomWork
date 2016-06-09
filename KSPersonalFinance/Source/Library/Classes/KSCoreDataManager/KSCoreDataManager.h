@@ -13,9 +13,9 @@ typedef void(^fetchCompletionHandler)(NSArray *categoriesItems, NSNumber *totalA
 
 @interface KSCoreDataManager : NSObject
 
-+ (void)preloadTransactionsCategoriesWithType:(transactionType)type completion:(void(^)(BOOL success))completion;
++ (void)preloadTransactionsCategoriesWithType:(TransactionType)type completion:(void(^)(BOOL success))completion;
 
-+ (void)loadCategoriesTransactionSumWithType:(transactionType)type
++ (void)loadCategoriesTransactionSumWithType:(TransactionType)type
                                 betweenDates:(NSArray *)dates
                        withCompletionHandler:(fetchCompletionHandler)completionHandler;
 @end
