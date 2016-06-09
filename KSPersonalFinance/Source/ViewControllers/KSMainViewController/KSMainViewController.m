@@ -63,10 +63,11 @@
     }
     
     [self hideNumpadView:YES animated:NO];
-    
+//    [self.changeTransactionType setTitle: @"Расход" forState:UIControlStateNormal];
     self.calendarView.firstWeekday = 2;
+//    self.calendarView.allowsSelection = YES;
     self.calendarView.allowsMultipleSelection = YES;
-
+    [self selectAllTransactionsWithType:self.categorySelectionVC.categoryType];
 }
 
 #pragma mark -
@@ -106,16 +107,14 @@
             transaction.amount = @([self getInputValue]);
         }];
         
-#warning how to save selection of trancaction 
         [self.calendarView selectDate:[NSDate date]];
         self.inputTextField.text = @"";
         
+        [self.categorySelectionVC showTodayTransaction];
         [self hideNumpadView:YES animated:YES];
         
-//        self.categorySelectionVC.categorySumLabel.text = [KSCategoryItem.amount];
-        
     } else {
-        [self presentAlertView];
+        [self presentAlertViewWithMessage:kKSAlertNoTransactionMessage];
     }
 }
 
@@ -124,8 +123,11 @@
 }
 
 - (IBAction)changeTransactionType:(id)sender {
-//    self.button.selected = !self.button.selected;
+    self.changeTransactionType.selected = !self.changeTransactionType.selected;
+    
     [self.categorySelectionVC changeTransactionType];
+    
+    [self selectAllTransactionsWithType:self.categorySelectionVC.categoryType];
 }
 
 #pragma mark -
@@ -167,6 +169,20 @@
         [UIView animateWithDuration:0.5 animations:^{
             [self.view layoutIfNeeded];
         }];
+    }
+}
+
+- (void)selectAllTransactionsWithType:(TransactionType)type {
+    NSArray *transactions = [KSTransaction MR_findAll];
+    
+    for (KSTransaction *transaction in transactions) {
+        if ([transaction.category.transactionType integerValue] == type) {
+            [self.calendarView selectDate: transaction.time];
+        } else {
+            [self.calendarView deselectDate:transaction.time];
+        }
+        
+        
     }
 }
 
