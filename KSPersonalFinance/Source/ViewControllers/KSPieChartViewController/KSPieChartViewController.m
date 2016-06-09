@@ -15,8 +15,10 @@
 #import "KSCoreDataManager.h"
 #import "KSConstants.h"
 #import "VBPieChart.h"
+#import "HSDatePickerViewController.h"
 
 
+#import "UIViewController+KSExtensions.h"
 #import "UIColor+KSExtensions.h"
 #import "NSString+KSExtensions.h"
 #import "NSDate+Calendar.h"
@@ -24,15 +26,19 @@
 
 typedef void(^FetchCompletionHandler)(NSArray *fetchedCategories, NSNumber *totalAmount);
 
-@interface KSPieChartViewController () <UITableViewDataSource, UITableViewDelegate>
+typedef NS_ENUM(NSUInteger, ShowBy) {
+    ShowByDay,
+    ShowByMonth,
+    ShowByYear
+};
+
+@interface KSPieChartViewController () <UITableViewDataSource, UITableViewDelegate, HSDatePickerViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet VBPieChart         *pieChartView;
 @property (nonatomic, weak) IBOutlet UITableView        *tableView;
 @property (nonatomic, weak) IBOutlet UILabel            *transactionSumLabel;
-@property (nonatomic, weak) IBOutlet UILabel            *currentMonthLabel;
 @property (nonatomic, weak) IBOutlet UIButton           *selectDateButton;
-@property (nonatomic, weak) IBOutlet UITableView        *selectMonthTableView;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *tableViewHeight;
 @property (nonatomic, strong) CDatePickerViewEx         *monthAndYearPicker;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *dateSegmentedContol;
 
 @property (nonatomic, strong) KSCategoryViewController *categoryViewController;
 
@@ -46,12 +52,10 @@ typedef void(^FetchCompletionHandler)(NSArray *fetchedCategories, NSNumber *tota
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self updateTransactionsDataBetweenDates:[self selectCurrentMothDate]];
-    
-    [self presentChartView];
-    
-    self.tableViewHeight.constant = -310;
-
+    [self popViewContoller];
+   
+    self.dateSegmentedContol.selectedSegmentIndex = 1;
+    [self showCurrentMonthTransactions];
    }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -69,18 +73,58 @@ typedef void(^FetchCompletionHandler)(NSArray *fetchedCategories, NSNumber *tota
     }];
 
     self.transactionSumLabel.text = [NSString stringWithFormat:@"Total : %@", [self.totalAmount stringValue]];
+    
+        NSDate *currentDate = [NSDate date];
+    
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MMMM yyyy"];
+        NSString *stringFromDate = [formatter stringFromDate:currentDate];
+    
+        [self.selectDateButton setTitle:stringFromDate forState:UIControlStateNormal];
 }
 - (IBAction)selectDateButtonPressed:(UIButton *)sender {
+
     [self showDatePicker];
 }
 
-- (NSArray *)selectCurrentMothDate {
+- (IBAction)indexChanged:(UISegmentedControl *)sender {
+    switch (self.dateSegmentedContol.selectedSegmentIndex) {
+            case ShowByDay: {
+            HSDatePickerViewController *hsdpvc = [HSDatePickerViewController new];
+            hsdpvc.delegate = self;
+            [self presentViewController:hsdpvc animated:YES completion:nil];
+            }
+            
+            break;
+            
+        case ShowByMonth:
+            [self showCurrentMonthTransactions];
+            
+            break;
+            
+        case ShowByYear:
+            
+            break;
+            
+        default :
+            
+            break;
+    }
+}
+
+- (void)showCurrentMonthTransactions {
+    [self updateTransactionsDataBetweenDates:[self selectCurrentMonthDate]];
+    
+    [self presentChartView];
+}
+
+- (NSArray *)selectCurrentMonthDate {
     NSDate *date = [NSDate date];
     
     NSDate *startDate = [NSDate dateWithYear:date.year month:date.month  day:2 hour:-21 minute:0 second:0];
-    NSDate *endDate = [NSDate dateWithYear:date.year month:date.month day:date.day+1 hour:-21 minute:0 second:0];
+    NSDate *endDate = [NSDate dateWithYear:date.year month:date.month day:date.day+1 hour:+3 minute:0 second:0];
     
-    NSArray *dates = [NSArray arrayWithObjects:startDate,endDate, nil];
+    NSArray *dates = @[startDate,endDate];
     
     return dates;
 }
@@ -102,6 +146,8 @@ typedef void(^FetchCompletionHandler)(NSArray *fetchedCategories, NSNumber *tota
 - (void)hideMonthYearPicker {
     [self.monthAndYearPicker removeFromSuperview];
     
+    [self popViewContoller];
+    
 }
 
 - (void)confirmDateSelection {
@@ -114,39 +160,51 @@ typedef void(^FetchCompletionHandler)(NSArray *fetchedCategories, NSNumber *tota
     
     [self updateTransactionsDataBetweenDates:dates];
     [self presentChartView];
-    [self.monthAndYearPicker removeFromSuperview];
 
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMMM yyyy"];
+    NSString *stringFromDate = [formatter stringFromDate:selectedDate];
+    
+    [self.selectDateButton setTitle:stringFromDate forState:UIControlStateNormal];
+    
+    [self hideMonthYearPicker];
 }
-
-//- (void)
 
 - (void)popViewContoller {
     UIImage *backImage = [UIImage imageNamed:@"back_"];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage: backImage style:UIBarButtonItemStylePlain target:self.navigationController action:@selector(popViewControllerAnimated:)];
+    
+    self.navigationItem.rightBarButtonItem = nil;
 }
-#warning need to be reload after chosen date
+
 - (void)presentChartView {
-    VBPieChart *chart = [[VBPieChart alloc] initWithFrame:CGRectMake(50, 50, 300, 300)];
+    VBPieChart *chart = [[VBPieChart alloc] initWithFrame:CGRectMake(20, 50, 300, 300)];
     chart.startAngle = M_PI+M_PI_2;
     chart.holeRadiusPrecent = 0.5;
-    [self.view addSubview:chart];
-    [chart setLabelsPosition:VBLabelsPositionNone];
-    [chart setLabelBlock:^CGPoint( CALayer *layer, NSInteger index) {
-        CGPoint p = CGPointMake(sin(-index/10.0*M_PI)*50+50, index*30);
-        return p;
-    }];
-    NSMutableArray *chartValues = [NSMutableArray array];
-    
-    for (KSCategoryItem *category in self.categories) {
-         NSDictionary *chartValue = @{@"name":[category valueForKey:@"title"],
-                                      @"value":[category valueForKey:@"amount"],
-                                      @"color":[UIColor colorWithHexString:[category valueForKey:@"color"]]
-                                      };
+    if (self.categories.count > 0 ) {
+        [self.pieChartView addSubview:chart];
+        [chart setLabelsPosition:VBLabelsPositionNone];
+        [chart setLabelBlock:^CGPoint( CALayer *layer, NSInteger index) {
+            CGPoint p = CGPointMake(sin(-index/10.0*M_PI)*50+50, index*30);
+            return p;
+        }];
+        NSMutableArray *chartValues = [NSMutableArray array];
         
-        [chartValues addObject:chartValue];
+        for (KSCategoryItem *category in self.categories) {
+            NSDictionary *chartValue = @{@"name":[category valueForKey:@"title"],
+                                         @"value":[category valueForKey:@"amount"],
+                                         @"color":[UIColor colorWithHexString:[category valueForKey:@"color"]]
+                                         };
+            
+            [chartValues addObject:chartValue];
+        }
+        
+        [chart setChartValues:chartValues animation:YES];
+    } else {
+        [self presentAlertViewWithMessage:kKSAlertNoTransactionsMessage];
+#warning can't remove chart from superView
+        chart.hidden = YES;
     }
-   
-    [chart setChartValues:chartValues animation:YES];
 }
 
 - (void)configuratePieChartTableViewCell:(KSPieChartTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
