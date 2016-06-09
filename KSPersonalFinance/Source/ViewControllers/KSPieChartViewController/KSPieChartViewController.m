@@ -44,6 +44,7 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
 
 @property (nonatomic, strong) NSArray  *categories;
 @property (nonatomic, strong) NSNumber *totalAmount;
+@property (nonatomic, strong) NSDate   *dateToShow;
 
 @end
 
@@ -73,7 +74,7 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
     }];
 
     self.transactionSumLabel.text = [NSString stringWithFormat:@"Total : %@", [self.totalAmount stringValue]];
-    
+#warning put this in to seperate method --\/
         NSDate *currentDate = [NSDate date];
     
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -83,17 +84,75 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
         [self.selectDateButton setTitle:stringFromDate forState:UIControlStateNormal];
 }
 - (IBAction)selectDateButtonPressed:(UIButton *)sender {
+    switch (self.dateSegmentedContol.selectedSegmentIndex) {
+            case ShowByDay: {
+                HSDatePickerViewController *hsdpvc = [HSDatePickerViewController new];
+                hsdpvc.delegate = self;
+                [self presentViewController:hsdpvc animated:YES completion:nil];
+                [self.selectDateButton setTitle:[self formatDate:_dateToShow] forState:UIControlStateNormal];
 
-    [self showDatePicker];
+            }
+            
+            break;
+            
+            case ShowByMonth:
+            [self showDatePicker];
+            [self.selectDateButton setTitle:[self formatDate:_dateToShow] forState:UIControlStateNormal];
+
+
+            
+            break;
+            
+            case ShowByYear:
+            
+            break;
+            
+        default :
+            
+            break;
+    }
+
+}
+
+- (NSString *)formatDate:(NSDate *)date {
+    static NSDateFormatter *dayFormatter   = nil;
+    static NSDateFormatter *monthFormatter = nil;
+    static NSDateFormatter *yearFormatter  = nil;
+    
+    switch (self.dateSegmentedContol.selectedSegmentIndex) {
+            case ShowByDay: {
+                if (!dayFormatter) {
+                    dayFormatter = [NSDateFormatter new];
+                    [dayFormatter setDateFormat:@"d MMMM YYYY"];
+                }
+                return [dayFormatter stringFromDate:date];
+            }
+            case ShowByMonth: {
+                if (!monthFormatter) {
+                    monthFormatter = [NSDateFormatter new];
+                    [monthFormatter setDateFormat:@"MMMM YYYY"];
+                    
+//                    [self setRuMonthSymbols:monthFormatter];
+                }
+                return [monthFormatter stringFromDate:date];
+            }
+            case ShowByYear: {
+                if (!yearFormatter) {
+                    yearFormatter = [NSDateFormatter new];
+                    [yearFormatter setDateFormat:@"YYYY"];
+                }
+                return [yearFormatter stringFromDate:date];
+            }
+        default:
+            break;
+    }
+    return nil;
 }
 
 - (IBAction)indexChanged:(UISegmentedControl *)sender {
     switch (self.dateSegmentedContol.selectedSegmentIndex) {
-            case ShowByDay: {
-            HSDatePickerViewController *hsdpvc = [HSDatePickerViewController new];
-            hsdpvc.delegate = self;
-            [self presentViewController:hsdpvc animated:YES completion:nil];
-            }
+            case ShowByDay:
+            // showCurrentDayTransactions
             
             break;
             
@@ -112,7 +171,7 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
     }
 }
 
-- (void)showCurrentMonthTransactions {
+- (void)showCurrentMonthTransactions {  // make a switch case from this method
     [self updateTransactionsDataBetweenDates:[self selectCurrentMonthDate]];
     
     [self presentChartView];
@@ -150,6 +209,29 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
     
 }
 
+- (NSArray *)getDatesForLoadCategoriesData {
+    NSArray *dates;
+    
+    switch (self.dateSegmentedContol.selectedSegmentIndex) {
+            case ShowByDay: {
+//                dates = [_dateToShow getStartAndEndDatesFromDate];
+                break;
+            }
+            case ShowByMonth: {
+                dates = [self selectCurrentMonthDate];
+                break;
+            }
+            case ShowByYear: {
+//                dates = [_dateToShow startAndEndDatesOfYear];
+                break;
+            }
+        default:
+            break;
+    }
+    
+    return dates;
+}
+
 - (void)confirmDateSelection {
     NSDate *selectedDate = self.monthAndYearPicker.date;
     NSLog(@"%@", selectedDate);
@@ -161,11 +243,8 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
     [self updateTransactionsDataBetweenDates:dates];
     [self presentChartView];
 
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MMMM yyyy"];
-    NSString *stringFromDate = [formatter stringFromDate:selectedDate];
-    
-    [self.selectDateButton setTitle:stringFromDate forState:UIControlStateNormal];
+    [self.selectDateButton setTitle:[self formatDate:_dateToShow] forState:UIControlStateNormal];
+
     
     [self hideMonthYearPicker];
 }
@@ -225,6 +304,10 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
     [self configuratePieChartTableViewCell:cell forRowAtIndexPath:indexPath];
     
     return cell;
+}
+
+- (void)hsDatePickerPickedDate:(NSDate *)date {
+    self.dateToShow = date;
 }
 
 @end
