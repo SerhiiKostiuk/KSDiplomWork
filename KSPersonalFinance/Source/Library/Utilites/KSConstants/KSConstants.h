@@ -23,7 +23,10 @@ KSConstString(kKSNoAlertTitle,  @"No");
 
 KSConstString(kKSTransactionTypeKey, @"transactionType");
 
-KSConstString(kKSAlertMessage, @"Enter Expense!");
+KSConstString(kKSAlertNoTransactionMessage, @"Введите Трансакцию!");
+KSConstString(kKSAlertNoTransactionsMessage, @"Трансакции Отсутствуют!");
+
+
 KSConstString(kKSAlertOkTitle, @"Ok");
 
 KSConstString(kKSExpenseTypeName, @"Expense");
