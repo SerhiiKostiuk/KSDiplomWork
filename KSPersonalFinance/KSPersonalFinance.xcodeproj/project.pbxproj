@@ -32,6 +32,8 @@
 		CDC8F1B01CF76D4300860A25 /* KSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC8F1AA1CF76D4300860A25 /* KSCategory.m */; };
 		CDC8F1B11CF76D4300860A25 /* KSTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC8F1AC1CF76D4300860A25 /* KSTransaction+CoreDataProperties.m */; };
 		CDC8F1B21CF76D4300860A25 /* KSTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC8F1AE1CF76D4300860A25 /* KSTransaction.m */; };
+		CDFD4B1F1D0F5F5E00743C8C /* KSYearPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFD4B1E1D0F5F5E00743C8C /* KSYearPickerView.m */; };
+		CDFD4B211D0F5F7D00743C8C /* KSYearPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDFD4B201D0F5F7D00743C8C /* KSYearPickerView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -97,6 +99,9 @@
 		CDC8F1AC1CF76D4300860A25 /* KSTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
 		CDC8F1AD1CF76D4300860A25 /* KSTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSTransaction.h; sourceTree = "<group>"; };
 		CDC8F1AE1CF76D4300860A25 /* KSTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSTransaction.m; sourceTree = "<group>"; };
+		CDFD4B1D1D0F5F5E00743C8C /* KSYearPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYearPickerView.h; sourceTree = "<group>"; };
+		CDFD4B1E1D0F5F5E00743C8C /* KSYearPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYearPickerView.m; sourceTree = "<group>"; };
+		CDFD4B201D0F5F7D00743C8C /* KSYearPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KSYearPickerView.xib; sourceTree = "<group>"; };
 		F718635A9AE65DDD223DCC38 /* Pods-KSPersonalFinance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSPersonalFinance.release.xcconfig"; path = "Pods/Target Support Files/Pods-KSPersonalFinance/Pods-KSPersonalFinance.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -324,6 +329,7 @@
 		C5F17B5C1CEC9B7C0049AA86 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CDFD4B1C1D0F5F5E00743C8C /* KSYearPickerView */,
 				C5F17B601CEC9BE50049AA86 /* KSCategoryItemCollectionViewCell */,
 				CDB593821CFE186900B3A6C3 /* KSPieChartTableViewCell */,
 			);
@@ -401,6 +407,16 @@
 			path = NSString;
 			sourceTree = "<group>";
 		};
+		CDFD4B1C1D0F5F5E00743C8C /* KSYearPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				CDFD4B1D1D0F5F5E00743C8C /* KSYearPickerView.h */,
+				CDFD4B1E1D0F5F5E00743C8C /* KSYearPickerView.m */,
+				CDFD4B201D0F5F7D00743C8C /* KSYearPickerView.xib */,
+			);
+			path = KSYearPickerView;
+			sourceTree = "<group>";
+		};
 		E84F281BC22EBF308E5E7C3E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +491,7 @@
 				C5286F521CED0CBC00B12E7D /* LaunchScreen.storyboard in Resources */,
 				C5286F551CED0CE000B12E7D /* Images.xcassets in Resources */,
 				C5286F311CED092700B12E7D /* expense.plist in Resources */,
+				CDFD4B211D0F5F7D00743C8C /* KSYearPickerView.xib in Resources */,
 				C5286F531CED0CBC00B12E7D /* Main.storyboard in Resources */,
 				C5286F4C1CED0B4C00B12E7D /* income.plist in Resources */,
 			);
@@ -542,6 +559,7 @@
 				CDB5938E1CFE36BA00B3A6C3 /* UIViewController+KSExtensions.m in Sources */,
 				CDC8F1B21CF76D4300860A25 /* KSTransaction.m in Sources */,
 				CDC8F1B11CF76D4300860A25 /* KSTransaction+CoreDataProperties.m in Sources */,
+				CDFD4B1F1D0F5F5E00743C8C /* KSYearPickerView.m in Sources */,
 				CDB593811CFE185F00B3A6C3 /* KSPieChartTableViewCell.m in Sources */,
 				CD4E02961D0313AE0074E5EA /* CDatePickerViewEx.m in Sources */,
 				C59A77F71CEFAEC80070E3B1 /* KSPieChartViewController.m in Sources */,

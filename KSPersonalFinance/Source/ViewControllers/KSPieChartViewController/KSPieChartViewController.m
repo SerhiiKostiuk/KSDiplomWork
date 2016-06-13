@@ -16,6 +16,8 @@
 #import "KSConstants.h"
 #import "VBPieChart.h"
 #import "HSDatePickerViewController.h"
+#import "KSYearPickerView.h"
+
 
 
 #import "UIViewController+KSExtensions.h"
@@ -32,19 +34,22 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
     ShowByYear
 };
 
-@interface KSPieChartViewController () <UITableViewDataSource, UITableViewDelegate, HSDatePickerViewControllerDelegate>
-@property (weak, nonatomic) IBOutlet VBPieChart         *pieChartView;
+@interface KSPieChartViewController () <UITableViewDataSource, UITableViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate, HSDatePickerViewControllerDelegate>
+@property (strong, nonatomic) IBOutlet VBPieChart         *pieChartView;
 @property (nonatomic, weak) IBOutlet UITableView        *tableView;
 @property (nonatomic, weak) IBOutlet UILabel            *transactionSumLabel;
 @property (nonatomic, weak) IBOutlet UIButton           *selectDateButton;
 @property (nonatomic, strong) CDatePickerViewEx         *monthAndYearPicker;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *dateSegmentedContol;
+//@property (nonatomic, strong) UIPickerView              *yearPickerView;
+
 
 @property (nonatomic, strong) KSCategoryViewController *categoryViewController;
 
 @property (nonatomic, strong) NSArray  *categories;
 @property (nonatomic, strong) NSNumber *totalAmount;
 @property (nonatomic, strong) NSDate   *dateToShow;
+@property (nonatomic, strong) NSMutableArray  *years;
 
 @end
 
@@ -53,8 +58,10 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pieChartView.frame = CGRectMake(100, 50, 300, 300);
+    
     [self popViewContoller];
-   
+    self.dateToShow = [NSDate date];
     self.dateSegmentedContol.selectedSegmentIndex = 1;
     [self showCurrentMonthTransactions];
    }
@@ -83,27 +90,31 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
     
         [self.selectDateButton setTitle:stringFromDate forState:UIControlStateNormal];
 }
+
 - (IBAction)selectDateButtonPressed:(UIButton *)sender {
     switch (self.dateSegmentedContol.selectedSegmentIndex) {
-            case ShowByDay: {
-                HSDatePickerViewController *hsdpvc = [HSDatePickerViewController new];
-                hsdpvc.delegate = self;
-                [self presentViewController:hsdpvc animated:YES completion:nil];
-                [self.selectDateButton setTitle:[self formatDate:_dateToShow] forState:UIControlStateNormal];
-
-            }
-            
-            break;
-            
-            case ShowByMonth:
-            [self showDatePicker];
+        case ShowByDay: {
+            HSDatePickerViewController *hsdpvc = [HSDatePickerViewController new];
+            hsdpvc.delegate = self;
+            [self presentViewController:hsdpvc animated:YES completion:nil];
             [self.selectDateButton setTitle:[self formatDate:_dateToShow] forState:UIControlStateNormal];
-
-
+            
+        }
             
             break;
             
-            case ShowByYear:
+        case ShowByMonth:
+            [self showDatePicker];
+            
+            break;
+            
+        case ShowByYear:
+        {
+            KSYearPickerView *picker = [[KSYearPickerView alloc]initWithFrame:CGRectMake(40, 50, self.view.frame.size.width-2*40, 350)];
+            [picker selectToday];
+            [self.view addSubview:picker];
+            
+        }
             
             break;
             
@@ -111,7 +122,7 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
             
             break;
     }
-
+    
 }
 
 - (NSString *)formatDate:(NSDate *)date {
@@ -151,8 +162,8 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
 
 - (IBAction)indexChanged:(UISegmentedControl *)sender {
     switch (self.dateSegmentedContol.selectedSegmentIndex) {
-            case ShowByDay:
-            // showCurrentDayTransactions
+        case ShowByDay:
+            [self showCurrentDayTransactions];
             
             break;
             
@@ -162,7 +173,6 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
             break;
             
         case ShowByYear:
-            
             break;
             
         default :
@@ -171,11 +181,30 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
     }
 }
 
+- (void)showCurrentDayTransactions {
+    [self updateTransactionsDataBetweenDates:[self selectCurrentDayDate]];
+    
+    [self presentChartView];
+    
+}
+
 - (void)showCurrentMonthTransactions {  // make a switch case from this method
     [self updateTransactionsDataBetweenDates:[self selectCurrentMonthDate]];
     
     [self presentChartView];
 }
+
+- (NSArray *)selectCurrentDayDate {
+    NSDate *date = [NSDate date];
+    
+    NSDate *startDate = [NSDate dateWithYear:date.year month:date.month  day:date.day hour:-21 minute:0 second:0];
+    NSDate *endDate = [NSDate dateWithYear:date.year month:date.month day:date.day hour:+3 minute:0 second:0];
+    
+    NSArray *dates = @[startDate,endDate];
+    
+    return dates;
+}
+
 
 - (NSArray *)selectCurrentMonthDate {
     NSDate *date = [NSDate date];
@@ -192,6 +221,7 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
     CGRect pickerFrame = CGRectMake(40, 50, self.view.frame.size.width-2*40, 350);
     CDatePickerViewEx *datePicker = [[CDatePickerViewEx alloc] initWithFrame:pickerFrame];
     datePicker.backgroundColor = [UIColor grayColor];
+    datePicker.showsSelectionIndicator = YES;
     [self.view addSubview:datePicker];
     
     self.monthAndYearPicker = datePicker;
@@ -243,7 +273,7 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
     [self updateTransactionsDataBetweenDates:dates];
     [self presentChartView];
 
-    [self.selectDateButton setTitle:[self formatDate:_dateToShow] forState:UIControlStateNormal];
+    [self.selectDateButton setTitle:[self formatDate:selectedDate] forState:UIControlStateNormal];
 
     
     [self hideMonthYearPicker];
@@ -257,16 +287,9 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
 }
 
 - (void)presentChartView {
-    VBPieChart *chart = [[VBPieChart alloc] initWithFrame:CGRectMake(20, 50, 300, 300)];
-    chart.startAngle = M_PI+M_PI_2;
-    chart.holeRadiusPrecent = 0.5;
-    if (self.categories.count > 0 ) {
-        [self.pieChartView addSubview:chart];
-        [chart setLabelsPosition:VBLabelsPositionNone];
-        [chart setLabelBlock:^CGPoint( CALayer *layer, NSInteger index) {
-            CGPoint p = CGPointMake(sin(-index/10.0*M_PI)*50+50, index*30);
-            return p;
-        }];
+    self.pieChartView.startAngle = M_PI+M_PI_2;
+    self.pieChartView.holeRadiusPrecent = 0.5;
+
         NSMutableArray *chartValues = [NSMutableArray array];
         
         for (KSCategoryItem *category in self.categories) {
@@ -277,12 +300,15 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
             
             [chartValues addObject:chartValue];
         }
-        
-        [chart setChartValues:chartValues animation:YES];
+    
+    if (self.categories.count > 0) {
+        self.pieChartView.hidden = NO;
+        [self.pieChartView setChartValues:chartValues animation:YES];
+        [self.tableView reloadData];
     } else {
         [self presentAlertViewWithMessage:kKSAlertNoTransactionsMessage];
-#warning can't remove chart from superView
-        chart.hidden = YES;
+        self.pieChartView.hidden = YES;
+        [self.tableView reloadData];
     }
 }
 
@@ -307,7 +333,28 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
 }
 
 - (void)hsDatePickerPickedDate:(NSDate *)date {
-    self.dateToShow = date;
+    NSDate *startDate = [NSDate dateWithYear:date.year month:date.month  day:date.day hour:date.hour minute:date.minute second:0];
+    NSDate *endDate = [NSDate dateWithYear:date.year month:date.month day:date.day+1 hour:date.hour minute:date.minute second:0];
+    
+    NSArray *dates = [NSArray arrayWithObjects:startDate,endDate, nil];
+    
+    [self updateTransactionsDataBetweenDates:dates];
+    
+    [self presentChartView];
+}
+
+- (NSInteger)numberOfComponentsInPickerView: (UIPickerView*)thePickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.years count];
+}
+- (NSString *)pickerView:(UIPickerView *)thePickerView
+             titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [self.years objectAtIndex:row];
 }
 
 @end
