@@ -98,16 +98,34 @@
 
 - (IBAction)saveAmount:(id)sender {
     if (self.inputTextField.text.length > kKSZeroSign) {
+        
+        NSString *year   = @"2016";
+        NSString *month  = @"5";
+        NSString *day    = @"15";
+        NSString *hour   = @"13";
+        NSString *minute = @"32";
+        
+        NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+        dateComponents.year   = [year intValue];
+        dateComponents.month  = [month intValue];
+        dateComponents.day    = [day intValue];
+        dateComponents.hour   = [hour intValue];
+        dateComponents.minute = [minute intValue];
+        
+        NSDate *date = [[NSCalendar currentCalendar] dateFromComponents:dateComponents];
+        NSLog(@"date: %@", date);
+        
+        
         [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
             KSTransaction *transaction = [KSTransaction MR_createEntityInContext:localContext];
             
             transaction.category = [self.currentCategory MR_inContext:localContext];
             
-            transaction.time = [NSDate date];
+            transaction.time = date;
             transaction.amount = @([self getInputValue]);
         }];
         
-        [self.calendarView selectDate:[NSDate date]];
+        [self.calendarView selectDate:date];
         self.inputTextField.text = @"";
         
         [self.categorySelectionVC showTodayTransaction];
