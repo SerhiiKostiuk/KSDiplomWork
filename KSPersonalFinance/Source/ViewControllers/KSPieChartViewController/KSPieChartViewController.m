@@ -16,7 +16,7 @@
 #import "KSConstants.h"
 #import "VBPieChart.h"
 #import "HSDatePickerViewController.h"
-#import "KSYearPickerView.h"
+#import "KSYearPickerViewController.h"
 
 
 
@@ -34,7 +34,7 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
     ShowByYear
 };
 
-@interface KSPieChartViewController () <UITableViewDataSource, UITableViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate, HSDatePickerViewControllerDelegate>
+@interface KSPieChartViewController () <UITableViewDataSource, UITableViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate, HSDatePickerViewControllerDelegate, KSYearPickerViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet VBPieChart         *pieChartView;
 @property (nonatomic, weak) IBOutlet UITableView        *tableView;
 @property (nonatomic, weak) IBOutlet UILabel            *transactionSumLabel;
@@ -110,9 +110,11 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
             
         case ShowByYear:
         {
-            KSYearPickerView *picker = [[KSYearPickerView alloc]initWithFrame:CGRectMake(40, 50, self.view.frame.size.width-2*40, 350)];
-            [picker selectToday];
-            [self.view addSubview:picker];
+            KSYearPickerViewController *picker = [[KSYearPickerViewController alloc]init];
+            picker.delegate = self;
+            [self presentViewController:picker animated:YES completion:^{
+                [picker selectToday];
+            }];
             
         }
             
@@ -342,6 +344,18 @@ typedef NS_ENUM(NSUInteger, ShowBy) {
     
     [self presentChartView];
 }
+
+- (void)KSYearPickerSelectedDate:(NSDate *)date {
+    NSDate *startDate = [NSDate dateWithYear:date.year month:date.month day:date.day+1];
+    NSDate *endDate = [NSDate dateWithYear:date.year+1 month:date.month day:date.day];
+    
+    NSArray *dates = [NSArray arrayWithObjects:startDate,endDate, nil];
+    
+    [self updateTransactionsDataBetweenDates:dates];
+    
+    [self presentChartView];
+}
+
 
 - (NSInteger)numberOfComponentsInPickerView: (UIPickerView*)thePickerView {
     return 1;
