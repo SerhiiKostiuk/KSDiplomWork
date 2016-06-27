@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KSYearPickerViewController">
+            <connections>
+                <outlet property="backButton" destination="Whw-pL-brT" id="b8A-OJ-2fO"/>
+                <outlet property="confirmButton" destination="Nc4-ha-F5v" id="owz-Qp-NrS"/>
+                <outlet property="pickerView" destination="IKV-dD-uVT" id="BMW-LN-Zok"/>
+                <outlet property="view" destination="bcI-Fk-d9C" id="si8-BK-73h"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="bcI-Fk-d9C">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IKV-dD-uVT">
+                    <rect key="frame" x="40" y="120" width="225" height="270"/>
+                    <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="270" id="NAp-RP-xgS"/>
+                        <constraint firstAttribute="width" constant="225" id="PNI-NY-h7E"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="j6U-tZ-Uja"/>
+                        <outlet property="delegate" destination="-1" id="pyn-Bl-Vpg"/>
+                    </connections>
+                </pickerView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whw-pL-brT">
+                    <rect key="frame" x="50" y="343" width="64" height="30"/>
+                    <state key="normal" title="Cancel"/>
+                    <connections>
+                        <action selector="cancel:" destination="-1" eventType="touchUpInside" id="jwq-Fv-tcX"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nc4-ha-F5v">
+                    <rect key="frame" x="165" y="336" width="89" height="43"/>
+                    <state key="normal" title="set Date"/>
+                    <connections>
+                        <action selector="confirmDate:" destination="-1" eventType="touchUpInside" id="qwU-OX-iKB"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="IKV-dD-uVT" firstAttribute="leading" secondItem="bcI-Fk-d9C" secondAttribute="leading" constant="40" id="X6Q-hi-AIC"/>
+                <constraint firstItem="IKV-dD-uVT" firstAttribute="top" secondItem="bcI-Fk-d9C" secondAttribute="top" constant="120" id="dYh-5K-18W"/>
+                <constraint firstAttribute="bottom" secondItem="IKV-dD-uVT" secondAttribute="bottom" constant="178" id="rAR-Xa-OQu"/>
+            </constraints>
+            <point key="canvasLocation" x="517" y="362"/>
+        </view>
+    </objects>
+</document>
