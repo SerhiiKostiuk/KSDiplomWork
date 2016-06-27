@@ -1,6 +1,10 @@
 PODS:
+  - Charts (2.2.4):
+    - Charts/Core (= 2.2.4)
+  - Charts/Core (2.2.4)
   - DGActivityIndicatorView (2.0)
   - FSCalendar (2.1.1)
+  - HMSegmentedControl (1.5.2)
   - HSDatePickerViewController (1.0.4)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
@@ -9,21 +13,25 @@ PODS:
   - VBPieChart (1.2.0)
 
 DEPENDENCIES:
+  - Charts
   - DGActivityIndicatorView
   - FSCalendar
+  - HMSegmentedControl
   - HSDatePickerViewController (~> 1.0)
   - MagicalRecord
   - NSDate+Calendar
   - VBPieChart (~> 1.2)
 
 SPEC CHECKSUMS:
+  Charts: a9e735c83c6d376ade20f6612dcf0ba217394a49
   DGActivityIndicatorView: 52875b025a6ccf6a431a905285c12e2bb95eb559
   FSCalendar: 04dc531f06fbde8a8e5b7394e9d4edebd45a591f
+  HMSegmentedControl: 83b9686022d2176fb6457d2bdb61e5d6393fed7d
   HSDatePickerViewController: 5a72b71f8c3b10e76f2c28a898f8572b551432a6
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   NSDate+Calendar: 4aa9f6eb520bdbe7cfd82fbf6c7d35b9725c8188
   VBPieChart: 7d46553bcb9de13afee366acb84d3afcda536929
 
-PODFILE CHECKSUM: d01594cc5ab7b70694983f642c149a7a66ecd5c3
+PODFILE CHECKSUM: 355a07ae66668d1f5e621c9f364a552469ef365d
 
 COCOAPODS: 1.0.0

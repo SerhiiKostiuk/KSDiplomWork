@@ -10,8 +10,6 @@
 		841C365E64F897D8585D329D /* Pods_KSPersonalFinance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5006784EE6BD687F155C67C5 /* Pods_KSPersonalFinance.framework */; };
 		C5286F311CED092700B12E7D /* expense.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5286F301CED092700B12E7D /* expense.plist */; };
 		C5286F4C1CED0B4C00B12E7D /* income.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5286F4B1CED0B4C00B12E7D /* income.plist */; };
-		C5286F521CED0CBC00B12E7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5286F4E1CED0CBC00B12E7D /* LaunchScreen.storyboard */; };
-		C5286F531CED0CBC00B12E7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5286F501CED0CBC00B12E7D /* Main.storyboard */; };
 		C5286F551CED0CE000B12E7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5286F541CED0CE000B12E7D /* Images.xcassets */; };
 		C59A77EF1CEFAD9E0070E3B1 /* KSCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59A77EE1CEFAD9E0070E3B1 /* KSCategoryViewController.m */; };
 		C59A77F31CEFAE4E0070E3B1 /* KSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59A77F21CEFAE4E0070E3B1 /* KSMainViewController.m */; };
@@ -23,6 +21,9 @@
 		C5F17B631CEC9BE50049AA86 /* KSCategoryItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F17B621CEC9BE50049AA86 /* KSCategoryItemCollectionViewCell.m */; };
 		C5F17B671CECA0040049AA86 /* KSCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F17B661CECA0040049AA86 /* KSCategoryItem.m */; };
 		CD4E02961D0313AE0074E5EA /* CDatePickerViewEx.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4E02951D0313AE0074E5EA /* CDatePickerViewEx.m */; };
+		CDAF064F1D1C8223007E35BA /* KSLoginParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAF064E1D1C8223007E35BA /* KSLoginParentViewController.m */; };
+		CDAF06551D1C8280007E35BA /* KSSigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAF06531D1C8280007E35BA /* KSSigninViewController.m */; };
+		CDAF065A1D1C8299007E35BA /* KSSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAF06581D1C8299007E35BA /* KSSignupViewController.m */; };
 		CDB593741CFD5E2C00B3A6C3 /* KSCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB593731CFD5E2C00B3A6C3 /* KSCoreDataManager.m */; };
 		CDB5937E1CFE09A600B3A6C3 /* UIColor+KSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB5937D1CFE09A600B3A6C3 /* UIColor+KSExtensions.m */; };
 		CDB593811CFE185F00B3A6C3 /* KSPieChartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB593801CFE185F00B3A6C3 /* KSPieChartTableViewCell.m */; };
@@ -32,8 +33,11 @@
 		CDC8F1B01CF76D4300860A25 /* KSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC8F1AA1CF76D4300860A25 /* KSCategory.m */; };
 		CDC8F1B11CF76D4300860A25 /* KSTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC8F1AC1CF76D4300860A25 /* KSTransaction+CoreDataProperties.m */; };
 		CDC8F1B21CF76D4300860A25 /* KSTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC8F1AE1CF76D4300860A25 /* KSTransaction.m */; };
-		CDFD4B1F1D0F5F5E00743C8C /* KSYearPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFD4B1E1D0F5F5E00743C8C /* KSYearPickerView.m */; };
-		CDFD4B211D0F5F7D00743C8C /* KSYearPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDFD4B201D0F5F7D00743C8C /* KSYearPickerView.xib */; };
+		CDD602B41D1C60620015D5DC /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD602B31D1C60620015D5DC /* CAPSPageMenu.m */; };
+		CDD602BB1D1C74040015D5DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5286F4E1CED0CBC00B12E7D /* LaunchScreen.storyboard */; };
+		CDD602BC1D1C74040015D5DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5286F501CED0CBC00B12E7D /* Main.storyboard */; };
+		CDFD4B1F1D0F5F5E00743C8C /* KSYearPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFD4B1E1D0F5F5E00743C8C /* KSYearPickerViewController.m */; };
+		CDFD4B211D0F5F7D00743C8C /* KSYearPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDFD4B201D0F5F7D00743C8C /* KSYearPickerViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,6 +84,12 @@
 		C5F17B661CECA0040049AA86 /* KSCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KSCategoryItem.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CD4E02941D0313AE0074E5EA /* CDatePickerViewEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDatePickerViewEx.h; sourceTree = "<group>"; };
 		CD4E02951D0313AE0074E5EA /* CDatePickerViewEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDatePickerViewEx.m; sourceTree = "<group>"; };
+		CDAF064D1D1C8223007E35BA /* KSLoginParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSLoginParentViewController.h; sourceTree = "<group>"; };
+		CDAF064E1D1C8223007E35BA /* KSLoginParentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSLoginParentViewController.m; sourceTree = "<group>"; };
+		CDAF06521D1C8280007E35BA /* KSSigninViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSSigninViewController.h; sourceTree = "<group>"; };
+		CDAF06531D1C8280007E35BA /* KSSigninViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSSigninViewController.m; sourceTree = "<group>"; };
+		CDAF06571D1C8299007E35BA /* KSSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSSignupViewController.h; sourceTree = "<group>"; };
+		CDAF06581D1C8299007E35BA /* KSSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSSignupViewController.m; sourceTree = "<group>"; };
 		CDB593721CFD5E2C00B3A6C3 /* KSCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCoreDataManager.h; sourceTree = "<group>"; };
 		CDB593731CFD5E2C00B3A6C3 /* KSCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KSCoreDataManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CDB593761CFD7B0800B3A6C3 /* KSConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSConstants.h; sourceTree = "<group>"; };
@@ -99,9 +109,11 @@
 		CDC8F1AC1CF76D4300860A25 /* KSTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
 		CDC8F1AD1CF76D4300860A25 /* KSTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSTransaction.h; sourceTree = "<group>"; };
 		CDC8F1AE1CF76D4300860A25 /* KSTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSTransaction.m; sourceTree = "<group>"; };
-		CDFD4B1D1D0F5F5E00743C8C /* KSYearPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYearPickerView.h; sourceTree = "<group>"; };
-		CDFD4B1E1D0F5F5E00743C8C /* KSYearPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYearPickerView.m; sourceTree = "<group>"; };
-		CDFD4B201D0F5F7D00743C8C /* KSYearPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KSYearPickerView.xib; sourceTree = "<group>"; };
+		CDD602B21D1C60620015D5DC /* CAPSPageMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPSPageMenu.h; sourceTree = "<group>"; };
+		CDD602B31D1C60620015D5DC /* CAPSPageMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPSPageMenu.m; sourceTree = "<group>"; };
+		CDFD4B1D1D0F5F5E00743C8C /* KSYearPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYearPickerViewController.h; sourceTree = "<group>"; };
+		CDFD4B1E1D0F5F5E00743C8C /* KSYearPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYearPickerViewController.m; sourceTree = "<group>"; };
+		CDFD4B201D0F5F7D00743C8C /* KSYearPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KSYearPickerViewController.xib; sourceTree = "<group>"; };
 		F718635A9AE65DDD223DCC38 /* Pods-KSPersonalFinance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSPersonalFinance.release.xcconfig"; path = "Pods/Target Support Files/Pods-KSPersonalFinance/Pods-KSPersonalFinance.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +150,7 @@
 		C5286F361CED098400B12E7D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CDAF064C1D1C8223007E35BA /* KSLoginParentViewController */,
 				C59A77F01CEFAE4E0070E3B1 /* KSMainViewController */,
 				C59A77EC1CEFAD9E0070E3B1 /* KSCategoryViewController */,
 				C59A77F41CEFAEC80070E3B1 /* KSPieChartViewController */,
@@ -264,6 +277,8 @@
 			children = (
 				CD4E02941D0313AE0074E5EA /* CDatePickerViewEx.h */,
 				CD4E02951D0313AE0074E5EA /* CDatePickerViewEx.m */,
+				CDD602B21D1C60620015D5DC /* CAPSPageMenu.h */,
+				CDD602B31D1C60620015D5DC /* CAPSPageMenu.m */,
 				C5EA96B01CE3470D0069F913 /* Categories */,
 				C5EA96B11CE3470D0069F913 /* Classes */,
 				C5EA96B21CE3470D0069F913 /* Macros */,
@@ -354,6 +369,35 @@
 			path = KSCategoryItem;
 			sourceTree = "<group>";
 		};
+		CDAF064C1D1C8223007E35BA /* KSLoginParentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDAF06501D1C825D007E35BA /* KSSigninViewController */,
+				CDAF06511D1C825D007E35BA /* KSSignupViewController */,
+				CDAF064D1D1C8223007E35BA /* KSLoginParentViewController.h */,
+				CDAF064E1D1C8223007E35BA /* KSLoginParentViewController.m */,
+			);
+			path = KSLoginParentViewController;
+			sourceTree = "<group>";
+		};
+		CDAF06501D1C825D007E35BA /* KSSigninViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDAF06521D1C8280007E35BA /* KSSigninViewController.h */,
+				CDAF06531D1C8280007E35BA /* KSSigninViewController.m */,
+			);
+			path = KSSigninViewController;
+			sourceTree = "<group>";
+		};
+		CDAF06511D1C825D007E35BA /* KSSignupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDAF06571D1C8299007E35BA /* KSSignupViewController.h */,
+				CDAF06581D1C8299007E35BA /* KSSignupViewController.m */,
+			);
+			path = KSSignupViewController;
+			sourceTree = "<group>";
+		};
 		CDB593711CFD5E2C00B3A6C3 /* KSCoreDataManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,9 +454,9 @@
 		CDFD4B1C1D0F5F5E00743C8C /* KSYearPickerView */ = {
 			isa = PBXGroup;
 			children = (
-				CDFD4B1D1D0F5F5E00743C8C /* KSYearPickerView.h */,
-				CDFD4B1E1D0F5F5E00743C8C /* KSYearPickerView.m */,
-				CDFD4B201D0F5F7D00743C8C /* KSYearPickerView.xib */,
+				CDFD4B1D1D0F5F5E00743C8C /* KSYearPickerViewController.h */,
+				CDFD4B1E1D0F5F5E00743C8C /* KSYearPickerViewController.m */,
+				CDFD4B201D0F5F7D00743C8C /* KSYearPickerViewController.xib */,
 			);
 			path = KSYearPickerView;
 			sourceTree = "<group>";
@@ -488,11 +532,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5286F521CED0CBC00B12E7D /* LaunchScreen.storyboard in Resources */,
 				C5286F551CED0CE000B12E7D /* Images.xcassets in Resources */,
+				CDD602BB1D1C74040015D5DC /* LaunchScreen.storyboard in Resources */,
+				CDD602BC1D1C74040015D5DC /* Main.storyboard in Resources */,
 				C5286F311CED092700B12E7D /* expense.plist in Resources */,
-				CDFD4B211D0F5F7D00743C8C /* KSYearPickerView.xib in Resources */,
-				C5286F531CED0CBC00B12E7D /* Main.storyboard in Resources */,
+				CDFD4B211D0F5F7D00743C8C /* KSYearPickerViewController.xib in Resources */,
 				C5286F4C1CED0B4C00B12E7D /* income.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,13 +597,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDC8F1AF1CF76D4300860A25 /* KSCategory+CoreDataProperties.m in Sources */,
+				CDAF06551D1C8280007E35BA /* KSSigninViewController.m in Sources */,
 				CDB593921CFE395400B3A6C3 /* NSString+KSExtensions.m in Sources */,
 				C59A77EF1CEFAD9E0070E3B1 /* KSCategoryViewController.m in Sources */,
 				CDB5937E1CFE09A600B3A6C3 /* UIColor+KSExtensions.m in Sources */,
 				CDB5938E1CFE36BA00B3A6C3 /* UIViewController+KSExtensions.m in Sources */,
 				CDC8F1B21CF76D4300860A25 /* KSTransaction.m in Sources */,
+				CDD602B41D1C60620015D5DC /* CAPSPageMenu.m in Sources */,
 				CDC8F1B11CF76D4300860A25 /* KSTransaction+CoreDataProperties.m in Sources */,
-				CDFD4B1F1D0F5F5E00743C8C /* KSYearPickerView.m in Sources */,
+				CDFD4B1F1D0F5F5E00743C8C /* KSYearPickerViewController.m in Sources */,
 				CDB593811CFE185F00B3A6C3 /* KSPieChartTableViewCell.m in Sources */,
 				CD4E02961D0313AE0074E5EA /* CDatePickerViewEx.m in Sources */,
 				C59A77F71CEFAEC80070E3B1 /* KSPieChartViewController.m in Sources */,
@@ -572,6 +618,8 @@
 				C5BF843F1CEA70C800DEA823 /* KSPersonalFinance.xcdatamodeld in Sources */,
 				C5F17B671CECA0040049AA86 /* KSCategoryItem.m in Sources */,
 				C5EA968F1CE3264F0069F913 /* main.m in Sources */,
+				CDAF065A1D1C8299007E35BA /* KSSignupViewController.m in Sources */,
+				CDAF064F1D1C8223007E35BA /* KSLoginParentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

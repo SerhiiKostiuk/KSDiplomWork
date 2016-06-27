@@ -7,6 +7,68 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
+        <!--Login Parent View Controller-->
+        <scene sceneID="R6n-XG-o1y">
+            <objects>
+                <viewController id="ZxL-NP-RiZ" customClass="KSLoginParentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xvK-aG-8NS"/>
+                        <viewControllerLayoutGuide type="bottom" id="VaT-5D-njk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2gn-vG-Vei">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="dollar-sign" translatesAutoresizingMaskIntoConstraints="NO" id="FlS-mn-9kV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="xY8-ul-irC"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cost_" translatesAutoresizingMaskIntoConstraints="NO" id="CYp-EK-jsT">
+                                <rect key="frame" x="75" y="43" width="170" height="84"/>
+                            </imageView>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m6k-JZ-Its">
+                                <rect key="frame" x="0.0" y="170" width="320" height="334"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="m6k-JZ-Its" firstAttribute="leading" secondItem="2gn-vG-Vei" secondAttribute="leading" id="3dD-pa-jkd"/>
+                            <constraint firstAttribute="trailing" secondItem="m6k-JZ-Its" secondAttribute="trailing" id="8yb-1h-x0V"/>
+                            <constraint firstItem="m6k-JZ-Its" firstAttribute="top" secondItem="FlS-mn-9kV" secondAttribute="bottom" id="9NA-wR-g1f"/>
+                            <constraint firstItem="FlS-mn-9kV" firstAttribute="top" secondItem="xvK-aG-8NS" secondAttribute="bottom" id="KE2-en-cmG"/>
+                            <constraint firstItem="FlS-mn-9kV" firstAttribute="leading" secondItem="2gn-vG-Vei" secondAttribute="leading" id="Owk-s6-RZk"/>
+                            <constraint firstItem="VaT-5D-njk" firstAttribute="top" secondItem="m6k-JZ-Its" secondAttribute="bottom" id="eqX-I1-Q15"/>
+                            <constraint firstAttribute="trailing" secondItem="FlS-mn-9kV" secondAttribute="trailing" id="iQa-oh-4o7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="OHa-cO-Lv8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JGO-Hn-Urj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="265" y="-199"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7M2-o9-xsN">
+            <objects>
+                <viewController storyboardIdentifier="signupVC" id="hjI-bj-IJa" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OsV-vm-nq7"/>
+                        <viewControllerLayoutGuide type="bottom" id="pZ1-S3-Tnu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DVY-dn-RXX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7eg-cc-NKq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="653" y="-453"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -332,7 +394,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5O0-aX-sRg" id="T2e-EP-Td9">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="awD-iu-WCJ">
@@ -457,12 +519,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="36D-hD-DDb"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="UBT-oO-3za"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yzf-J5-s65" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-111" y="257"/>
+            <point key="canvasLocation" x="-135" y="367"/>
         </scene>
         <!--Category View Controller-->
         <scene sceneID="kvW-EJ-F0Q">
@@ -540,11 +602,33 @@
             </objects>
             <point key="canvasLocation" x="576" y="798.5"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="hDa-qN-nTw">
+            <objects>
+                <viewController storyboardIdentifier="signinVC" id="T0D-HT-iLp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dcW-e8-UfW"/>
+                        <viewControllerLayoutGuide type="bottom" id="3ln-8U-tsc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uaX-bo-eDe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4xW-5l-tcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="658" y="-1092"/>
+        </scene>
     </scenes>
     <resources>
         <image name="add_" width="296" height="28"/>
         <image name="back_" width="9" height="15"/>
+        <image name="cost_" width="103" height="45"/>
         <image name="delete-text" width="256" height="256"/>
+        <image name="dollar-sign" width="400" height="266"/>
         <image name="number_" width="96" height="44"/>
         <image name="pieChart" width="256" height="256"/>
         <image name="rect_count_green_" width="28" height="10"/>
