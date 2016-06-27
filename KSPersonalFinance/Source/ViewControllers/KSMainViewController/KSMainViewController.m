@@ -100,8 +100,8 @@
     if (self.inputTextField.text.length > kKSZeroSign) {
         
         NSString *year   = @"2016";
-        NSString *month  = @"5";
-        NSString *day    = @"15";
+        NSString *month  = @"6";
+        NSString *day    = @"18";
         NSString *hour   = @"13";
         NSString *minute = @"32";
         
@@ -115,14 +115,14 @@
         NSDate *date = [[NSCalendar currentCalendar] dateFromComponents:dateComponents];
         NSLog(@"date: %@", date);
         
-        
+        NSString *text = self.inputTextField.text;
         [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
             KSTransaction *transaction = [KSTransaction MR_createEntityInContext:localContext];
             
             transaction.category = [self.currentCategory MR_inContext:localContext];
             
             transaction.time = date;
-            transaction.amount = @([self getInputValue]);
+            transaction.amount = @([text floatValue]);
         }];
         
         [self.calendarView selectDate:date];
@@ -222,7 +222,7 @@
     return [self.inputTextField.text floatValue];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.destinationViewController isKindOfClass:[KSCategoryViewController class]]) {
         KSCategoryViewController *vc = segue.destinationViewController;
         vc.delegate = self;
