@@ -19,7 +19,6 @@ KSConstString(kKSImageNameKey, @"imageName");
 - (instancetype)initWithTitle:(NSString *)title
                      iconName:(NSString *)iconName
                          type:(NSNumber *)type
-                        color:(NSString *)color
                     andAmount:(NSNumber *)amount
 {
     if (self = [super init]) {
@@ -28,7 +27,6 @@ KSConstString(kKSImageNameKey, @"imageName");
         _transactionType = type;
         _amount = amount;
         _imageName = iconName;
-        _color = color;
     }
     
     return self;

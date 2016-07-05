@@ -18,12 +18,10 @@ typedef NS_ENUM(NSInteger, TransactionType) {
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSNumber *amount;
 @property (nonatomic, strong) NSNumber *transactionType;
-@property (nonatomic, strong) NSString *color;
 
 - (instancetype)initWithTitle:(NSString *)title
                      iconName:(NSString *)iconName
                          type:(NSNumber *)type
-                        color:(NSString *)color
                     andAmount:(NSNumber *)amount;
 
 @end
