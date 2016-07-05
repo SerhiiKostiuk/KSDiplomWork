@@ -9,11 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol KSYearPickerViewControllerDelegate <NSObject>
-/**
- *  This method is called when user touch confrim button.
- *
- *  @param date selected date
- */
+
 - (void)KSYearPickerSelectedDate:(NSDate *)date;
 
 @end

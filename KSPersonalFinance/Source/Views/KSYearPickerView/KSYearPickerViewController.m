@@ -24,22 +24,20 @@
 @implementation KSYearPickerViewController
 
 - (instancetype)init {
-    if (self = [super init])
-    {
+    if (self = [super init]) {
         [self loadDefaultsParameters];
     }
+    
     return self;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     
     return self = [super initWithNibName:nibNameOrNil bundle:bundle];
 }
 
 - (NSDate *)date {
-    
     NSInteger yearCount = self.years.count;
     NSString *year = [self.years objectAtIndex:([self.pickerView selectedRowInComponent:0] % yearCount)];
     
@@ -51,12 +49,10 @@
 
 
 - (NSArray *)nameOfYears {
-    
-//Create Years Array from 2010 to 2020 year
-NSMutableArray  *years = [[NSMutableArray alloc] init];
-for (int i=2010; i<=2020; i++) {
-    [years addObject:[NSString stringWithFormat:@"%d",i]];
-}
+    NSMutableArray  *years = [[NSMutableArray alloc] init];
+    for (int i=2010; i<=2020; i++) {
+        [years addObject:[NSString stringWithFormat:@"%d",i]];
+    }
     
     return years;
 }
@@ -81,10 +77,13 @@ for (int i=2010; i<=2020; i++) {
     return [self.years objectAtIndex:(row % yearCount)];
 }
 
-- (UIView *)pickerView: (UIPickerView *)pickerView viewForRow: (NSInteger)row forComponent: (NSInteger)component reusingView: (UIView *)view {
+- (UIView *)pickerView: (UIPickerView *)pickerView
+            viewForRow: (NSInteger)row
+          forComponent: (NSInteger)component
+           reusingView: (UIView *)view
+{
     BOOL selected = NO;
   
-    
     NSString *yearName = [self.years objectAtIndex:(row % self.years.count)];
     
     if([yearName isEqualToString:[self currentYearName]] == YES) {
@@ -112,14 +111,11 @@ for (int i=2010; i<=2020; i++) {
     return label;
 }
 
--(NSIndexPath *)todayPath {
+- (NSIndexPath *)todayPath {
     CGFloat row = 0.f;
     CGFloat section = 0.f;
     
     NSString *year  = [self currentYearName];
-    
-    //set table on the middle
-   
     
     for(NSString *cellYear in self.years) {
         if([cellYear isEqualToString:year]) {
@@ -132,7 +128,7 @@ for (int i=2010; i<=2020; i++) {
 }
 
 
--(void)selectToday {
+- (void)selectToday {
     [self.pickerView selectRow: self.todayIndexPath.row
                    inComponent: 0
                       animated: NO];
@@ -149,7 +145,6 @@ for (int i=2010; i<=2020; i++) {
     if ([self.delegate respondsToSelector:@selector(KSYearPickerSelectedDate:)]) {
         [self.delegate KSYearPickerSelectedDate:[self date]];
     }
-    
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
