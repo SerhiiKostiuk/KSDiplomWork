@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *imageName;
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *color;
+@property (nonatomic, strong) NSString *order;
 @property (nonatomic, strong) NSNumber *transactionType;
 
 @property (nonatomic, strong) NSSet<KSTransaction *> *transactions;
