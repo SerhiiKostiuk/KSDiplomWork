@@ -21,14 +21,13 @@
 #import "FSCalendar.h"
 
 #import "UIViewController+KSExtensions.h"
-#import "UIColor+KSExtensions.h"
 #import "NSString+KSExtensions.h"
 
-@interface KSMainViewController () <UIScrollViewDelegate, UITextFieldDelegate, CategorySelectionDelegate>
+@interface KSMainViewController () <UIScrollViewDelegate, CategorySelectionDelegate>
 @property (nonatomic, weak) IBOutlet UITextField  *inputTextField;
 @property (nonatomic, weak) IBOutlet UIButton     *saveAmountButton;
 @property (nonatomic, weak) IBOutlet FSCalendar   *calendarView;
-@property (nonatomic, weak) IBOutlet UIButton     *changeTransactionType;
+@property (nonatomic, weak) IBOutlet UIButton     *changeTransactionTypeButton;
 @property (nonatomic, weak) IBOutlet UIView       *numpadView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *numpadLeading;
@@ -55,19 +54,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.inputTextField.delegate = self;
+    [self defaultPreferences];
     
     BOOL isPreloaded = [[NSUserDefaults standardUserDefaults]boolForKey:kKSCompleteCategoriesPreload];
     if (!isPreloaded) {
         [self presentActivityIndicator];
     }
-    
-    [self hideNumpadView:YES animated:NO];
-//    [self.changeTransactionType setTitle: @"Расход" forState:UIControlStateNormal];
-    self.calendarView.firstWeekday = 2;
-//    self.calendarView.allowsSelection = YES;
-    self.calendarView.allowsMultipleSelection = YES;
-    [self selectAllTransactionsWithType:self.categorySelectionVC.categoryType];
 }
 
 #pragma mark -
@@ -98,37 +90,23 @@
 
 - (IBAction)saveAmount:(id)sender {
     if (self.inputTextField.text.length > kKSZeroSign) {
-        
-        NSString *year   = @"2016";
-        NSString *month  = @"6";
-        NSString *day    = @"18";
-        NSString *hour   = @"13";
-        NSString *minute = @"32";
-        
-        NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-        dateComponents.year   = [year intValue];
-        dateComponents.month  = [month intValue];
-        dateComponents.day    = [day intValue];
-        dateComponents.hour   = [hour intValue];
-        dateComponents.minute = [minute intValue];
-        
-        NSDate *date = [[NSCalendar currentCalendar] dateFromComponents:dateComponents];
-        NSLog(@"date: %@", date);
-        
         NSString *text = self.inputTextField.text;
+        
         [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
             KSTransaction *transaction = [KSTransaction MR_createEntityInContext:localContext];
             
             transaction.category = [self.currentCategory MR_inContext:localContext];
             
-            transaction.time = date;
+            transaction.time = [NSDate date];
             transaction.amount = @([text floatValue]);
         }];
         
-        [self.calendarView selectDate:date];
+        [self.calendarView selectDate:[NSDate date]];
         self.inputTextField.text = @"";
         
         [self.categorySelectionVC showTodayTransaction];
+        [self.categorySelectionVC.collectionView reloadData];
+        
         [self hideNumpadView:YES animated:YES];
         
     } else {
@@ -141,31 +119,64 @@
 }
 
 - (IBAction)changeTransactionType:(id)sender {
-    self.changeTransactionType.selected = !self.changeTransactionType.selected;
-    
     [self.categorySelectionVC changeTransactionType];
     
+    [self changeTitleForChangeTrasactionTypeButton];
+    
     [self selectAllTransactionsWithType:self.categorySelectionVC.categoryType];
+}
+
+- (IBAction)logout:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark -
 #pragma mark Private
 
+- (void)defaultPreferences {
+    self.navigationController.navigationBarHidden = NO;
+    
+    [self hideNumpadView:YES animated:NO];
+    
+    [self setTitle:kKSChangeTransactionTypeButtonExpenseTitle forButton:_changeTransactionTypeButton];
+    self.calendarView.firstWeekday = 2;
+    
+    self.calendarView.allowsMultipleSelection = YES;
+    
+    [self selectAllTransactionsWithType:self.categorySelectionVC.categoryType];
+}
+
 - (void)presentActivityIndicator {
     CGSize viewSize = [UIScreen mainScreen].bounds.size;
     UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(kKSZeroSign, kKSZeroSign, viewSize.width, viewSize.height)];
     
+    CGFloat activityIndicatorSize = 40.f;
+    
     DGActivityIndicatorView *activityIndicatorView = [[DGActivityIndicatorView alloc]
                                                       initWithType:DGActivityIndicatorAnimationTypeBallTrianglePath
                                                       tintColor:[UIColor redColor]
-                                                      size:20.0f];
-    
-    activityIndicatorView.frame = CGRectMake(viewSize.width/2 - 25.0f, viewSize.height/2 - 25.0f, 50.0f, 50.0f);
+                                                      size:activityIndicatorSize];
     
     activityView.backgroundColor = [UIColor blackColor];
-    activityView.alpha = 0.6;
-    
+    activityView.alpha = 0.7;
+    activityIndicatorView.translatesAutoresizingMaskIntoConstraints = NO;
+
     [activityView addSubview:activityIndicatorView];
+    
+    [activityView addConstraints:@[[NSLayoutConstraint constraintWithItem:activityIndicatorView
+                                                               attribute:NSLayoutAttributeCenterX
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:activityView
+                                                               attribute:NSLayoutAttributeCenterX
+                                                              multiplier:1 constant:0],
+                                   
+                                  [NSLayoutConstraint constraintWithItem:activityIndicatorView
+                                                               attribute:NSLayoutAttributeCenterY
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:activityView
+                                                               attribute:NSLayoutAttributeCenterY
+                                                              multiplier:1 constant:- activityIndicatorSize]]];
+    
     [self.view addSubview:activityView];
     [activityIndicatorView startAnimating];
     [self preloadCategoriesWithCompletion:^(BOOL success) {
@@ -178,6 +189,18 @@
             NSAssert(success = NO, @"preload failed");
         }
     }];
+}
+
+- (void)setTitle:(NSString *)title forButton:(UIButton *)button {
+    [button setTitle: title forState:UIControlStateNormal];
+}
+
+-(void)changeTitleForChangeTrasactionTypeButton {
+    if (self.categorySelectionVC.categoryType == transactionTypeIncome) {
+        [self setTitle:kKSChangeTransactionTypeButtonIncomeTitle forButton:_changeTransactionTypeButton];
+    } else {
+        [self setTitle:kKSChangeTransactionTypeButtonExpenseTitle forButton:_changeTransactionTypeButton];
+    }
 }
 
 - (void)hideNumpadView:(BOOL)hide animated:(BOOL)animated {
@@ -195,12 +218,10 @@
     
     for (KSTransaction *transaction in transactions) {
         if ([transaction.category.transactionType integerValue] == type) {
-            [self.calendarView selectDate: transaction.time];
+            [self.calendarView selectDate:transaction.time];
         } else {
             [self.calendarView deselectDate:transaction.time];
         }
-        
-        
     }
 }
 
@@ -241,20 +262,6 @@
     }];
     
     self.currentCategory = category;
-}
-
-#pragma mark -
-#pragma mark UITextFieldDelegate
-
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    [self.categorySelectionVC changeTransactionType];
-    UIColor *color = [UIColor colorFromType:self.categorySelectionVC.categoryType];
-    NSString *categoryName = [NSString stringFromType:self.categorySelectionVC.categoryType];
-    textField.textColor = color;
-    textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:categoryName
-                                                                      attributes:@{NSForegroundColorAttributeName: color}];
-    
-    return NO;
 }
 
 @end
