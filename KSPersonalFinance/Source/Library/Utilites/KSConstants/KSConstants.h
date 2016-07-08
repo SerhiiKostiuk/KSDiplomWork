@@ -20,8 +20,15 @@ KSConstNSInteger(kKSZeroSign, 0);
 
 KSConstString(kKSYesAlertTitle, @"Yes");
 KSConstString(kKSNoAlertTitle,  @"No");
+KSConstString(kKSChangeTransactionTypeButtonIncomeTitle, @"Доходы");
+KSConstString(kKSChangeTransactionTypeButtonExpenseTitle, @"Расходы");
+
 
 KSConstString(kKSTransactionTypeKey, @"transactionType");
+KSConstString(kKSOrderKey, @"order");
+KSConstString(kKSImageNameKey, @"imageName");
+KSConstString(kKSTitleNameKey, @"title");
+
 
 KSConstString(kKSAlertNoTransactionMessage, @"Введите Трансакцию!");
 KSConstString(kKSAlertNoTransactionsMessage, @"Трансакции Отсутствуют!");
