@@ -4,53 +4,35 @@
 <array>
 	<dict>
 		<key>imageName</key>
-		<string>salary</string>
+		<string>case_</string>
 		<key>title</key>
-		<string>salary</string>
+		<string>Бизнес</string>
 		<key>transactionType</key>
 		<integer>2</integer>
-		<key>color</key>
-		<string>FF6600</string>
 	</dict>
 	<dict>
 		<key>imageName</key>
-		<string>business</string>
+		<string>money_</string>
 		<key>title</key>
-		<string>business</string>
+		<string>Зарплата</string>
 		<key>transactionType</key>
 		<integer>2</integer>
-		<key>color</key>
-		<string>CC9999</string>
 	</dict>
 	<dict>
 		<key>imageName</key>
-		<string>safebox</string>
+		<string>pig_</string>
 		<key>title</key>
-		<string>safebox</string>
+		<string>Сбережения</string>
 		<key>transactionType</key>
 		<integer>2</integer>
-		<key>color</key>
-		<string>FFCC33</string>
 	</dict>
 	<dict>
 		<key>imageName</key>
-		<string>dividends</string>
+		<string>present_</string>
 		<key>title</key>
-		<string>dividends</string>
+		<string>Подарки</string>
 		<key>transactionType</key>
 		<integer>2</integer>
-		<key>color</key>
-		<string>336633</string>
-	</dict>
-	<dict>
-		<key>imageName</key>
-		<string>present</string>
-		<key>title</key>
-		<string>present</string>
-		<key>transactionType</key>
-		<integer>2</integer>
-		<key>color</key>
-		<string>33FFCC</string>
 	</dict>
 </array>
 </plist>

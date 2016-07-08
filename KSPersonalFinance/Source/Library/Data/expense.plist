@@ -4,53 +4,83 @@
 <array>
 	<dict>
 		<key>imageName</key>
-		<string>home</string>
+		<string>house_@x3</string>
 		<key>title</key>
-		<string>home</string>
+		<string>Комунальные</string>
 		<key>transactionType</key>
 		<integer>1</integer>
-		<key>color</key>
-		<string>FF0000</string>
+		<key>order</key>
+		<string>1</string>
 	</dict>
 	<dict>
 		<key>imageName</key>
-		<string>dress</string>
+		<string>apple_</string>
 		<key>title</key>
-		<string>shoping</string>
+		<string>Продукты</string>
 		<key>transactionType</key>
 		<integer>1</integer>
-		<key>color</key>
-		<string>00FF00</string>
+		<key>order</key>
+		<string>2</string>
 	</dict>
 	<dict>
 		<key>imageName</key>
-		<string>coffee-cup</string>
+		<string>bowl_</string>
 		<key>title</key>
-		<string>cafe</string>
+		<string>Развлечение</string>
 		<key>transactionType</key>
 		<integer>1</integer>
-		<key>color</key>
-		<string>FF7F00</string>
+		<key>order</key>
+		<string>3</string>
 	</dict>
 	<dict>
 		<key>imageName</key>
-		<string>car-compact</string>
+		<string>cloth_</string>
 		<key>title</key>
-		<string>car</string>
+		<string>Одежда</string>
 		<key>transactionType</key>
 		<integer>1</integer>
-		<key>color</key>
-		<string>7F007F</string>
+		<key>order</key>
+		<string>4</string>
 	</dict>
 	<dict>
 		<key>imageName</key>
-		<string>shopping-cart</string>
+		<string>food_</string>
 		<key>title</key>
-		<string>grocery</string>
+		<string>Еда</string>
 		<key>transactionType</key>
 		<integer>1</integer>
-		<key>color</key>
-		<string>0000FF</string>
+		<key>order</key>
+		<string>5</string>
+	</dict>
+	<dict>
+		<key>imageName</key>
+		<string>fuel_</string>
+		<key>title</key>
+		<string>Топливо</string>
+		<key>transactionType</key>
+		<integer>1</integer>
+		<key>order</key>
+		<string>6</string>
+	</dict>
+	<dict>
+		<key>imageName</key>
+		<string>sport_</string>
+		<key>title</key>
+		<string>Спорт</string>
+		<key>transactionType</key>
+		<integer>1</integer>
+		<key>order</key>
+		<string>7</string>
+	</dict>
+	<dict>
+		<key>imageName</key>
+		<string>other_</string>
+		<key>title</key>
+		<string>Другое</string>
+		<key>transactionType</key>
+		<integer>1</integer>
+		<key>order</key>
+		<string>8</string>
 	</dict>
 </array>
 </plist>
