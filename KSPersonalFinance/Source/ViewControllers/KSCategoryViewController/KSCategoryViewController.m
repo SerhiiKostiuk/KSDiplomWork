@@ -15,22 +15,20 @@
 #import "KSCoreDataManager.h"
 #import "NSDate+Calendar.h"
 
-
 KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 
 @interface KSCategoryViewController ()
-@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) KSCategoryItemCollectionViewCell *collectionViewCell;
 
-@property (nonatomic, strong)    NSArray            *categoryItems;
-@property (nonatomic, readwrite) TransactionType    categoryType;
+@property (nonatomic, strong) NSArray *categoryItems;
 @property (nonatomic, strong) NSArray * todayCategoriesTransactions;
 
+@property (nonatomic, readwrite) TransactionType    categoryType;
 
 - (void)fetchCategoriesWithType:(TransactionType)type;
+- (void)updateCategory;
 - (void)startObservingNotification;
 - (void)endObservingNotification;
-- (void)updateCategory;
 
 @end
 
@@ -91,7 +89,10 @@ KSConstString(kKSReusableCellName, @"KSCategoryItemCollectionViewCell");
 - (void)fetchCategoriesWithType:(TransactionType)type {
     NSNumber *categoryType = [NSNumber numberWithInteger:type];
     
-    NSArray *categories = [KSCategory MR_findByAttribute:kKSTransactionTypeKey withValue:categoryType];
+    NSArray *categories = [KSCategory MR_findByAttribute:kKSTransactionTypeKey
+                                               withValue:categoryType
+                                              andOrderBy:kKSOrderKey
+                                               ascending:YES];
 
     _categoryItems = categories;
 }
