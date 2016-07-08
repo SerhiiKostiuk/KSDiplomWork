@@ -8,6 +8,6 @@
 
 #import "KSLoginParentViewController.h"
 
-@interface KSSigninViewController : KSLoginParentViewController
+@interface KSSigninViewController : UIViewController
 
 @end

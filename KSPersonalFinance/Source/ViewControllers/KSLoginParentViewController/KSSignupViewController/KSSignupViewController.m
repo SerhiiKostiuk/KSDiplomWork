@@ -7,31 +7,65 @@
 //
 
 #import "KSSignupViewController.h"
+#import "UIViewController+KSExtensions.h"
 
 @interface KSSignupViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *userNameField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UITextField *reEnterPasswordField;
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+
+- (void)checkPasswordsMatch;
+- (void)hideKeyboardForField:(UITextField *)field;
+- (void)registerNewUser;
 
 @end
 
 @implementation KSSignupViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+#pragma mark -
+#pragma mark Interface Handling
+
+- (IBAction)registerUser:(id)sender {
+    if ([_userNameField.text isEqualToString:@""] ||
+        [_passwordField.text isEqualToString:@""] ||
+        [_reEnterPasswordField.text isEqualToString:@""])
+    {
+        [self presentAlertViewWithMessage:@"Нужно заполнить все поля"];
+    } else {
+        [self checkPasswordsMatch];
+        [self registerNewUser];
+    }
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)dismissKeyboard:(id)sender; {
+    [self hideKeyboardForField:sender];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark -
+#pragma mark Private
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)checkPasswordsMatch {
+    if ([_passwordField.text isEqualToString:_reEnterPasswordField.text]) {
+        NSLog(@"password match !");
+    } else {
+        [self presentAlertViewWithMessage:@"password don't match !"];
+    }
+    
 }
-*/
+
+- (void)hideKeyboardForField:(UITextField *)field {
+    [field becomeFirstResponder];
+    [field resignFirstResponder];
+}
+
+- (void)registerNewUser {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:_userNameField.text forKey:@"userName"];
+    [defaults setObject:_passwordField.text forKey:@"password"];
+    [defaults synchronize];
+}
 
 @end

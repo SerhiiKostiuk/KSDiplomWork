@@ -7,31 +7,50 @@
 //
 
 #import "KSSigninViewController.h"
+#import "KSSignupViewController.h"
+#import "KSMainViewController.h"
+#import "UIViewController+KSExtensions.h"
 
 @interface KSSigninViewController ()
+@property (weak, nonatomic) IBOutlet UIButton    *signinButton;
+@property (weak, nonatomic) IBOutlet UITextField *userNameField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+
+- (void)hideKeyboardForField:(UITextField *)field;
 
 @end
 
 @implementation KSSigninViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+#pragma mark -
+#pragma mark Interface Handling
+
+- (IBAction)signin:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([self.userNameField.text isEqualToString:[defaults objectForKey:@"userName"]] && [self.passwordField.text isEqualToString:[defaults objectForKey:@"password"]]) {
+        
+        KSMainViewController *VC = [self.storyboard instantiateViewControllerWithIdentifier:@"mainVC"];
+        
+        [self.navigationController pushViewController:VC animated:YES];
+
+    } else {
+        [self presentAlertViewWithMessage:@"Логин или пароль не верный"];
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
+- (IBAction)dismissKeyboard:(id)sender; {
+    [self hideKeyboardForField:sender];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark -
+#pragma mark Private
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)hideKeyboardForField:(UITextField *)field {
+    [field becomeFirstResponder];
+    [field resignFirstResponder];
 }
-*/
+
 
 @end

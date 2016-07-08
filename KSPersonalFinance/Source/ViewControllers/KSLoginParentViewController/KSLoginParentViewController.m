@@ -12,49 +12,141 @@
 #import "KSSignupViewController.h"
 
 @interface KSLoginParentViewController ()
+@property (weak, nonatomic) IBOutlet UIView  *containerView;
+@property (weak, nonatomic) UIViewController *currentViewController;
 
+- (void)startWithDefaultSegment;
+- (void)presentSegmentedControl;
+- (void)segmentedControlChangedValue:(HMSegmentedControl *)segmentedControl;
+- (void)presentNewVCWithIdentifier:(NSString *)identifier;
+- (void)addSubview:(UIView *)subView toView:(UIView*)parentView;
+- (void)cycleFromViewController:(UIViewController*) oldViewController
+               toViewController:(UIViewController*) newViewController;
 
 @end
 
 @implementation KSLoginParentViewController
 
+#pragma mark -
+#pragma mark ViewController Life Cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CGFloat viewWidth = CGRectGetWidth(self.view.frame);
-
+    self.navigationController.navigationBarHidden = YES;
     
-    // Segmented control with scrolling
-    HMSegmentedControl *segmentedControl1 = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"Логин",@"Регистрация"]];
-    segmentedControl1.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
-    segmentedControl1.frame = CGRectMake(0, 130, viewWidth, 40);
-    segmentedControl1.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10);
-    segmentedControl1.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
-    segmentedControl1.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
-    segmentedControl1.verticalDividerEnabled = NO;
-    segmentedControl1.verticalDividerColor = [UIColor blackColor];
-    segmentedControl1.verticalDividerWidth = 1.0f;
-    [segmentedControl1 setTitleFormatter:^NSAttributedString *(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected) {
-        NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : [UIColor blueColor]}];
+    [self presentSegmentedControl];
+    
+    [self startWithDefaultSegment];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)startWithDefaultSegment {
+    KSSigninViewController *newViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"signinVC"];
+    
+    newViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self addChildViewController:newViewController];
+    [self addSubview:newViewController.view toView:self.containerView];
+    
+    self.currentViewController = newViewController;
+}
+
+- (void)presentSegmentedControl {
+    CGFloat viewWidth = CGRectGetWidth(self.view.frame);
+    
+    UIColor *segmentedControlColor = [UIColor colorWithRed:159/255.f green:232/255.f blue:53/255.f alpha:1.f];
+    
+    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"Логин",@"Регистрация"]];
+    segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+    segmentedControl.frame = CGRectMake(0, 165, viewWidth, 40);
+    segmentedControl.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10);
+    segmentedControl.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+    segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
+    segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
+    segmentedControl.selectionIndicatorColor = segmentedControlColor;
+
+    [segmentedControl setTitleFormatter:^NSAttributedString *(HMSegmentedControl *segmentedControl,
+                                                              NSString *title,
+                                                              NSUInteger index,
+                                                              BOOL selected)
+    {
+        NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title
+                                                                        attributes:@{NSForegroundColorAttributeName :
+                                                                                         segmentedControlColor}];
         return attString;
     }];
-    [segmentedControl1 addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:segmentedControl1];
+    
+    [segmentedControl addTarget:self
+                         action:@selector(segmentedControlChangedValue:)
+               forControlEvents:UIControlEventValueChanged];
+    
+    [self.view addSubview:segmentedControl];
 }
 
 - (void)segmentedControlChangedValue:(HMSegmentedControl *)segmentedControl {
-//    if (segmentedControl.selectedSegmentIndex == 0) {
-//      KSSigninViewController *signinVC = [[KSSigninViewController alloc]init];
-//    
-//        [self presentViewController:signinVC animated:YES completion:nil];
-//
-//    } else {
-//        KSSignupViewController *signupVC = [[KSSignupViewController alloc]init];
-//        
-//        [self presentViewController:signupVC animated:YES completion:nil];
-//
-//    }
-    NSLog(@"Selected index %ld (via UIControlEventValueChanged)", (long)segmentedControl.selectedSegmentIndex);
+    if (segmentedControl.selectedSegmentIndex == 0) {
+        [self presentNewVCWithIdentifier:@"signinVC"];
+    } else {
+        [self presentNewVCWithIdentifier:@"signupVC"];
+    }
+}
+
+- (void)presentNewVCWithIdentifier:(NSString *)identifier {
+    UIViewController *VC = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+    
+    [VC.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [self cycleFromViewController:self.currentViewController toViewController:VC];
+    self.currentViewController = VC;
+}
+
+
+- (void)addSubview:(UIView *)subView toView:(UIView*)parentView {
+    [parentView addSubview:subView];
+    
+    NSDictionary * views = @{@"subView" : subView,};
+    NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[subView]|"
+                                                                   options:0
+                                                                   metrics:0
+                                                                     views:views];
+    [parentView addConstraints:constraints];
+    constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[subView]|"
+                                                          options:0
+                                                          metrics:0
+                                                            views:views];
+    [parentView addConstraints:constraints];
+}
+
+- (void)cycleFromViewController:(UIViewController*) oldViewController
+               toViewController:(UIViewController*) newViewController
+{
+    [oldViewController willMoveToParentViewController:nil];
+    
+    [self addChildViewController:newViewController];
+    [self addSubview:newViewController.view toView:self.containerView];
+    
+    [newViewController.view layoutIfNeeded];
+    
+    newViewController.view.alpha = 0;
+    
+    [UIView animateWithDuration:0.1
+                     animations:^{
+                         newViewController.view.alpha = 1;
+                         oldViewController.view.alpha = 0;
+                     }
+                     completion:^(BOOL finished) {
+                         [oldViewController.view removeFromSuperview];
+                         [oldViewController removeFromParentViewController];
+                         [newViewController didMoveToParentViewController:self];
+                     }];
 }
 
 @end
