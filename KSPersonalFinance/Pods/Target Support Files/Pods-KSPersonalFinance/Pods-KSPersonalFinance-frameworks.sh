@@ -91,5 +91,4 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/HSDatePickerViewController/HSDatePickerViewController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MagicalRecord/MagicalRecord.framework"
   install_framework "$BUILT_PRODUCTS_DIR/NSDate+Calendar/NSDate_Calendar.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/VBPieChart/VBPieChart.framework"
 fi
