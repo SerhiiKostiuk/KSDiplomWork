@@ -10,7 +10,6 @@
 #import "KSTransaction.h"
 #import "KSConstants.h"
 #import "KSCategory.h"
-#import "UIColor+KSExtensions.h"
 #import "KSCategoryItem.h"
 
 @implementation KSCoreDataManager
@@ -26,20 +25,17 @@
         for (NSDictionary *inputItem in categories) {
             
             KSCategory *category = [KSCategory MR_createEntityInContext:localContext];
-            category.title = inputItem[@"title"];
-            category.imageName = inputItem[@"imageName"];
-            category.transactionType = inputItem[@"transactionType"];
-            category.color = inputItem[@"color"];
+            category.title = inputItem[kKSTitleNameKey];
+            category.imageName = inputItem[kKSImageNameKey];
+            category.transactionType = inputItem[kKSTransactionTypeKey];
+            category.order = inputItem[kKSOrderKey];
         }
-        
     } completion:^(BOOL contextDidSave, NSError * _Nullable error) {
         if (contextDidSave) {
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kKSCompleteCategoriesPreload];
             [[NSNotificationCenter defaultCenter] postNotificationName:kKSCompleteCategoriesPreload object:self];
         }
-        
         completion(contextDidSave);
-        
     }];
 }
 
@@ -51,56 +47,25 @@
     
     NSNumber *typeOfTransaction = [NSNumber numberWithInteger:type];
     NSArray *fetchedCategories = [KSCategory MR_findByAttribute:kKSTransactionTypeKey withValue:typeOfTransaction];
-    
-    NSNumber *transactionSum = [NSNumber new];
-    
     NSMutableArray *categoriesItems = [NSMutableArray array];
-    
-//    NSPredicate *datePredicate = [NSPredicate predicateWithFormat:@"(SUBQUERY(transactions, $x, ($x.time >= %@) AND ($x.time <= %@)).@count > 0)", [dates firstObject], [dates lastObject]];
-    
-    
+
     for (KSCategory *category in fetchedCategories) {
         NSPredicate *datePredicate = [NSPredicate predicateWithFormat:@"(time >= %@) AND (time <= %@) AND (category.title = %@)", [dates firstObject], [dates lastObject], category.title];
         
-        NSArray *ar = [KSTransaction MR_findAllWithPredicate:datePredicate];
-        NSNumber *sum  = [ar valueForKeyPath:@"@sum.amount"];
-        NSLog(@"%@", sum);
-//        transactionSum = [KSTransaction MR_aggregateOperation:@"sum:"
-//                                                  onAttribute:@"amount"
-//                                                withPredicate:datePredicate];
+        NSArray *transactionsArray = [KSTransaction MR_findAllWithPredicate:datePredicate];
+        NSNumber *sum  = [transactionsArray valueForKeyPath:@"@sum.amount"];
+
         if (sum.floatValue > kKSZeroSign) {
             KSCategoryItem *item = [[KSCategoryItem alloc]initWithTitle:category.title
                                                                iconName:category.imageName
                                                                    type:category.transactionType
-                                                                  color:category.color
                                                               andAmount:@0];
             item.amount = sum;
-            
+            totalAmount +=[sum floatValue];
             
             [categoriesItems addObject:item];
-            
         }
-
-        NSLog(@"%@", transactionSum);
     }
-    
-    
-//    NSFetchRequest *fetchRequest = [KSCategory MR_requestAllWithPredicate:datePredicate];
-//    [fetchRequest setRelationshipKeyPathsForPrefetching:@[NSStringFromSelector(@selector(transactions))]];
-//    
-//    NSArray *categories = [fetchedCategories filteredArrayUsingPredicate:datePredicate];
-//    
-//    for (KSCategory *category in categories) {
-//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category.title = %@",category.title];
-//                
-//        transactionSum = [KSTransaction MR_aggregateOperation:@"sum:"
-//                                                  onAttribute:@"amount"
-//                                                withPredicate:predicate];
-//        
-//        totalAmount +=[transactionSum floatValue];
-//        
-//    }
-    
     if (completionHandler) {
         completionHandler([categoriesItems copy], @(totalAmount));
     }
